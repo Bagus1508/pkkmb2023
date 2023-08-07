@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/peserta', [StudentController::class, 'index'])->name('students.index');
         Route::get('/dashboard/admin/peserta/tambah-data', [StudentController::class, 'create'])->name('students.create');
         Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
+        Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
         // attendances (user/presensi)
         Route::get('/dashboard/admin/kehadiran', [AttendanceController::class, 'index'])->name('attendances.index');
         Route::get('/dashboard/admin/kehadiran/tambah-data', [AttendanceController::class, 'create'])->name('attendances.create');

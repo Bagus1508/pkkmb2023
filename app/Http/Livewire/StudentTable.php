@@ -31,7 +31,7 @@ final class StudentTable extends PowerGridComponent
         );
     }
 
-    public function header(): array
+    /* public function header(): array
     {
         return [
             Button::add('bulk-checked')
@@ -43,7 +43,7 @@ final class StudentTable extends PowerGridComponent
                 ->class('bg-blue-500 w-4 text-white rounded-lg hover:bg-blue-600')
                 ->emit('bulkCheckedEdit', []),
         ];
-    }
+    } */
 
     public function bulkCheckedDelete()
     {
@@ -163,6 +163,22 @@ final class StudentTable extends PowerGridComponent
             })
             ->addColumn('created_at')
             ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+    }
+
+        public function actions(): array
+    {
+        return [
+            Button::make('edit', 'Edit')
+                ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                ->target('')
+                ->route('students.edit', ['ids' => 'id']),
+
+            Button::make('destroy', 'Delete')
+                    ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                    ->target('')
+                    ->route('students.destroy', ['users' => 'id'])
+                    ->method('delete')
+        ];
     }
 
     /*

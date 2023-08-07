@@ -38,4 +38,14 @@ class StudentController extends Controller
             "students" => $students
         ]);
     }
+
+    public function destroy(User $users)
+    {
+        try {
+            $users->delete();
+            return back()->with('success', 'Data peserta berhasil dihapus.');
+        } catch (\Exception $ex) {
+            return back()->with('error', 'Gagal menghapus data peserta.');
+        }
+    }
 }
