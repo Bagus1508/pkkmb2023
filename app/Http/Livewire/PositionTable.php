@@ -30,11 +30,11 @@ final class PositionTable extends PowerGridComponent
         return [
             Button::add('bulk-checked')
                 ->caption(__('Hapus'))
-                ->class('btn btn-danger border-0')
+                ->class('bg-red-500 w-4 text-white rounded-lg hover:bg-red-600')
                 ->emit('bulkCheckedDelete', []),
             Button::add('bulk-edit-checked')
                 ->caption(__('Edit'))
-                ->class('btn btn-success border-0')
+                ->class('bg-green-500 w-4 text-white rounded-lg hover:bg-green-600')
                 ->emit('bulkCheckedEdit', []),
         ];
     }
@@ -49,7 +49,7 @@ final class PositionTable extends PowerGridComponent
 
             try {
                 Position::whereIn('id', $ids)->delete();
-                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data jabatan berhasi dihapus.']);
+                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data posisi berhasi dihapus.']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Data gagal dihapus, kemungkinan ada data lain yang menggunakan data tersebut.']);
             }
@@ -201,10 +201,10 @@ final class PositionTable extends PowerGridComponent
             //     ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
             //     ->route('position.edit', ['position' => 'id']),
 
-            // Button::make('destroy', 'Delete')
-            //     ->class('badge text-bg-danger border-0')
-            //     ->route('positions.destroy', ['position' => 'id'])
-            //     ->method('delete')
+            Button::make('destroy', 'Delete')
+                ->class('badge text-bg-danger border-0')
+                ->route('positions.destroy', ['position' => 'id'])
+                ->method('delete')
         ];
     }
 

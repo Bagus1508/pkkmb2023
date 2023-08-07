@@ -9,23 +9,33 @@ class AttendanceController extends Controller
 {
     public function index()
     {
-        return view('attendances.index', [
-            "title" => "Absensi"
+        return view('dashboard.admin.presences.add-data.attendances.index', [
+            "title" => "Presensi"
         ]);
     }
 
     public function create()
     {
-        return view('attendances.create', [
-            "title" => "Tambah Data Absensi"
+        return view('dashboard.admin.presences.add-data.attendances.create', [
+            "title" => "Tambah Data Presensi"
         ]);
     }
 
     public function edit()
     {
-        return view('attendances.edit', [
-            "title" => "Edit Data Absensi",
+        return view('dashboard.admin.presences.add-data.attendances.edit', [
+            "title" => "Edit Data Presensi",
             "attendance" => Attendance::findOrFail(request('id'))
         ]);
+    }
+
+    public function destroy(Attendance $attendance)
+    {
+        try {
+            $attendance->delete();
+            return back()->with('success', 'Data absensi berhasil dihapus.');
+        } catch (\Exception $ex) {
+            return back()->with('error', 'Gagal menghapus data absensi.');
+        }
     }
 }

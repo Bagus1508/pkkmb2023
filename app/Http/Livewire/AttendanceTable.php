@@ -29,15 +29,15 @@ final class AttendanceTable extends PowerGridComponent
         );
     }
 
-    public function header(): array
+    /* public function header(): array
     {
         return [
             Button::add('bulk-checked')
                 ->caption(__('Hapus'))
-                ->class('btn btn-danger border-0')
+                ->class('bg-red-500 hover:bg-red-600 rounded-md text-white')
                 ->emit('bulkCheckedDelete', []),
         ];
-    }
+    } */
 
     public function bulkCheckedDelete()
     {
@@ -129,7 +129,12 @@ final class AttendanceTable extends PowerGridComponent
             ->addColumn('title')
             ->addColumn('description')
             ->addColumn('start_time', fn (Attendance $model) => substr($model->start_time, 0, -3) . "-" . substr($model->batas_start_time, 0, -3))
-            ->addColumn('end_time', fn (Attendance $model) => substr($model->end_time, 0, -3) . "-" . substr($model->batas_end_time, 0, -3))
+            /* ->addColumn('end_time', function (Attendance $model) {
+                if (empty($model->end_time) || empty($model->batas_end_time)) {
+                    return 'Tidak ada data';
+                }
+                return substr($model->end_time, 0, -3) . "-" . substr($model->batas_end_time, 0, -3);
+            }) */
             // ->addColumn('batas_start_time')
             // ->addColumn('end_time')
             // ->addColumn('batas_end_time')
@@ -165,15 +170,15 @@ final class AttendanceTable extends PowerGridComponent
 
             Column::make('Keterangan', 'description'),
 
-            Column::make('Waktu Absen Masuk', 'start_time', 'start_time')
+            Column::make('Waktu Presensi Masuk', 'start_time', 'start_time')
                 ->searchable()
                 ->makeInputText('start_time')
                 ->sortable(),
 
-            Column::make('Waktu Absen Keluar', 'end_time', 'end_time')
+            /* Column::make('Waktu Presensi Keluar', 'end_time', 'end_time')
                 ->searchable()
                 ->makeInputText('end_time')
-                ->sortable(),
+                ->sortable(), */
 
             // Column::make('Batas Akhir Absen Masuk', 'batas_start_time', 'batas_start_time')
             //     ->searchable()
@@ -217,14 +222,14 @@ final class AttendanceTable extends PowerGridComponent
     {
         return [
             Button::make('edit', 'Edit')
-                ->class('badge text-bg-success')
+                ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
                 ->target('')
                 ->route('attendances.edit', ['id' => 'id']),
 
-            //    Button::make('destroy', 'Delete')
-            //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-            //        ->route('attendance.destroy', ['attendance' => 'id'])
-            //        ->method('delete')
+            Button::make('destroy', 'Delete')
+                    ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                    ->route('attendance.destroy', ['attendance' => 'id'])
+                    ->method('delete')
         ];
     }
 

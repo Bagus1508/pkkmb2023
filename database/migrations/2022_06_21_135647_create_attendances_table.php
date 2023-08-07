@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('description', 500);
             $table->time('start_time'); // mulai absen masuk
             $table->time('batas_start_time'); // akhir absen masuk
-            $table->time('end_time'); // mulai absen pulang
-            $table->time('batas_end_time'); // akhir absen pulang
+            $table->time('end_time')->nullable(); // mulai absen pulang
+            $table->time('batas_end_time')->nullable(); // akhir absen pulang
             $table->string('code')->nullable(); // for qrcode kalau kosong berarti hanya pakai button
             $table->timestamps();
         });

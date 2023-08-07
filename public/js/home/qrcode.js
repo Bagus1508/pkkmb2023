@@ -19,6 +19,7 @@ QRCodeScannerModal.addEventListener("show.bs.modal", async (event) => {
             qrbox: { width: 250, height: 250 },
             formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE],
             rememberLastUsedCamera: false,
+            supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
         },
         /* verbose= */ false
     );

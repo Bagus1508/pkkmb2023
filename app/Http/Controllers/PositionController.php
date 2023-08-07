@@ -9,15 +9,15 @@ class PositionController extends Controller
 {
     public function index()
     {
-        return view('positions.index', [
-            "title" => "Jabatan / Posisi"
+        return view('dashboard.admin.positions.index', [
+            "title" => "Posisi Pengguna"
         ]);
     }
 
     public function create()
     {
-        return view('positions.create', [
-            "title" => "Tambah Data Jabatan / Posisi"
+        return view('dashboard.admin.positions.create', [
+            "title" => "Tambah Data Posisi"
         ]);
     }
 
@@ -30,9 +30,19 @@ class PositionController extends Controller
 
         $positions = Position::query()->whereIn('id', $ids)->get();
 
-        return view('positions.edit', [
-            "title" => "Edit Data Jabatan / Posisi",
+        return view('dashboard.admin.positions.edit', [
+            "title" => "Edit Data Posisi",
             "positions" => $positions
         ]);
+    }
+
+    public function destroy(Position $position)
+    {
+        try {
+            $position->delete();
+            return back()->with('success', 'Data posisi berhasil dihapus.');
+        } catch (\Exception $ex) {
+            return back()->with('error', 'Gagal menghapus data posisi.');
+        }
     }
 }

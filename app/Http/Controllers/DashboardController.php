@@ -10,10 +10,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index', [
-            "title" => "Dashboard",
+        return view('dashboard.admin.index', [
+            "title" => "Dashboard Admin",
             "positionCount" => Position::count(),
             "userCount" => User::count()
+        ]);
+    }
+
+    public function indexuserdashboard()
+    {
+        return view('dashboard.user.index', [
+            "title" => 'Dashboard'
         ]);
     }
 }

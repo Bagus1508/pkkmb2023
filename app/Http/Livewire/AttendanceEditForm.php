@@ -15,8 +15,8 @@ class AttendanceEditForm extends AttendanceAbstract
         // format time
         $this->attendance['start_time'] = substr($this->attendance['start_time'], 0, -3);
         $this->attendance['batas_start_time'] = substr($this->attendance['batas_start_time'], 0, -3);
-        $this->attendance['end_time'] = substr($this->attendance['end_time'], 0, -3);
-        $this->attendance['batas_end_time'] = substr($this->attendance['batas_end_time'], 0, -3);
+        /* $this->attendance['end_time'] = substr($this->attendance['end_time'], 0, -3);
+        $this->attendance['batas_end_time'] = substr($this->attendance['batas_end_time'], 0, -3); */
 
         $this->initialCode = $this->attendance['code']; // ini untuk pengecekan/mengatasi update code
         $this->attendance['code'] = $this->initialCode ? true : false; // untuk kondisi apakah input code checked

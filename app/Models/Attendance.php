@@ -27,6 +27,12 @@ class Attendance extends Model
 
     protected $appends = ['data'];
 
+    // Fungsi untuk memeriksa apakah nilai waktu adalah valid
+    private function isValidTime($time)
+    {
+        return !empty($time) && is_string($time);
+    }
+
     protected function data(): Attribute
     {
         return Attribute::make(
@@ -35,12 +41,19 @@ class Attendance extends Model
                 $startTime = Carbon::parse($this->start_time);
                 $batasStartTime = Carbon::parse($this->batas_start_time);
 
-                $endTime = Carbon::parse($this->end_time);
-                $batasEndTime = Carbon::parse($this->batas_end_time);
-
-                $isHolidayToday = Holiday::query()
-                    ->where('holiday_date', now()->toDateString())
-                    ->get();
+                // Cek apakah nilai end_time dan batas_end_time adalah valid sebelum parsing
+                if ($this->isValidTime($this->end_time) && $this->isValidTime($this->batas_end_time)) {
+                    $endTime = Carbon::parse($this->end_time);
+                    $batasEndTime = Carbon::parse($this->batas_end_time);
+                    
+                    // Lakukan operasi dengan waktu yang sudah di-parse jika diperlukan
+                    // ...
+                } else {
+                    // Tangani kasus ketika waktu tidak valid
+                    // Contoh: Tampilkan pesan kesalahan atau gunakan nilai default
+                    $endTime = null; // Atau nilai default sesuai kebutuhan
+                    $batasEndTime = null; // Atau nilai default sesuai kebutuhan
+                }
 
                 return (object) [
                     "start_time" => $this->start_time,
@@ -51,7 +64,6 @@ class Attendance extends Model
                     "is_start" => $startTime <= $now && $batasStartTime >= $now,
                     "is_end" => $endTime <= $now && $batasEndTime >= $now,
                     'is_using_qrcode' => $this->code ? true : false,
-                    'is_holiday_today' => $isHolidayToday->isNotEmpty()
                 ];
             },
         );

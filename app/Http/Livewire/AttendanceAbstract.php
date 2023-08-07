@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AttendanceAbstract extends Component
 {
-    public $attendance;
+    public $attendance = ['code' => true];
     public $positions;
     public $position_ids = [];
 
@@ -16,8 +16,8 @@ class AttendanceAbstract extends Component
         'attendance.description' => 'required|string|max:500',
         'attendance.start_time' => 'required|date_format:H:i',
         'attendance.batas_start_time' => 'required|date_format:H:i|after:start_time',
-        'attendance.end_time' => 'required|date_format:H:i',
-        'attendance.batas_end_time' => 'required|date_format:H:i|after:end_time',
+        /* 'attendance.end_time' => 'nullable|date_format:H:i',
+        'attendance.batas_end_time' => 'nullable|date_format:H:i|after:end_time', */
         'attendance.code' => 'sometimes|nullable|boolean',
         'position_ids' => 'required|array',
         "position_ids.*"  => "required|distinct|numeric",

@@ -12,8 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    const ADMIN_ROLE_ID = 1;
-    const OPERATOR_ROLE_ID = 2;
+    const SUPERADMIN_ROLE_ID = 1;
+    const ADMIN_ROLE_ID = 2;
     const USER_ROLE_ID = 3;
 
     /**
@@ -23,10 +23,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'nim',
         'password',
         'role_id',
-        'position_id',
+        'position_id', // Add 'position_id' to the fillable attributes
         'phone',
     ];
 
@@ -45,9 +45,6 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public function role()
     {
@@ -59,19 +56,19 @@ class User extends Authenticatable
         return $this->belongsTo(Position::class);
     }
 
-    public function scopeOnlyEmployees($query)
+    public function scopeOnlyStudents($query)
     {
         return $query->where('role_id', self::USER_ROLE_ID);
     }
 
     public function isAdmin()
     {
-        return $this->role_id === self::ADMIN_ROLE_ID;
+        return $this->role_id === self::SUPERADMIN_ROLE_ID;
     }
 
     public function isOperator()
     {
-        return $this->role_id === self::OPERATOR_ROLE_ID;
+        return $this->role_id === self::ADMIN_ROLE_ID;
     }
 
     public function isUser()

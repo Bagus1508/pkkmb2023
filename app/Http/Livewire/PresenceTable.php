@@ -95,9 +95,9 @@ final class PresenceTable extends PowerGridComponent
             ->addColumn('user_name')
             ->addColumn("presence_date")
             ->addColumn("presence_enter_time")
-            ->addColumn("presence_out_time", fn (Presence $model) => $model->presence_out_time ?? '<span class="badge text-bg-danger">Belum Absensi Pulang</span>')
+            /* ->addColumn("presence_out_time", fn (Presence $model) => $model->presence_out_time ?? '<span class="badge text-bg-danger">Belum Absensi Pulang</span>') */
             ->addColumn("is_permission", fn (Presence $model) => $model->is_permission ?
-                '<span class="badge text-bg-warning">Izin</span>' : '<span class="badge text-bg-success">Hadir</span>')
+                '<span class="bg-yellow-500 px-3 py-1 rounded-full text-white">Izin</span>' : '<span class="bg-green-500 px-3 py-1 rounded-full text-white">Hadir</span>')
             ->addColumn('created_at')
             ->addColumn('created_at_formatted', fn (Presence $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
@@ -139,11 +139,11 @@ final class PresenceTable extends PowerGridComponent
                 ->makeInputText('presence_enter_time')
                 ->sortable(),
 
-            Column::make('Jam Absen Pulang', 'presence_out_time')
+            /* Column::make('Jam Absen Pulang', 'presence_out_time')
                 ->searchable()
                 // ->makeInputRange('presence_out_time') // ini juga
                 ->makeInputText('presence_out_time')
-                ->sortable(),
+                ->sortable(), */
 
             Column::make('Status', 'is_permission')
                 ->sortable(),

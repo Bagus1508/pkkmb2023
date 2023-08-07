@@ -1,13 +1,5 @@
-@if($attendance->data->is_holiday_today)
-<span class="badge text-bg-success rounded-pill">Hari Libur</span>
-@else
-
 @if ($attendance->data->is_start)
-<span class="badge bg-primary rounded-pill">Jam Masuk</span>
-@elseif($attendance->data->is_end)
-<span class="badge text-bg-warning rounded-pill">Jam Pulang</span>
+<span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Jam Masuk</span>
 @else
-<span class="badge text-bg-danger rounded-pill">Tutup</span>
-@endif
-
+<span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Tutup</span>
 @endif
