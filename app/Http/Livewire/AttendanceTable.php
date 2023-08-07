@@ -228,6 +228,7 @@ final class AttendanceTable extends PowerGridComponent
 
             Button::make('destroy', 'Delete')
                     ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                    ->target('')
                     ->route('attendance.destroy', ['attendance' => 'id'])
                     ->method('delete')
         ];
