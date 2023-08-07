@@ -25,7 +25,7 @@ final class PositionTable extends PowerGridComponent
         );
     }
 
-    public function header(): array
+    /* public function header(): array
     {
         return [
             Button::add('bulk-checked')
@@ -37,7 +37,7 @@ final class PositionTable extends PowerGridComponent
                 ->class('bg-green-500 w-4 text-white rounded-lg hover:bg-green-600')
                 ->emit('bulkCheckedEdit', []),
         ];
-    }
+    } */
 
     public function bulkCheckedDelete()
     {
@@ -197,12 +197,14 @@ final class PositionTable extends PowerGridComponent
     public function actions(): array
     {
         return [
-            // Button::make('edit', 'Edit')
-            //     ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-            //     ->route('position.edit', ['position' => 'id']),
+            /* Button::make('edit', 'Edit')
+                 ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                 ->target('')
+                 ->route('positions.edit', ['id' => 'id']), */
 
             Button::make('destroy', 'Delete')
-                ->class('badge text-bg-danger border-0')
+                ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                ->target('')
                 ->route('positions.destroy', ['position' => 'id'])
                 ->method('delete')
         ];

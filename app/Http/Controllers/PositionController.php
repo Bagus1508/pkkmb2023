@@ -23,16 +23,9 @@ class PositionController extends Controller
 
     public function edit()
     {
-        $ids = request('ids');
-        if (!$ids)
-            return redirect()->back();
-        $ids = explode('-', $ids);
-
-        $positions = Position::query()->whereIn('id', $ids)->get();
-
         return view('dashboard.admin.positions.edit', [
-            "title" => "Edit Data Posisi",
-            "positions" => $positions
+            "title" => "Edit Data Presensi",
+            "positions" => Position::findOrFail(request('id'))
         ]);
     }
 
