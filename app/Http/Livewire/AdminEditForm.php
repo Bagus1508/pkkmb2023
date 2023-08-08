@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class studentEditForm extends Component
+class adminEditForm extends Component
 {
     use useUniqueValidation;
 
@@ -41,7 +41,7 @@ class studentEditForm extends Component
     {
         $roleIdRuleIn = join(',', $this->roles->pluck('id')->toArray());
         $positionIdRuleIn = join(',', $this->positions->pluck('id')->toArray());
-    
+
         $this->validate([
             'students.*.name' => 'required',
             'students.*.nim' => ['required', new NimRule],
@@ -49,16 +49,18 @@ class studentEditForm extends Component
             'students.*.role_id' => 'required|in:' . $roleIdRuleIn,
             'students.*.position_id' => 'required|in:' . $positionIdRuleIn,
         ]);
-    
+
         if (!$this->isUniqueOnLocal('nim', $this->students)) {
             $this->dispatchBrowserEvent('livewire-scroll', ['top' => 0]);
-            return session()->flash('failed', 'Pastikan input NIM tidak mengandung nilai yang sama dengan input lainnya.');
+            return session()->flash('failed', 'Pastikan input NIM tidak mangandung nilai yang sama dengan input lainnya.');
         }
-    
+
+        // alasan menggunakan create alih2 mengunakan ::insert adalah karena tidak looping untuk menambahkan created_at dan updated_at
         $affected = 0;
         foreach ($this->students as $student) {
+            // cek unique validasi
             $studentBeforeUpdated = User::find($student['id']);
-    
+
             if (!$this->isUniqueOnDatabase($studentBeforeUpdated, $student, 'nim', User::class)) {
                 // Skip validation if NIM is same as original data
                 if ($student['nim'] !== $studentBeforeUpdated->nim) {
@@ -66,7 +68,7 @@ class studentEditForm extends Component
                     return session()->flash('failed', "NIM dari data peserta {$student['id']} sudah terdaftar. Silahkan masukkan NIM yang berbeda!");
                 }
             }
-    
+
             $affected += $studentBeforeUpdated->update([
                 'name' => $student['name'],
                 'nim' => $student['nim'],
@@ -74,16 +76,16 @@ class studentEditForm extends Component
                 'position_id' => $student['position_id'],
             ]);
         }
-    
+
         $message = $affected === 0 ?
-            "Tidak ada data peserta yang diubah." :
-            "Ada $affected data Peserta yang berhasil diedit.";
-    
-        return redirect()->route('students.index')->with('success', $message);
+            "Tidak ada data admin yang diubah." :
+            "Ada $affected data admin yang berhasil diedit.";
+
+        return redirect()->route('admin.index')->with('success', $message);
     }
 
     public function render()
     {
-        return view('livewire.student-edit-form');
+        return view('livewire.admin-edit-form');
     }
 }

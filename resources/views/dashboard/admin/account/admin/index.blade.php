@@ -7,7 +7,7 @@
 @section('buttons')
 <div class="w-full mx-auto justify-end flex my-2">
     <div>
-        <a href="{{ route('students.create') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
+        <a href="{{ route('admin.create') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
             + Tambah Data Admin
         </a>
     </div>

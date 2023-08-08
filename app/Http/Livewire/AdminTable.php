@@ -60,7 +60,7 @@ final class AdminTable extends PowerGridComponent
 
             try {
                 User::whereIn('id', $ids)->delete();
-                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data peserta berhasi dihapus.']);
+                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data admin berhasi dihapus.']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Data gagal dihapus, kemungkinan ada data lain yang menggunakan data tersebut.']);
             }
@@ -112,12 +112,12 @@ final class AdminTable extends PowerGridComponent
     */
 
     /**
-     * Filter untuk hanya menampilkan akun peserta (bukan admin/superadmin).
+     * Filter untuk hanya menampilkan akun admin (bukan admin/superadmin).
      *
      * @param Builder $query
      * @return Builder
      */
-    private function filterPeserta($query): Builder
+    private function filteradmin($query): Builder
     {
         return $query->whereHas('role', function ($roleQuery) {
             $roleQuery->where('name', '<>', 'user');
@@ -136,7 +136,7 @@ final class AdminTable extends PowerGridComponent
             ->join('positions', 'users.position_id', '=', 'positions.id')
             ->select('users.*', 'roles.name as role', 'positions.name as position')
             ->when(Auth::user(), function ($query) {
-                return $this->filterPeserta($query);
+                return $this->filteradmin($query);
             });
     }
 
@@ -188,12 +188,12 @@ final class AdminTable extends PowerGridComponent
             Button::make('edit', 'Edit')
                 ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
                 ->target('')
-                ->route('students.edit', ['ids' => 'id']),
+                ->route('admin.edit', ['ids' => 'id']),
 
             Button::make('destroy', 'Delete')
                     ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
                     ->target('')
-                    ->route('students.destroy', ['users' => 'id'])
+                    ->route('admin.destroy', ['users' => 'id'])
                     ->method('delete')
         ];
     }
