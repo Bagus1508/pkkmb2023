@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/posisi/tambah-data', [PositionController::class, 'create'])->name('positions.create');
         Route::get('/dashboard/admin/posisi/edit', [PositionController::class, 'edit'])->name('positions.edit');
         Route::delete('/dashboard/admin/posisi/{position}', [PositionController::class, 'destroy'])->name('positions.destroy');
-        // peserta
+        // akun admin
+        Route::get('/dashboard/admin/akun-admin', [StudentController::class, 'adminindex'])->name('admin.index');
+        // akun peserta
         Route::get('/dashboard/admin/peserta', [StudentController::class, 'index'])->name('students.index');
         Route::get('/dashboard/admin/peserta/tambah-data', [StudentController::class, 'create'])->name('students.create');
         Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');

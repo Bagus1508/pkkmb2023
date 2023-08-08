@@ -25,23 +25,35 @@
                 <div class="mb-3">
                     <x-form-label id="position_id{{ $i }}" label='Posisi Peserta {{ $i + 1 }}' class="block mb-2 text-sm font-medium text-gray-900"/>
                     <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" aria-label="Default select example" name="position_id"
-                        wire:model.defer="students.{{ $i }}.position_id" >
+                        wire:model.defer="students.{{ $i }}.position_id" 
+                        @if (auth()->user()->role->name === 'admin')
+                            disabled
+                        @endif>
                         <option selected disabled>-- Pilih Posisi --</option>
                         @foreach ($positions as $position)
                         <option value="{{ $position->id }}">{{ ucfirst($position->name) }}</option>
                         @endforeach
                     </select>
+                    @if (auth()->user()->role->name === 'admin')
+                    <small class="text-red-500">Anda tidak memiliki akses untuk mengubah Posisi!</small>
+                    @endif
                     <x-form-error key="students.{{ $i }}.position_id" />
                 </div>
                 <div class="mb-3">
                     <x-form-label id="role_id{{ $i }}" label='Role {{ $i + 1 }}' class="block mb-2 text-sm font-medium text-gray-900"/>
                     <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" aria-label="Default select example" name="role_id"
-                        wire:model.defer="students.{{ $i }}.role_id">
+                        wire:model.defer="students.{{ $i }}.role_id" 
+                        @if (auth()->user()->role->name === 'admin')
+                            disabled
+                        @endif>
                         <option selected disabled>-- Pilih Role --</option>
                         @foreach ($roles as $role)
                         <option value="{{ $role->id }}">{{ ucfirst($role->name) }}</option>
                         @endforeach
                     </select>
+                    @if (auth()->user()->role->name === 'admin')
+                    <small class="text-red-500">Anda tidak memiliki akses untuk mengubah Role!</small>
+                    @endif
                     <x-form-error key="students.{{ $i }}.role_id" />
                 </div>
             </div>

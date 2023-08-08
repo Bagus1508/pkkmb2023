@@ -61,12 +61,12 @@ class User extends Authenticatable
         return $query->where('role_id', self::USER_ROLE_ID);
     }
 
-    public function isAdmin()
+    public function isSuperAdmin()
     {
         return $this->role_id === self::SUPERADMIN_ROLE_ID;
     }
 
-    public function isOperator()
+    public function isAdmin()
     {
         return $this->role_id === self::ADMIN_ROLE_ID;
     }

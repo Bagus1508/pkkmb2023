@@ -67,18 +67,22 @@
                   <li>
                      <a href="/dashboard/admin/peserta" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Akun Peserta</a>
                   </li>
+                  @if(auth()->user()->role->name === 'superadmin')
                   <li>
                      <a href="/dashboard/admin/akun-admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Akun Administrator</a>
                   </li>
+                  @endif
                   <li>
                      <a href="#" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Tugas Peserta</a>
                   </li>
                   <li>
                      <a href="#" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Data PKT</a>
                   </li>
+                  @if(auth()->user()->role->name === 'superadmin')
                   <li>
                     <a href="/dashboard/admin/posisi" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Posisi Pengguna</a>
                  </li>
+                 @endif
             </ul>
           </li>        
           <li class="border-t">

@@ -2810,16 +2810,16 @@ input:checked + .toggle-bg {
     min-height: 100vh;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:w-2\/12 {
     width: 16.666667%;
   }
 
   .lg\:w-auto {
     width: auto;
-  }
-
-  .lg\:w-1\/2 {
-    width: 50%;
   }
 
   .lg\:grid-cols-2 {
