@@ -13,7 +13,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class StudentTable extends PowerGridComponent
+final class AdminTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -120,7 +120,7 @@ final class StudentTable extends PowerGridComponent
     private function filterPeserta($query): Builder
     {
         return $query->whereHas('role', function ($roleQuery) {
-            $roleQuery->where('name', '<>', 'superadmin')->where('name', '<>', 'admin');
+            $roleQuery->where('name', '<>', 'user');
         });
     }
 

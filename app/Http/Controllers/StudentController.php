@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function adminindex()
+    {
+        return view('dashboard.admin.account.admin.index', [
+            "title" => "Akun Administrator"
+        ]);
+    }
     public function index()
     {
         return view('dashboard.admin.students.index', [
-            "title" => "Peserta"
+            "title" => "Akun Peserta"
         ]);
     }
 
