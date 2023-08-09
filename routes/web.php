@@ -8,6 +8,8 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -72,6 +74,18 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard/user/presensi/{attendance}', [HomePresenceController::class, 'show'])->name('show');
         Route::get('/dashboard/user/presensi/{attendance}/izin', [HomePresenceController::class, 'permission'])->name('permission');
+
+        
+    });
+
+    Route::middleware('role:user,admin,superadmin')->name('dashboard-user.')->group(function () {
+        //task
+        Route::get('/dashboard/user/tugas', [TaskController::class, 'taskindex'])->name('taskindex');
+        Route::get('/dashboard/user/tugas/individu', [TaskController::class, 'taskindividual'])->name('taskindividual');
+        Route::get('/dashboard/user/tugas/kelompok', [TaskController::class, 'taskgroup'])->name('taskgroup');
+
+        //profile
+        Route::get('/dashboard/user/profil', [ProfileController::class, 'profileindex'])->name('profileindex');
     });
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
