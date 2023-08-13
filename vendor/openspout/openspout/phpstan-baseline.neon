@@ -1,0 +1,117 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Return type \\(OpenSpout\\\\Common\\\\Entity\\\\Row\\|null\\) of method OpenSpout\\\\Reader\\\\CSV\\\\RowIterator\\:\\:current\\(\\) should be covariant with return type \\(OpenSpout\\\\Common\\\\Entity\\\\Row\\) of method Iterator\\<mixed,OpenSpout\\\\Common\\\\Entity\\\\Row\\>\\:\\:current\\(\\)$#"
+			count: 1
+			path: src/Reader/CSV/RowIterator.php
+
+		-
+			message: "#^Method OpenSpout\\\\Reader\\\\Common\\\\Creator\\\\ReaderFactory\\:\\:createFromFile\\(\\) return type with generic interface OpenSpout\\\\Reader\\\\ReaderInterface does not specify its types\\: T$#"
+			count: 1
+			path: src/Reader/Common/Creator/ReaderFactory.php
+
+		-
+			message: "#^Method OpenSpout\\\\Reader\\\\Common\\\\Creator\\\\ReaderFactory\\:\\:createFromFileByMimeType\\(\\) return type with generic interface OpenSpout\\\\Reader\\\\ReaderInterface does not specify its types\\: T$#"
+			count: 1
+			path: src/Reader/Common/Creator/ReaderFactory.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$localName\\.$#"
+			count: 1
+			path: src/Reader/Common/XMLProcessor.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$name\\.$#"
+			count: 1
+			path: src/Reader/Common/XMLProcessor.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$nodeType\\.$#"
+			count: 1
+			path: src/Reader/Common/XMLProcessor.php
+
+		-
+			message: "#^Cannot access offset 0 on callable\\(\\)\\: mixed\\.$#"
+			count: 1
+			path: src/Reader/Common/XMLProcessor.php
+
+		-
+			message: "#^Cannot access offset 1 on callable\\(\\)\\: mixed\\.$#"
+			count: 1
+			path: src/Reader/Common/XMLProcessor.php
+
+		-
+			message: "#^Return type \\(OpenSpout\\\\Common\\\\Entity\\\\Row\\|null\\) of method OpenSpout\\\\Reader\\\\RowIteratorInterface\\:\\:current\\(\\) should be covariant with return type \\(OpenSpout\\\\Common\\\\Entity\\\\Row\\) of method Iterator\\<mixed,OpenSpout\\\\Common\\\\Entity\\\\Row\\>\\:\\:current\\(\\)$#"
+			count: 1
+			path: src/Reader/RowIteratorInterface.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$localName\\.$#"
+			count: 2
+			path: src/Reader/Wrapper/XMLReader.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$name\\.$#"
+			count: 1
+			path: src/Reader/Wrapper/XMLReader.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$nodeType\\.$#"
+			count: 1
+			path: src/Reader/Wrapper/XMLReader.php
+
+		-
+			message: "#^Dynamic call to static method XMLReader\\:\\:open\\(\\)\\.$#"
+			count: 1
+			path: src/Reader/Wrapper/XMLReader.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 1
+			path: src/Reader/XLSX/Helper/CellValueFormatter.php
+
+		-
+			message: "#^Access to an undefined property OpenSpout\\\\Reader\\\\Wrapper\\\\XMLReader\\:\\:\\$nodeType\\.$#"
+			count: 1
+			path: src/Reader/XLSX/Manager/SharedStringsManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(OpenSpout\\\\Common\\\\Entity\\\\Cell\\)\\: mixed\\)\\|null, Closure\\(OpenSpout\\\\Common\\\\Entity\\\\Cell\\\\BooleanCell\\|OpenSpout\\\\Common\\\\Entity\\\\Cell\\\\EmptyCell\\|OpenSpout\\\\Common\\\\Entity\\\\Cell\\\\FormulaCell\\|OpenSpout\\\\Common\\\\Entity\\\\Cell\\\\NumericCell\\|OpenSpout\\\\Common\\\\Entity\\\\Cell\\\\StringCell\\)\\: string given\\.$#"
+			count: 1
+			path: src/Writer/CSV/Writer.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 1
+			path: src/Writer/ODS/Manager/WorksheetManager.php
+
+		-
+			message: "#^Comparison operation \"\\<\" between int\\<1, max\\> and 1 is always false\\.$#"
+			count: 1
+			path: src/Writer/XLSX/Entity/SheetView.php
+
+		-
+			message: "#^Method OpenSpout\\\\Reader\\\\CSV\\\\SpoutTestStream\\:\\:url_stat\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Reader/CSV/SpoutTestStream.php
+
+		-
+			message: "#^Dynamic call to static method XMLReader\\:\\:XML\\(\\)\\.$#"
+			count: 1
+			path: tests/Reader/Wrapper/XMLReaderTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$freezeRow of method OpenSpout\\\\Writer\\\\XLSX\\\\Entity\\\\SheetView\\:\\:setFreezeRow\\(\\) expects int\\<1, max\\>, \\-1 given\\.$#"
+			count: 1
+			path: tests/Reader/XLSX/Entity/SheetViewTest.php
+
+		-
+			message: "#^Method OpenSpout\\\\Reader\\\\XLSX\\\\Manager\\\\StyleManagerTest\\:\\:getStyleManagerMock\\(\\) has parameter \\$customNumberFormats with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Reader/XLSX/Manager/StyleManagerTest.php
+
+		-
+			message: "#^Method OpenSpout\\\\Reader\\\\XLSX\\\\Manager\\\\StyleManagerTest\\:\\:getStyleManagerMock\\(\\) has parameter \\$styleAttributes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Reader/XLSX/Manager/StyleManagerTest.php
+

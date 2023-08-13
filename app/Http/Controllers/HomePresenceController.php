@@ -51,9 +51,9 @@ class HomePresenceController extends Controller
         $priodDate = CarbonPeriod::create($attendance->created_at->toDateString(), now()->toDateString())
             ->toArray();
 
-        foreach ($priodDate as $i => $date) { // get only stringdate
+        /* foreach ($priodDate as $i => $date) { // get only stringdate
             $priodDate[$i] = $date->toDateString();
-        }
+        } */
 
         $priodDate = array_slice(array_reverse($priodDate), 0, 30);
 
