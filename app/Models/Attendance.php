@@ -18,6 +18,7 @@ class Attendance extends Model
     protected $fillable = [
         'title',
         'description',
+        'date',
         'start_time',
         'batas_start_time',
         'end_time',
@@ -38,8 +39,9 @@ class Attendance extends Model
         return Attribute::make(
             get: function ($value) {
                 $now = now();
-                $startTime = Carbon::parse($this->start_time);
-                $batasStartTime = Carbon::parse($this->batas_start_time);
+                $startTime = Carbon::parse($this->date. '' .$this->start_time);
+                $batasStartTime = Carbon::parse($this->date. '' .$this->batas_start_time);
+                $startDate = Carbon::parse($this->date);
 
                 // Cek apakah nilai end_time dan batas_end_time adalah valid sebelum parsing
                 if ($this->isValidTime($this->end_time) && $this->isValidTime($this->batas_end_time)) {
@@ -60,6 +62,7 @@ class Attendance extends Model
                     "batas_start_time" => $this->batas_start_time,
                     "end_time" => $this->end_time,
                     "batas_end_time" => $this->batas_end_time,
+                    "is_date" => $startDate >= $now,
                     "now" => $now->format("H:i:s"),
                     "is_start" => $startTime <= $now && $batasStartTime >= $now,
                     "is_end" => $endTime <= $now && $batasEndTime >= $now,

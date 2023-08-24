@@ -42,6 +42,9 @@
                         Keterangan
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Tanggal
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -60,6 +63,9 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $attendance->description }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $attendance->date }}
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">

@@ -14,6 +14,12 @@
                 <x-form-error key="attendance.description" />
             </div>
             <div class="mb-3">
+                <x-form-label id="date" label='Tanggal' class="block mb-2 text-sm font-medium text-gray-900"/>
+                <x-form-input type="date" id="date" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                    wire:model.defer="attendance.date"></x-form-input>
+                <x-form-error key="attendance.date" />
+            </div>
+            <div class="mb-3">
                 <div class="row">
                     <div class="col-md-6">
                         <x-form-label id="start_time" label='Waktu Absen Masuk' class="block mb-2 text-sm font-medium text-gray-900"/>

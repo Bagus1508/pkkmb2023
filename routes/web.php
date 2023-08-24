@@ -50,15 +50,16 @@ Route::middleware('auth')->group(function () {
         Route::delete('/dashboard/admin/kehadiran/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
 
         // presensi (kehadiran)
-        Route::resource('/dashboard/admin/presensi', PresenceController::class)->only(['index']);
+        Route::get('/dashboard/admin/presensi', [PresenceController::class, 'index'])->name('presences.index');
         Route::get('/dashboard/admin/presensi/qrcode', [PresenceController::class, 'showQrcode'])->name('presences.qrcode');
         Route::get('/dashboard/admin/presensi/{attendance}', [PresenceController::class, 'show'])->name('presences.show');
+        Route::delete('/dashboard/admin/presensi/{presence}', [PresenceController::class, 'destroy'])->name('presence.destroy');
         // not present data
         Route::get('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent'])->name('presences.not-present');
         Route::post('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent']);
         // present (url untuk menambahkan/mengubah user yang tidak hadir menjadi hadir)
         Route::post('/dashboard/admin/presensi/{attendance}/hadir', [PresenceController::class, 'presentUser'])->name('presences.present');
-        Route::post('/dashboard/admin/presensi/{attendance}/terimaIzin', [PresenceController::class, 'acceptPermission'])->name('presences.acceptPermission');
+        Route::post('/dashboard/admin/presensi/{attendance}/beriIzin', [PresenceController::class, 'acceptPermissionByAdmin'])->name('presences.acceptPermissionByAdmin');
         // students permissions
 
         Route::get('/dashboard/presensi/{attendance}/izin', [PresenceController::class, 'permissions'])->name('presences.permissions');
@@ -68,14 +69,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'indexuserdashboard'])->name('indexuserdashboard');
 
         Route::get('/dashboard/user/presensi', [HomePresenceController::class, 'index'])->name('index');
-        // desctination after scan qrcode
+        // destination after scan qrcode
         Route::post('/dashboard/user/presensi/qrcode', [HomePresenceController::class, 'sendEnterPresenceUsingQRCode'])->name('sendEnterPresenceUsingQRCode');
-        Route::post('/dashboard/user/presensi/qrcode/out', [HomePresenceController::class, 'sendOutPresenceUsingQRCode'])->name('sendOutPresenceUsingQRCode');
 
         Route::get('/dashboard/user/presensi/{attendance}', [HomePresenceController::class, 'show'])->name('show');
-        Route::get('/dashboard/user/presensi/{attendance}/izin', [HomePresenceController::class, 'permission'])->name('permission');
-
-        
     });
 
     Route::middleware('role:user,admin,superadmin')->name('dashboard-user.')->group(function () {

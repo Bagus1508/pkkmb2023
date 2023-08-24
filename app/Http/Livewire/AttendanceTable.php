@@ -128,6 +128,7 @@ final class AttendanceTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('title')
             ->addColumn('description')
+            ->addColumn('date')
             ->addColumn('start_time', fn (Attendance $model) => substr($model->start_time, 0, -3) . "-" . substr($model->batas_start_time, 0, -3))
             /* ->addColumn('end_time', function (Attendance $model) {
                 if (empty($model->end_time) || empty($model->batas_end_time)) {
@@ -169,6 +170,8 @@ final class AttendanceTable extends PowerGridComponent
                 ->sortable(),
 
             Column::make('Keterangan', 'description'),
+
+            Column::make('Tanggal', 'date'),
 
             Column::make('Waktu Presensi Masuk', 'start_time', 'start_time')
                 ->searchable()

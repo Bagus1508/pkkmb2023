@@ -33,6 +33,16 @@ class PresenceController extends Controller
         ]);
     }
 
+    public function destroy(Presence $presence)
+    {
+        try {
+            $presence->delete();
+            return back()->with('success', 'Presensi peserta berhasil dihapus.');
+        } catch (\Exception $ex) {
+            return back()->with('error', 'Gagal menghapus presensi peserta.');
+        }
+    }
+
     public function showQrcode()
     {
         $code = request('code');
@@ -55,7 +65,7 @@ class PresenceController extends Controller
 
     public function notPresent(Attendance $attendance)
     {
-        $byDate = now()->toDateString();
+        $byDate = $attendance->date;
         if (request('display-by-date'))
             $byDate = request('display-by-date');
 
@@ -63,59 +73,27 @@ class PresenceController extends Controller
             ->where('attendance_id', $attendance->id)
             ->where('presence_date', $byDate)
             ->get(['presence_date', 'user_id']);
+            
 
-        // jika semua peserta tidak hadir
+        // Get participants or committee members based on position_id
         if ($presences->isEmpty()) {
-            $notPresentData[] =
-                [
-                    "not_presence_date" => $byDate,
-                    "users" => User::query()
-                        ->with('position')
-                        ->onlyStudents()
-                        ->get()
-                        ->toArray()
-                ];
+            $notPresentData[] = 
+            [
+                "not_presence_date" => $byDate,
+                "users" => User::query()
+                    ->with('position')
+                    ->get()
+                    ->toArray(),
+            ];
         } else {
             $notPresentData = $this->getNotPresentStudents($presences);
         }
-
 
         return view('dashboard.admin.presences.not-present', [
             "title" => "Data Peserta Tidak Hadir",
             "attendance" => $attendance,
             "notPresentData" => $notPresentData
         ]);
-    }
-
-    public function presentUser(Request $request, Attendance $attendance)
-    {
-        $validated = $request->validate([
-            'user_id' => 'required|string|numeric',
-            "presence_date" => "required|date"
-        ]);
-
-        $user = User::findOrFail($validated['user_id']);
-
-        $presence = Presence::query()
-            ->where('attendance_id', $attendance->id)
-            ->where('user_id', $user->id)
-            ->where('presence_date', $validated['presence_date'])
-            ->first();
-
-        // jika data user yang didapatkan dari request user_id, presence_date, sudah absen atau sudah ada ditable presences
-        if ($presence || !$user)
-            return back()->with('failed', 'Anda sudah melakukan presensi pada sesi ini!');
-
-        Presence::create([
-            "attendance_id" => $attendance->id,
-            "user_id" => $user->id,
-            "presence_date" => $validated['presence_date'],
-            "presence_enter_time" => now()->toTimeString(),
-            /* "presence_out_time" => now()->toTimeString() */
-        ]);
-
-        return back()
-            ->with('success', "Berhasil menyimpan data hadir atas nama \"$user->name\".");
     }
 
     private function getNotPresentStudents($presences)
@@ -134,12 +112,87 @@ class PresenceController extends Controller
                     "not_presence_date" => $presence['presence_date'],
                     "users" => User::query()
                         ->with('position')
-                        ->onlyStudents()
                         ->whereNotIn('id', $presence['user_ids'])
                         ->get()
                         ->toArray()
                 ];
         }
         return $notPresentData;
+    }
+
+    public function acceptPermissionByAdmin(Request $request, $attendanceId)
+    {
+        //dd($request->all()); // Debugging
+    
+        // Validasi input
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'presence_date' => 'required|date',
+            'permission_reason' => 'required|string',
+        ]);
+    
+        //dd('Validation passed'); // Debugging
+    
+        // Dapatkan objek Attendance sesuai dengan $attendanceId
+        $attendance = Attendance::findOrFail($attendanceId);
+    
+        //dd('Attendance found'); // Debugging
+        
+        // Dapatkan objek User sesuai dengan user_id dari input
+        $user = User::findOrFail($request->user_id);
+    
+        //dd('User found'); // Debugging
+    
+        // Simpan izin dan alasan izin oleh admin ke database
+        $attendance->presences()->create([
+            'user_id' => $user->id,
+            'presence_date' => $request->presence_date,
+            "presence_enter_time" => now()->toTimeString(),
+            'is_permission' => true,
+            'permission_reason' => $request->permission_reason,
+        ]);
+    
+        //dd('Permission saved'); // Debugging
+    
+        return redirect()->back()->with('success', 'Izin berhasil diberikan oleh admin.');
+    }
+    
+    
+
+    public function presentUser(Request $request, $attendanceId)
+    {
+        //dd($request->all()); // Debugging
+    
+        // Validasi input
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'presence_date' => 'required|date',
+        ]);
+    
+        //dd('Validation passed'); // Debugging
+    
+        // Dapatkan objek Attendance sesuai dengan $attendanceId
+        $attendance = Attendance::findOrFail($attendanceId);
+    
+        //dd('Attendance found'); // Debugging
+        
+        // Dapatkan objek User sesuai dengan user_id dari input
+        $user = User::findOrFail($request->user_id);
+    
+        //dd('User found'); // Debugging
+    
+        // Simpan Kehadiran
+        $attendance->presences()->create([
+            'user_id' => $user->id,
+            'presence_date' => $request->presence_date,
+            "presence_enter_time" => now()->toTimeString(),
+            'is_permission' => false,
+            'permission_reason' => $request->permission_reason,
+        ]);
+    
+        //dd('Permission saved'); // Debugging
+
+        return back()
+            ->with('success', "Berhasil menyimpan data hadir atas nama \"$user->name\".");
     }
 }

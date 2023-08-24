@@ -3,21 +3,7 @@
     @if ($attendance->data->is_using_qrcode)
 
     {{-- jika belum absen dan absen masuk sudah dimulai --}}
-    @if ($attendance->data->is_start && !$data['is_has_enter_today'] || !$attendance->data->is_end)
     <button data-bs-toggle="modal" data-bs-target="#qrcode-scanner-modal" data-is-enter="1" data-modal-target="scannerModal" data-modal-toggle="scannerModal" data-is-enter="1"  class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full">Scan QR-Code Masuk</button>
-    @endif
-
-    @if ($data['is_has_enter_today'])
-    <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
-        <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-        </svg>
-        <span class="sr-only">Info</span>
-        <div>
-          <span class="font-medium">Anda sudah berhasil mengirim presensi masuk untuk sesi ini.</span>
-        </div>
-    </div>
-    @endif
 
     {{-- jika sudah absen masuk--}}
     @if ($data['is_has_enter_today'])

@@ -18,6 +18,7 @@ final class PresenceTable extends PowerGridComponent
     //Table sort field
     public string $sortField = 'presences.created_at';
     public string $sortDirection = 'desc';
+    protected bool $isLate = false;
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ final class PresenceTable extends PowerGridComponent
     */
     public function setUp(): array
     {
-        $this->showCheckBox();
+        //$this->showCheckBox();
 
         return [
             Exportable::make('export')
@@ -59,8 +60,9 @@ final class PresenceTable extends PowerGridComponent
         return Presence::query()
             ->where('attendance_id', $this->attendanceId)
             ->join('users', 'presences.user_id', '=', 'users.id')
-            ->select('presences.*', 'users.name as user_name');
+            ->select('presences.*', 'users.name as user_name', 'users.nim as user_nim');
     }
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -80,6 +82,25 @@ final class PresenceTable extends PowerGridComponent
         return [];
     }
 
+
+    /* Kehadiran Terlambat/TepatWaktu */
+    protected function setLateStatus(Presence $model)
+    {
+        if ($model->is_permission) {
+            return 'Izin';
+        }
+        
+        $waktuMasuk = Carbon::parse($model->presence_enter_time);
+        $waktuTepatWaktu = Carbon::parse($model->attendance->start_time);
+        $waktuAkhirTepatWaktu = Carbon::parse($model->attendance->batas_start_time);
+    
+        if ($waktuMasuk->isBefore($waktuTepatWaktu) || $waktuMasuk->isAfter($waktuAkhirTepatWaktu)) {
+            return 'Terlambat';
+        } else {
+            return 'Tepat Waktu';
+        }
+    }
+
     /*
     |--------------------------------------------------------------------------
     |  Add Column
@@ -88,16 +109,20 @@ final class PresenceTable extends PowerGridComponent
     | You can pass a closure to transform/modify the data.
     |
     */
+
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
+            ->addColumn('user_nim')
             ->addColumn('user_name')
             ->addColumn("presence_date")
             ->addColumn("presence_enter_time")
             /* ->addColumn("presence_out_time", fn (Presence $model) => $model->presence_out_time ?? '<span class="badge text-bg-danger">Belum Absensi Pulang</span>') */
             ->addColumn("is_permission", fn (Presence $model) => $model->is_permission ?
-                '<span class="bg-yellow-500 px-3 py-1 rounded-full text-white">Izin</span>' : '<span class="bg-green-500 px-3 py-1 rounded-full text-white">Hadir</span>')
+                'Izin' : 'Hadir')
+            ->addColumn('status', fn(Presence $model) => $model->is_permission ? 'Izin' : $this->setLateStatus($model))
+            ->addColumn("permission_reason")
             ->addColumn('created_at')
             ->addColumn('created_at_formatted', fn (Presence $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
@@ -123,20 +148,25 @@ final class PresenceTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Nama', 'user_name')
+            Column::make('NIM', 'user_nim')
+                ->makeInputText('users.nim')
                 ->searchable()
+                ->sortable(),
+
+            Column::make('Nama', 'user_name')
                 ->makeInputText('users.name')
+                ->searchable()
                 ->sortable(),
 
             Column::make('Tanggal Hadir', 'presence_date')
-                ->makeInputDatePicker()
-                ->searchable()
+                /* ->makeInputDatePicker()
+                ->searchable() */
                 ->sortable(),
 
             Column::make('Jam Absen Masuk', 'presence_enter_time')
-                ->searchable()
+                /* ->searchable()
                 // ->makeInputRange('presence_enter_time') // terlalu banyak menggunakan bandwidth (ukuran data yang dikirim terlalu besar)
-                ->makeInputText('presence_enter_time')
+                ->makeInputText('presence_enter_time') */
                 ->sortable(),
 
             /* Column::make('Jam Absen Pulang', 'presence_out_time')
@@ -145,15 +175,24 @@ final class PresenceTable extends PowerGridComponent
                 ->makeInputText('presence_out_time')
                 ->sortable(), */
 
-            Column::make('Status', 'is_permission')
-                ->sortable(),
+            Column::make('Status', 'status')
+            ->makeInputText('')
+            ->searchable()
+            ->sortable(),
+
+            Column::make('Kehadiran', 'is_permission')
+            ->makeInputText('')->hidden()
+            ->searchable()
+            ->sortable(),
+
+            Column::make('Keterangan', 'permission_reason')
+            ->makeInputText('')
+            ->searchable()
+            ->sortable(),
 
             Column::make('Created at', 'created_at')
                 ->hidden(),
 
-            Column::make('Created at', 'created_at_formatted')
-                ->makeInputDatePicker()
-                ->searchable()
         ];
     }
 
@@ -171,21 +210,18 @@ final class PresenceTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+    
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('presence.edit', ['presence' => 'id']),
-
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->target('')
                ->route('presence.destroy', ['presence' => 'id'])
                ->method('delete')
         ];
     }
-    */
+   
 
     /*
     |--------------------------------------------------------------------------

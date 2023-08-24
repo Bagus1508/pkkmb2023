@@ -61,6 +61,15 @@ class User extends Authenticatable
         return $query->where('role_id', self::USER_ROLE_ID);
     }
 
+    public function scopeOnlyAdmins($query)
+    {
+        return $query->where(function ($query){
+            $query->orWhere('role_id', self::SUPERADMIN_ROLE_ID)
+                ->orWhere('role_id', self::ADMIN_ROLE_ID);
+        });
+    }
+
+
     public function isSuperAdmin()
     {
         return $this->role_id === self::SUPERADMIN_ROLE_ID;
@@ -75,4 +84,5 @@ class User extends Authenticatable
     {
         return $this->role_id === self::USER_ROLE_ID;
     }
+
 }

@@ -1,7 +1,7 @@
 <nav id="header" class="w-full z-20 top-0 py-5 shadow-md">
     <div class="w-full container mx-auto flex flex-wrap items-center mt-0 py-2 h-1/5">
         <div class="pl-4 flex items-center">
-            <a class="absolute z-50 lg:w-2/12 w-4/12" href="/home">
+            <a class="absolute z-50 lg:w-2/12 w-4/12" href="/">
                 <img src="../src/img/logo/logo.png" alt="logopkkmb" class="">
             </a>
         </div>
