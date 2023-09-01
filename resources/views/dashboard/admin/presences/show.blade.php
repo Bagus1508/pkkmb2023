@@ -4,6 +4,17 @@
 @powerGridStyles
 @endpush
 
+@section('buttons')
+<div class="btn-toolbar mb-2 mb-md-0">
+    <div>
+        <a href="{{ route('presences.index', $attendance->id) }}" class="btn btn-sm btn-light">
+            <span data-feather="arrow-left-circle" class="align-text-bottom"></span>
+            Kembali
+        </a>
+    </div>
+</div>
+@endsection
+
 @section('content')
 <div class="mb-5">
     <div class="w-full lg:w-1/2 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">

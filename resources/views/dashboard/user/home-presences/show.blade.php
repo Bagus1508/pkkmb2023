@@ -62,9 +62,6 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                No
-                            </th>
-                            <th scope="col" class="px-6 py-3">
                                 Tanggal
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -76,49 +73,60 @@
                             <th scope="col" class="px-6 py-3">
                                 Status
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Keterangan
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($priodDate as $date)
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $loop->iteration }}
-                            </td>
-                            {{-- not presence / tidak hadir --}}
+                        {{-- @foreach ($priodDate as $date) --}}
                             @php
-                            $histo = $history->where('presence_date', $date)->first();
+                            $histo = $history->where('attendance_id', $attendance->id)->first();
                             @endphp
-                            @if (!$histo)
-                            <td class="px-6 py-4">
-                                {{ $date }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @if($date == now()->toDateString())
-                                <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Hadir</div>
-                                @else
-                                <div class="text-center bg-red-100 text-red-800 text-xs font-medium px-1 py-0.5 rounded-full">Tidak Hadir</div>
-                                @endif
-                            </td>
-                            @else
-                            <td class="px-6 py-4">{{ $histo->presence_date }}</td>
-                            <td class="px-6 py-4">{{ $histo->presence_enter_time }}</td>
-                            {{-- <td>@if($histo->presence_out_time)
-                                {{ $histo->presence_out_time }}
-                                @else
-                                <span class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Presensi Keluar</span>
-                                @endif
-                            </td> --}}
-                            <td class="px-6 py-4">
-                                @if ($histo->is_permission)
-                                <div class="text-center bg-yellow-100 text-yellow-800 text-xs font-medium px-1 py-0.5 rounded-full">Izin</div>
-                                @else
-                                <div class="text-center bg-green-100 text-green-800 text-xs font-medium px-1 py-0.5 rounded-full">Hadir</div>
-                                @endif
-                            </td>
-                            @endif
-                        </tr>
-                        @endforeach
-                    </tbody>
+                    
+                            {{-- @if ($isWithinSession) --}}
+                                <tr class="bg-white border-b">
+                                    @if (!$histo)
+                                        <td class="px-6 py-4">{{ $attendance->date }}</td>
+                                        <td class="px-6 py-4">
+                                            @if($attendance->date == now()->toDateString())
+                                                <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Hadir</div>
+                                            @else
+                                                <div class="text-center bg-red-100 text-red-800 text-xs font-medium px-1 py-0.5 rounded-full">Tidak Hadir</div>
+                                            @endif
+                                        </td>
+                                    @else
+                                        <td class="px-6 py-4">{{ $histo->presence_date }}</td>
+                                        <td class="px-6 py-4">{{ $histo->presence_enter_time }}</td>
+                                        <td class="px-6 py-4">
+                                            @if ($histo->is_permission)
+                                                <div class="text-center bg-yellow-100 text-yellow-800 text-xs font-medium px-1 py-0.5 rounded-full">Izin</div>
+                                            @else
+                                                <div class="text-center bg-green-100 text-green-800 text-xs font-medium px-1 py-0.5 rounded-full">Hadir</div>
+                                            @endif
+                                        </td>
+                                        @if ($histo->is_permission === 0)
+                                            <td class="px-6 py-4">
+                                                @php
+                                                $waktuMasuk = \Carbon\Carbon::parse($histo->presence_enter_time);
+                                                $waktuTepatWaktu = \Carbon\Carbon::parse($attendance->start_time);
+                                                $waktuAkhirTepatWaktu = \Carbon\Carbon::parse($attendance->batas_start_time); 
+                                                @endphp
+                                                
+                                                @if ($waktuMasuk->between($waktuTepatWaktu, $waktuAkhirTepatWaktu))
+                                                    <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Tepat Waktu</span>
+                                                @else
+                                                    <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Terlambat</span> 
+                                                @endif
+                                            </td>
+                                        @else
+                                            <td class="px-6 py-4">{{ $histo->permission_reason }}</td>
+                                        @endif
+                                    @endif
+                                </tr>
+                            {{-- @endif --}}
+                        {{-- @endforeach --}}
+                    </tbody>                                     
                 </table>
             </div>
         </div>

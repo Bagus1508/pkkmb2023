@@ -11,8 +11,21 @@ class Presence extends Model
 
     protected $guarded = ['id'];
 
+    /* protected $fillable = [
+        'permission_reason', 
+        'is_permission',
+        "user_id",
+        "presence_date",
+        "presence_enter_time",
+    ]; */
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function attendance()
+    {
+        return $this->belongsTo(Attendance::class);
     }
 }

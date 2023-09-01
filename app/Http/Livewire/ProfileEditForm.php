@@ -13,48 +13,20 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class studentEditForm extends Component
+class profileEditForm extends Component
 {
     use useUniqueValidation;
 
+    public $user;
     public $students;
     public Collection $roles;
     public Collection $kelompoks;
     public Collection $positions;
     public Collection $detailuser;
 
-    public function mount(Collection $students)
+    public function mount()
     {
-        $this->students = []; // reset, karena ada data students sebelumnya
-
-        foreach ($students as $student) {
-            $this->students[] = [
-                'id' => $student->id,
-                'name' => $student->name,
-                'nim' => $student->nim,
-                'nim' => $student->nim, // untuk cek validasi unique
-                'role_id' => $student->role_id,
-                'position_id' => $student->position_id,
-                'kelompok_id' => $student->kelompok_id,
-                'prodi' => $student->Detailuser->prodi,
-                'fakultas' => $student->Detailuser->fakultas,
-                'no_hp' => $student->Detailuser->no_hp,
-                'email' => $student->Detailuser->email,
-                'sistem_kuliah' => $student->Detailuser->sistem_kuliah,
-                'tahun_angkatan' => $student->Detailuser->tahun_angkatan,
-                'jalur_penerimaan' => $student->Detailuser->jalur_penerimaan,
-                'jenis_kelamin' => $student->Detailuser->jenis_kelamin,
-                'tgl_lahir' => $student->Detailuser->tgl_lahir,
-                'tempat_lahir' => $student->Detailuser->tempat_lahir,
-                'agama' => $student->Detailuser->agama,
-                'alamat' => $student->Detailuser->alamat,
-
-            ];
-        }
-        $this->roles = Role::all();
-        $this->kelompoks = Kelompok::all();
-        $this->positions = Position::all();
-        $this->detailuser = DetailUser::all();
+        $this->user = auth()->user(); // Mengambil data pengguna saat ini yang sedang login
     }
 
     public function saveStudents()
@@ -121,11 +93,11 @@ class studentEditForm extends Component
             "Tidak ada data peserta yang diubah." :
             "Ada $affected data Peserta yang berhasil diedit.";
     
-        return redirect()->route('students.index')->with('success', $message);
+        return redirect()->route('profile.index')->with('success', $message);
     }
 
     public function render()
     {
-        return view('livewire.student-edit-form');
+        return view('livewire.profile-edit-form');
     }
 }

@@ -25,22 +25,69 @@
                 <input type="text" name="floating_nim" id="floating_nim" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->name }}" required disabled />
             </div>
             <div class="relative z-0 w-full mb-6 group">
+                <label for="Kelompok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelompok</label>
+                <input type="text" name="kelompok" id="kelompok" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->kelompok->name }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Posisi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelompok</label>
+                <input type="text" name="position" id="position" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->position->name }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
                 <label for="Prodi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program Studi</label>
-                <input type="text" name="major" id="floating_major" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->prodi }}" disabled/>
+                <input type="text" name="major" id="floating_major" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->prodi }}" disabled/>
             </div>
-            <div class="grid md:grid-cols-2 md:gap-6">
-                <div class="relative z-0 w-full mb-6 group">
-                    <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fakultas</label>
-                    <input type="text" name="floating_faculty" id="floating_faculty" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->fakultas }}" disabled/>
-                </div>
-                <div class="relative z-0 w-full mb-6 group">
-                    <label for="Kelompok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelompok</label>
-                    <input type="text" name="floating_group" id="floating_group" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->kelompok }}" disabled/>
-                </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fakultas</label>
+                <input type="text" name="fakultas" id="fakultas" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->fakultas }}" disabled/>
             </div>
-            <div class="justify-end items-end flex mx-auto">
-                <a type="button" href="{{ route('home-presences.indexuserdashboard') }}" class="text-gray-500 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-6 text-center nx-2">Kembali</a>
-            </div>  
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="No HP" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
+                <input type="text" name="no_hp" id="no_hp" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->no_hp }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <input type="text" name="email" id="email" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->email }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Sistem Kuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sistem Kuliah</label>
+                <input type="text" name="sistem_kuliah" id="sistem_kuliah" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->sistem_kuliah }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Tahun Angkatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun Angkatan</label>
+                <input type="text" name="tahun_angkatan" id="tahun_angkatan" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->tahun_angkatan }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Jalur Penerimaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jalur Penerimaan</label>
+                <input type="text" name="jalur_penerimaan" id="jalur_penerimaan" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->jalur_penerimaan }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Jenis Kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
+                <input type="text" name="jenis_kelamin" id="jenis_kelamin" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->jenis_kelamin }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Tanggal Lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
+                <input type="text" name="tgl_lahir" id="tgl_lahir" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->tgl_lahir }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Tempat Lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
+                <input type="text" name="tempat_lahir" id="tempat_lahir" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->tempat_lahir }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Agama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
+                <input type="text" name="agama" id="agama" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->agama }}" disabled/>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="Alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+                <input type="text" name="alamat" id="alamat" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->alamat }}" disabled/>
+            </div>
+            <div class="flex justify-end gap-x-3">
+                <div class="">
+                    <a type="button" href="{{ route('dashboard-user.profileedit') }}" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-6 text-center nx-2">Edit</a>
+                </div>  
+                <div class="">
+                    <a type="button" href="{{ route('home-presences.indexuserdashboard') }}" class="text-gray-500 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-6 text-center nx-2">Kembali</a>
+                </div>  
+            </div>
         </form>      
     <div>
 </div>

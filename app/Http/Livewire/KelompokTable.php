@@ -2,21 +2,17 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Attendance;
+use App\Models\Kelompok;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
-use PowerComponents\LivewirePowerGrid\{Button, Column, Detail, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AttendanceTable extends PowerGridComponent
+final class KelompokTable extends PowerGridComponent
 {
     use ActionButton;
-
-    //Table sort field
-    public string $sortField = 'attendances.created_at';
-    public string $sortDirection = 'desc';
 
     protected function getListeners()
     {
@@ -34,25 +30,43 @@ final class AttendanceTable extends PowerGridComponent
         return [
             Button::add('bulk-checked')
                 ->caption(__('Hapus'))
-                ->class('bg-red-500 hover:bg-red-600 rounded-md text-white')
+                ->class('bg-red-500 w-4 text-white rounded-lg hover:bg-red-600')
                 ->emit('bulkCheckedDelete', []),
+            Button::add('bulk-edit-checked')
+                ->caption(__('Edit'))
+                ->class('bg-green-500 w-4 text-white rounded-lg hover:bg-green-600')
+                ->emit('bulkCheckedEdit', []),
         ];
     } */
 
     public function bulkCheckedDelete()
     {
         if (auth()->check()) {
-            $ids = $this->checkedValues();
+            $id = $this->checkedValues();
 
-            if (!$ids)
+            if (!$id)
                 return $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Pilih data yang ingin dihapus terlebih dahulu.']);
 
             try {
-                Attendance::whereIn('id', $ids)->delete();
-                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data absensi berhasi dihapus.']);
+                Kelompok::whereIn('id', $id)->delete();
+                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data kelompok berhasil dihapus.']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Data gagal dihapus, kemungkinan ada data lain yang menggunakan data tersebut.']);
             }
+        }
+    }
+
+    public function bulkCheckedEdit()
+    {
+        if (auth()->check()) {
+            $id = $this->checkedValues();
+
+            if (!$id)
+                return $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Pilih data yang ingin diedit terlebih dahulu.']);
+
+            $id = join('-', $id);
+            // return redirect(route('kelompok.edit', ['id' => $id])); // tidak berfungsi/menredirect
+            return $this->dispatchBrowserEvent('redirect', ['url' => route('kelompok.edit', ['id' => $id])]);
         }
     }
 
@@ -71,7 +85,7 @@ final class AttendanceTable extends PowerGridComponent
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput()->showToggleColumns(),
+            Header::make()->showSearchInput(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -89,11 +103,11 @@ final class AttendanceTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\Attendance>
+     * @return Builder<\App\Models\Kelompok>
      */
     public function datasource(): Builder
     {
-        return Attendance::query();
+        return Kelompok::query()->latest();
     }
 
     /*
@@ -126,21 +140,9 @@ final class AttendanceTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('title')
-            ->addColumn('description')
-            ->addColumn('date')
-            ->addColumn('start_time', fn (Attendance $model) => substr($model->start_time, 0, -3) . "-" . substr($model->batas_start_time, 0, -3))
-            /* ->addColumn('end_time', function (Attendance $model) {
-                if (empty($model->end_time) || empty($model->batas_end_time)) {
-                    return 'Tidak ada data';
-                }
-                return substr($model->end_time, 0, -3) . "-" . substr($model->batas_end_time, 0, -3);
-            }) */
-            // ->addColumn('batas_start_time')
-            // ->addColumn('end_time')
-            // ->addColumn('batas_end_time')
+            ->addColumn('name')
             ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (Attendance $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Kelompok $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -164,39 +166,10 @@ final class AttendanceTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Nama', 'title')
+            Column::make('Name', 'name')
                 ->searchable()
-                ->makeInputText('title')
+                ->makeInputText('name')
                 ->sortable(),
-
-            Column::make('Keterangan', 'description'),
-
-            Column::make('Tanggal', 'date'),
-
-            Column::make('Waktu Presensi Masuk', 'start_time', 'start_time')
-                ->searchable()
-                ->makeInputText('start_time')
-                ->sortable(),
-
-            /* Column::make('Waktu Presensi Keluar', 'end_time', 'end_time')
-                ->searchable()
-                ->makeInputText('end_time')
-                ->sortable(), */
-
-            // Column::make('Batas Akhir Absen Masuk', 'batas_start_time', 'batas_start_time')
-            //     ->searchable()
-            //     ->makeInputText('batas_start_time')
-            //     ->sortable(),
-
-            // Column::make('Waktu Mulai Absen Pulang', 'end_time', 'end_time')
-            //     ->searchable()
-            //     ->makeInputText('end_time')
-            //     ->sortable(),
-
-            // Column::make('Batas Akhir Absen Pulang', 'batas_end_time', 'batas_end_time')
-            //     ->searchable()
-            //     ->makeInputText('batas_end_time')
-            //     ->sortable(),
 
             Column::make('Created at', 'created_at')
                 ->hidden(),
@@ -216,7 +189,7 @@ final class AttendanceTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Attendance Action Buttons.
+     * PowerGrid Kelompok Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -224,16 +197,16 @@ final class AttendanceTable extends PowerGridComponent
     public function actions(): array
     {
         return [
-            Button::make('edit', 'Edit')
-                ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
-                ->target('')
-                ->route('attendances.edit', ['id' => 'id']),
+            /* Button::make('edit', 'Edit')
+                 ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                 ->target('')
+                 ->route('kelompok.edit', ['id' => 'id']), */
 
             Button::make('destroy', 'Delete')
-                    ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
-                    ->target('')
-                    ->route('attendance.destroy', ['attendance' => 'id'])
-                    ->method('delete')
+                ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
+                ->target('')
+                ->route('kelompok.destroy', ['kelompok' => 'id'])
+                ->method('delete')
         ];
     }
 
@@ -246,7 +219,7 @@ final class AttendanceTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Attendance Action Rules.
+     * PowerGrid Kelompok Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -258,7 +231,7 @@ final class AttendanceTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($attendance) => $attendance->id === 1)
+                ->when(fn($kelompok) => $kelompok->id === 1)
                 ->hide(),
         ];
     }

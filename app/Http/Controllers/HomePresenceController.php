@@ -34,7 +34,7 @@ class HomePresenceController extends Controller
             ->get();
 
         $isHasEnterToday = $presences
-            ->where('presence_date', now()->toDateString())
+            ->where('presence_date', $attendance->date /* now()->toDateString() */)
             ->isNotEmpty();
 
         $data = [
@@ -51,9 +51,9 @@ class HomePresenceController extends Controller
         $priodDate = CarbonPeriod::create($attendance->created_at->toDateString(), now()->toDateString())
             ->toArray();
 
-        /* foreach ($priodDate as $i => $date) { // get only stringdate
+        foreach ($priodDate as $i => $date) { // get only stringdate
             $priodDate[$i] = $date->toDateString();
-        } */
+        }
 
         $priodDate = array_slice(array_reverse($priodDate), 0, 30);
 
@@ -67,18 +67,17 @@ class HomePresenceController extends Controller
     }
     
     // for qrcode
-    public function sendEnterPresenceUsingQRCode()
-    {
+    public function sendEnterPresenceUsingQRCode(Request $request)
+    {   
+
         $code = request('code');
         $attendance = Attendance::query()->where('code', $code)->first();
-
-        if ($attendance && $attendance->data->is_start && $attendance->data->is_using_qrcode) { // sama (harus) dengan view
             
             // Cek apakah pengguna sudah melakukan presensi masuk pada tanggal yang sama
             $isEnteredToday = Presence::query()
             ->where('user_id', auth()->user()->id)
             ->where('attendance_id', $attendance->id)
-            ->whereDate('presence_date', now()->toDateString())
+            ->whereDate('presence_date', $attendance->date /* now()->toDateString() */)
             ->exists();
 
             if ($isEnteredToday) {
@@ -92,8 +91,9 @@ class HomePresenceController extends Controller
             Presence::create([
                 "user_id" => auth()->user()->id,
                 "attendance_id" => $attendance->id,
-                "presence_date" => now()->toDateString(),
+                "presence_date" => $attendance->date /* now()->toDateString() */,
                 "presence_enter_time" => now()->toTimeString(),
+                'is_permission' => false,
                 /* "presence_out_time" => null */
             ]);
 
@@ -101,49 +101,10 @@ class HomePresenceController extends Controller
                 "success" => true,
                 "message" => "Kehadiran atas nama '" . auth()->user()->name . "' berhasil dikirim."
             ]);
-        }
 
         return response()->json([
             "success" => false,
             "message" => "Terjadi masalah pada saat melakukan presensi."
         ], 400);
-    }
-
-    public function sendOutPresenceUsingQRCode()
-    {
-        $code = request('code');
-        $attendance = Attendance::query()->where('code', $code)->first();
-
-        if (!$attendance)
-            return response()->json([
-                "success" => false,
-                "message" => "Terjadi masalah pada saat melakukan presensi."
-            ], 400);
-
-        // jika presensi sudah jam pulang (is_end) dan tidak menggunakan qrcode (kebalikan)
-        /* if (!$attendance->data->is_end && !$attendance->data->is_using_qrcode) // sama (harus) dengan view
-            return false; */
-
-        $presence = Presence::query()
-            ->where('user_id', auth()->user()->id)
-            ->where('attendance_id', $attendance->id)
-            ->where('presence_date', now()->toDateString())
-            ->where('presence_out_time', null)
-            ->first();
-
-        if (!$presence) // hanya untuk sekedar keamanan (kemungkinan)
-            return response()->json([
-                "success" => false,
-                "message" => "Terjadi masalah pada saat melakukan presensi."
-            ], 400);
-
-        // untuk refresh if statement
-        $this->data['is_not_out_yet'] = false;
-        $presence->update(['presence_out_time' => now()->toTimeString()]);
-
-        return response()->json([
-            "success" => true,
-            "message" => "Atas nama '" . auth()->user()->name . "' berhasil melakukan presensi keluar."
-        ]);
     }
 }

@@ -76,7 +76,7 @@
                      <a href="#" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Tugas Peserta</a>
                   </li>
                   <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Data PKT</a>
+                     <a href="/dashboard/admin/kelompok" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Data Kelompok</a>
                   </li>
                   @if(auth()->user()->role->name === 'superadmin')
                   <li>

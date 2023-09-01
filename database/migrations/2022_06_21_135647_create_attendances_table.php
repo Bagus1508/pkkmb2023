@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description', 500);
+            $table->date('date');// tanggal absen masuk
             $table->time('start_time'); // mulai absen masuk
             $table->time('batas_start_time'); // akhir absen masuk
             $table->time('end_time')->nullable(); // mulai absen pulang

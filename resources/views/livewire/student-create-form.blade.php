@@ -56,6 +56,43 @@
                     @endif
                     <x-form-error key="students.{{ $i }}.role_id" />
                 </div>
+                <div class="mb-3">
+                    <x-form-label id="kelompok_id{{ $i }}" label='Kelompok {{ $i + 1 }}' class="block mb-2 text-sm font-medium text-gray-900"/>
+                    <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" aria-label="Kelompok Select" name="kelompok_id">
+                        <option selected disabled>-- Pilih Kelompok --</option>
+                        @foreach ($kelompoks as $item)
+                        <option value="{{ $item->id }}">{{ ucfirst($item->name) }}</option>
+                        @endforeach
+                    </select>
+                    <x-form-error key="students.{{ $i }}.kelompok_id" />
+                </div>
+                <div class="mb-3">
+                    <div class="block mb-2 text-sm font-medium text-gray-900">Program Studi</div>
+                    <select aria-label="prodi" name="prodi" wire:model="students.{{ $i }}.prodi"
+                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option>-- Pilih Program Studi --</option>
+                        <option value="Akuntansi">Akuntansi</option>
+                        <option value="Manajemen">Manajemen</option>
+                        <option value="Ilmu Hukum">Ilmu Hukum</option>
+                        <option value="Teknik Sipil">Teknik Sipil</option>
+                        <option value="Teknik Informatika">Teknik Informatika</option>
+                        <option value="Sistem Informasi">Sistem Informasi</option>
+                        <option value="Sistem Komputer">Sistem Komputer</option>
+                        <option value="PG Paud">PG Paud</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <div class="block mb-2 text-sm font-medium text-gray-900">Fakultas</div>
+                    <select aria-label="fakultas" name="fakultas" wire:model="students.{{ $i }}.fakultas"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option>-- Pilih Fakultas --</option>
+                        <option value="Ekonomi dan Bisnis">Ekonomi dan Bisnis</option>
+                        <option value="Hukum">Hukum</option>
+                        <option value="Teknik">Teknik</option>
+                        <option value="Ilmu Komputer">Ilmu Komputer</option>
+                        <option value="Ilmu Pendidikan">Ilmu Pendidikan</option>
+                    </select>
+                </div>
             </div>
             @if ($i > 0)
             <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" wire:click="removeStudentInput({{ $i }})"

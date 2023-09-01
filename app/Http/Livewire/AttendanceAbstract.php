@@ -14,6 +14,7 @@ class AttendanceAbstract extends Component
     protected $rules = [
         'attendance.title' => 'required|string|min:6',
         'attendance.description' => 'required|string|max:500',
+        'attendance.date' => 'required',
         'attendance.start_time' => 'required|date_format:H:i',
         'attendance.batas_start_time' => 'required|date_format:H:i|after:start_time',
         /* 'attendance.end_time' => 'nullable|date_format:H:i',

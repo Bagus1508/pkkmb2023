@@ -16,15 +16,15 @@
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Program Studi : </span>
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->detailuser->prodi }}</span>
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Fakultas : </span>
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->detailuser->fakultas }}</span>
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Kelompok : </span>
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->detailuser->kelompok }}</span>
             </li>
         </ul>
     </div>
@@ -40,6 +40,9 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Keterangan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Tanggal
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Status
@@ -60,6 +63,9 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $attendance->description }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $attendance->date }}
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">

@@ -25,9 +25,9 @@ class User extends Authenticatable
         'name',
         'nim',
         'password',
+        'position_id',
         'role_id',
-        'position_id', // Add 'position_id' to the fillable attributes
-        'phone',
+        'kelompok_id',
     ];
 
     /**
@@ -51,6 +51,16 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function detailuser()
+    {
+        return $this->hasOne(DetailUser::class, 'user_id', 'id');
+    }
+
+    public function kelompok()
+    {
+        return $this->belongsTo(Kelompok::class);
+    }
+
     public function position()
     {
         return $this->belongsTo(Position::class);
@@ -60,6 +70,15 @@ class User extends Authenticatable
     {
         return $query->where('role_id', self::USER_ROLE_ID);
     }
+
+    public function scopeOnlyAdmins($query)
+    {
+        return $query->where(function ($query){
+            $query->orWhere('role_id', self::SUPERADMIN_ROLE_ID)
+                ->orWhere('role_id', self::ADMIN_ROLE_ID);
+        });
+    }
+
 
     public function isSuperAdmin()
     {
@@ -75,4 +94,5 @@ class User extends Authenticatable
     {
         return $this->role_id === self::USER_ROLE_ID;
     }
+
 }

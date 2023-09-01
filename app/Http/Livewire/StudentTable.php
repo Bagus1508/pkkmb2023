@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Position;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -231,13 +229,13 @@ final class StudentTable extends PowerGridComponent
                 ->sortable(),
 
             Column::make('Posisi', 'position', 'positions.name')
-                ->searchable()
-                ->makeInputMultiSelect(Position::all(), 'name', 'position_id')
+                /* ->searchable()
+                ->makeInputMultiSelect(Position::all(), 'name', 'position_id') */
                 ->sortable(),
 
             Column::make('Role', 'role', 'roles.name')
-                ->searchable()
-                ->makeInputMultiSelect(Role::all(), 'name', 'role_id')
+                /* ->searchable()
+                ->makeInputMultiSelect(Role::all(), 'name', 'role_id') */
                 ->sortable(),
 
             Column::make('Created at', 'created_at', 'users.created_at')

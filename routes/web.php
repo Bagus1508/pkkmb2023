@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomePresenceController;
+use App\Http\Controllers\KelompokController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\StudentController;
@@ -34,6 +35,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/posisi/tambah-data', [PositionController::class, 'create'])->name('positions.create');
         Route::get('/dashboard/admin/posisi/edit', [PositionController::class, 'edit'])->name('positions.edit');
         Route::delete('/dashboard/admin/posisi/{position}', [PositionController::class, 'destroy'])->name('positions.destroy');
+        //kelompok
+        Route::get('/dashboard/admin/kelompok', [KelompokController::class, 'index'])->name('kelompok.index');
+        Route::get('/dashboard/admin/kelompok/tambah-data', [KelompokController::class, 'create'])->name('kelompok.create');
+        Route::get('/dashboard/admin/kelompok/edit', [KelompokController::class, 'edit'])->name('kelompok.edit');
+        Route::delete('/dashboard/admin/kelompok/{kelompok}', [KelompokController::class, 'destroy'])->name('kelompok.destroy');
         // akun admin
         Route::get('/dashboard/admin/akun-admin', [StudentController::class, 'adminindex'])->name('admin.index');
         Route::get('/dashboard/admin/akun-admin/tambah-data', [StudentController::class, 'admincreate'])->name('admin.create');
@@ -51,15 +57,16 @@ Route::middleware('auth')->group(function () {
         Route::delete('/dashboard/admin/kehadiran/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
 
         // presensi (kehadiran)
-        Route::resource('/dashboard/admin/presensi', PresenceController::class)->only(['index']);
+        Route::get('/dashboard/admin/presensi', [PresenceController::class, 'index'])->name('presences.index');
         Route::get('/dashboard/admin/presensi/qrcode', [PresenceController::class, 'showQrcode'])->name('presences.qrcode');
         Route::get('/dashboard/admin/presensi/{attendance}', [PresenceController::class, 'show'])->name('presences.show');
+        Route::delete('/dashboard/admin/presensi/{presence}', [PresenceController::class, 'destroy'])->name('presence.destroy');
         // not present data
         Route::get('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent'])->name('presences.not-present');
         Route::post('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent']);
         // present (url untuk menambahkan/mengubah user yang tidak hadir menjadi hadir)
         Route::post('/dashboard/admin/presensi/{attendance}/hadir', [PresenceController::class, 'presentUser'])->name('presences.present');
-        Route::post('/dashboard/admin/presensi/{attendance}/terimaIzin', [PresenceController::class, 'acceptPermission'])->name('presences.acceptPermission');
+        Route::post('/dashboard/admin/presensi/{attendance}/beriIzin', [PresenceController::class, 'acceptPermissionByAdmin'])->name('presences.acceptPermissionByAdmin');
         // students permissions
 
         Route::get('/dashboard/presensi/{attendance}/izin', [PresenceController::class, 'permissions'])->name('presences.permissions');
@@ -69,14 +76,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'indexuserdashboard'])->name('indexuserdashboard');
 
         Route::get('/dashboard/user/presensi', [HomePresenceController::class, 'index'])->name('index');
-        // desctination after scan qrcode
+        // destination after scan qrcode
         Route::post('/dashboard/user/presensi/qrcode', [HomePresenceController::class, 'sendEnterPresenceUsingQRCode'])->name('sendEnterPresenceUsingQRCode');
-        Route::post('/dashboard/user/presensi/qrcode/out', [HomePresenceController::class, 'sendOutPresenceUsingQRCode'])->name('sendOutPresenceUsingQRCode');
 
         Route::get('/dashboard/user/presensi/{attendance}', [HomePresenceController::class, 'show'])->name('show');
-        Route::get('/dashboard/user/presensi/{attendance}/izin', [HomePresenceController::class, 'permission'])->name('permission');
-
-        
     });
 
     Route::middleware('role:user,admin,superadmin')->name('dashboard-user.')->group(function () {
@@ -87,6 +90,7 @@ Route::middleware('auth')->group(function () {
 
         //profile
         Route::get('/dashboard/user/profil', [ProfileController::class, 'profileindex'])->name('profileindex');
+        Route::get('/dashboard/user/profil/edit', [ProfileController::class, 'profileedit'])->name('profileedit');
     });
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
