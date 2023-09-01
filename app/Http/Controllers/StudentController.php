@@ -84,7 +84,12 @@ class StudentController extends Controller
     public function destroy(User $users)
     {
         try {
+            //Hapus data dari tabel DetailUser terlebih dahulu
+            $users->detailuser()->delete();
+
+            // Lalu hapus data dari tabel user
             $users->delete();
+            
             return back()->with('success', 'Data peserta berhasil dihapus.');
         } catch (\Exception $ex) {
             return back()->with('error', 'Gagal menghapus data peserta.');

@@ -1,8 +1,8 @@
 <div>
     <form wire:submit.prevent="saveStudents" method="post" novalidate>
         @include('partials.alerts')
-        @foreach ($students as $student)
-
+    @foreach ($students as $student)
+    @if (is_array($student))
         <div class="mb-3">
             <div class="w-100">
                 <div class="mb-3">
@@ -155,8 +155,8 @@
             </div>
         </div>
         <hr>
-        @endforeach
-
+    @endif
+    @endforeach
         <div class="flex items-center mb-5">
             <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
                 Simpan

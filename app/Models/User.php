@@ -25,9 +25,9 @@ class User extends Authenticatable
         'name',
         'nim',
         'password',
+        'position_id',
         'role_id',
-        'position_id', // Add 'position_id' to the fillable attributes
-        'phone',
+        'kelompok_id',
     ];
 
     /**
@@ -49,6 +49,16 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function detailuser()
+    {
+        return $this->hasOne(DetailUser::class, 'user_id', 'id');
+    }
+
+    public function kelompok()
+    {
+        return $this->belongsTo(Kelompok::class);
     }
 
     public function position()

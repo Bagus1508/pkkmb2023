@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Position;
+use App\Models\Kelompok;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +10,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class PositionTable extends PowerGridComponent
+final class KelompokTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -42,14 +42,14 @@ final class PositionTable extends PowerGridComponent
     public function bulkCheckedDelete()
     {
         if (auth()->check()) {
-            $ids = $this->checkedValues();
+            $id = $this->checkedValues();
 
-            if (!$ids)
+            if (!$id)
                 return $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Pilih data yang ingin dihapus terlebih dahulu.']);
 
             try {
-                Position::whereIn('id', $ids)->delete();
-                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data posisi berhasil dihapus.']);
+                Kelompok::whereIn('id', $id)->delete();
+                $this->dispatchBrowserEvent('showToast', ['success' => true, 'message' => 'Data kelompok berhasil dihapus.']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Data gagal dihapus, kemungkinan ada data lain yang menggunakan data tersebut.']);
             }
@@ -59,14 +59,14 @@ final class PositionTable extends PowerGridComponent
     public function bulkCheckedEdit()
     {
         if (auth()->check()) {
-            $ids = $this->checkedValues();
+            $id = $this->checkedValues();
 
-            if (!$ids)
+            if (!$id)
                 return $this->dispatchBrowserEvent('showToast', ['success' => false, 'message' => 'Pilih data yang ingin diedit terlebih dahulu.']);
 
-            $ids = join('-', $ids);
-            // return redirect(route('positions.edit', ['ids' => $ids])); // tidak berfungsi/menredirect
-            return $this->dispatchBrowserEvent('redirect', ['url' => route('positions.edit', ['ids' => $ids])]);
+            $id = join('-', $id);
+            // return redirect(route('kelompok.edit', ['id' => $id])); // tidak berfungsi/menredirect
+            return $this->dispatchBrowserEvent('redirect', ['url' => route('kelompok.edit', ['id' => $id])]);
         }
     }
 
@@ -103,11 +103,11 @@ final class PositionTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\Position>
+     * @return Builder<\App\Models\Kelompok>
      */
     public function datasource(): Builder
     {
-        return Position::query()->latest();
+        return Kelompok::query()->latest();
     }
 
     /*
@@ -142,7 +142,7 @@ final class PositionTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('name')
             ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (Position $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Kelompok $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -189,7 +189,7 @@ final class PositionTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Position Action Buttons.
+     * PowerGrid Kelompok Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -200,12 +200,12 @@ final class PositionTable extends PowerGridComponent
             /* Button::make('edit', 'Edit')
                  ->class('bg-blue-500 hover:bg-blue-600 hover:underline rounded-full px-4 py-1 text-white my-2')
                  ->target('')
-                 ->route('positions.edit', ['id' => 'id']), */
+                 ->route('kelompok.edit', ['id' => 'id']), */
 
             Button::make('destroy', 'Delete')
                 ->class('bg-red-500 hover:bg-red-600 hover:underline rounded-full px-4 py-1 text-white my-2')
                 ->target('')
-                ->route('positions.destroy', ['position' => 'id'])
+                ->route('kelompok.destroy', ['kelompok' => 'id'])
                 ->method('delete')
         ];
     }
@@ -219,7 +219,7 @@ final class PositionTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Position Action Rules.
+     * PowerGrid Kelompok Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -231,7 +231,7 @@ final class PositionTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($position) => $position->id === 1)
+                ->when(fn($kelompok) => $kelompok->id === 1)
                 ->hide(),
         ];
     }

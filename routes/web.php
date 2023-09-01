@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomePresenceController;
+use App\Http\Controllers\KelompokController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\StudentController;
@@ -33,6 +34,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/posisi/tambah-data', [PositionController::class, 'create'])->name('positions.create');
         Route::get('/dashboard/admin/posisi/edit', [PositionController::class, 'edit'])->name('positions.edit');
         Route::delete('/dashboard/admin/posisi/{position}', [PositionController::class, 'destroy'])->name('positions.destroy');
+        //kelompok
+        Route::get('/dashboard/admin/kelompok', [KelompokController::class, 'index'])->name('kelompok.index');
+        Route::get('/dashboard/admin/kelompok/tambah-data', [KelompokController::class, 'create'])->name('kelompok.create');
+        Route::get('/dashboard/admin/kelompok/edit', [KelompokController::class, 'edit'])->name('kelompok.edit');
+        Route::delete('/dashboard/admin/kelompok/{kelompok}', [KelompokController::class, 'destroy'])->name('kelompok.destroy');
         // akun admin
         Route::get('/dashboard/admin/akun-admin', [StudentController::class, 'adminindex'])->name('admin.index');
         Route::get('/dashboard/admin/akun-admin/tambah-data', [StudentController::class, 'admincreate'])->name('admin.create');
@@ -83,6 +89,7 @@ Route::middleware('auth')->group(function () {
 
         //profile
         Route::get('/dashboard/user/profil', [ProfileController::class, 'profileindex'])->name('profileindex');
+        Route::get('/dashboard/user/profil/edit', [ProfileController::class, 'profileedit'])->name('profileedit');
     });
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');

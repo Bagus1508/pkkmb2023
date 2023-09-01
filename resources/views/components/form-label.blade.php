@@ -1,4 +1,4 @@
 @props(['required' => true, 'label', 'id'])
 
-<label for="{{ $id }}" class="form-label fw-bold">{{ $label }} @if($required) <sup class="text-danger">*</sup>
+<label for="{{ $id }}" class="block mb-2 text-sm font-medium text-gray-900">{{ $label }} @if($required) <sup class="text-red-500">*</sup>
     @endif</label>

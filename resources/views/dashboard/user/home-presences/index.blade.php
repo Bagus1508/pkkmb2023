@@ -16,15 +16,15 @@
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Program Studi : </span>
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->detailuser->prodi }}</span>
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Fakultas : </span>
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->detailuser->fakultas }}</span>
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Kelompok : </span>
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->detailuser->kelompok }}</span>
             </li>
         </ul>
     </div>

@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Kelompok;
 use App\Models\Position;
 use App\Models\Role;
 use App\Rules\NimRule;
 use App\Models\User;
+use App\Models\DetailUser;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -15,20 +17,40 @@ class StudentCreateForm extends Component
     public $students;
     public Collection $roles;
     public Collection $positions;
+    public Collection $kelompoks;
 
     public function mount()
     {
         $this->positions = Position::all();
         $this->roles = Role::all();
+        $this->kelompoks = Kelompok::all();
         $this->students = [
-            ['name' => '', 'nim' => '', 'password' => '', 'role_id' => User::USER_ROLE_ID, 'position_id' => $this->positions->first()->id]
+            [
+             'name' => '', 
+             'nim' => '', 
+             'password' => '', 
+             'role_id' => User::USER_ROLE_ID, 
+             'position_id' => $this->positions->first()->id, 
+             'kelompok_id' => $this->positions->first()->id,
+             'prodi' => '',
+             'fakultas' => '',
+            ]
         ];
     }
 
     public function addStudentInput(): void
     {
-        $this->students[] = ['name' => '', 'nim' => '', 'password' => '', 'role_id' => User::USER_ROLE_ID, 'position_id' => $this->positions->first()->id];
+        $this->students[] = ['name' => '', 
+                             'nim' => '',
+                             'password' => '', 
+                             'role_id' => User::USER_ROLE_ID, 
+                             'position_id' => $this->positions->first()->id, 
+                             'kelompok_id' => $this->kelompoks->first()->id,
+                             'prodi' => '',
+                             'fakultas' => '',];
     }
+
+    
 
     public function removeStudentInput(int $index): void
     {
@@ -41,8 +63,8 @@ class StudentCreateForm extends Component
         // cara lebih cepat, dan kemungkinan data role tidak akan diubah/ditambah
         $roleIdRuleIn = join(',', $this->roles->pluck('id')->toArray());
         $positionIdRuleIn = join(',', $this->positions->pluck('id')->toArray());
-        // $roleIdRuleIn = join(',', Role::all()->pluck('id')->toArray());
-
+        $kelompokIdRuleIn = join(',', $this->positions->pluck('id')->toArray());
+    
         // setidaknya input pertama yang hanya required,
         // karena nanti akan difilter apakah input kedua dan input selanjutnya apakah berisi
         $this->validate([
@@ -51,19 +73,40 @@ class StudentCreateForm extends Component
             'students.*.password' => '',
             'students.*.role_id' => 'required|in:' . $roleIdRuleIn,
             'students.*.position_id' => 'required|in:' . $positionIdRuleIn,
+            'students.*.kelompok_id' => 'required|in:' . $kelompokIdRuleIn,
+            'students.*.prodi' => '',
+            'students.*.fakultas' => '',
         ]);
-
-        // alasan menggunakan create alih2 mengunakan ::insert adalah karena tidak looping untuk menambahkan created_at dan updated_at
+    
         $affected = 0;
-        foreach ($this->students as $Student) {
-            if (trim($Student['password']) === '') $Student['password'] = '123';
-            $Student['password'] = Hash::make($Student['password']);
-            User::create($Student);
+        foreach ($this->students as $studentData) {
+            if (trim($studentData['password']) === '') {
+                $studentData['password'] = '123';
+            }
+            
+            $studentData['password'] = Hash::make($studentData['password']);
+            
+            // Create User
+            $createdUser = User::create($studentData);
+            
+
+            //dd($studentData);
+            // Create DetailUser and associate it with the User
+            $createdUser->detailuser()->create([
+                'nim' => $createdUser->nim,
+                'prodi' => $studentData['prodi'],
+                'fakultas' => $studentData['fakultas'],
+                // Other fields
+            ]);
+            
             $affected++;
         }
-
-        redirect()->route('students.index')->with('success', "Ada ($affected) data peserta yang berhasil ditambahkan.");
+        
+    
+        return redirect()->route('students.index')->with('success', "Ada ($affected) data peserta yang berhasil ditambahkan.");
     }
+    
+    
 
     public function render()
     {
