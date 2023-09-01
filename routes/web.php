@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
+
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -93,9 +94,12 @@ Route::middleware('auth')->group(function () {
 /* Guest */
     //landing view
     Route::get('/', [LandingController::class, 'viewindex'])->name('index-landing');
-    Route::get('/informasi', [LandingController::class, 'viewinformation'])->name('informasi-landing');
+    Route::get('/informasi/pengumuman', [LandingController::class, 'viewannounce'])->name('pengumuman-landing');
+    Route::get('/informasi/kegiatan', [LandingController::class, 'viewinformation'])->name('informasi-kegiatan');
+    Route::get('/informasi/berita', [LandingController::class, 'viewnews'])->name('informasi-berita');
+    Route::get('/informasi', [LandingController::class, 'information'])->name('informasi-landing');
     Route::get('/panitia', [LandingController::class, 'viewcommittee'])->name('panitia-landing');
-    Route::get('/pengumuman', [LandingController::class, 'viewannounce'])->name('pengumuman-landing');
+
     // auth
     Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'authenticate']);

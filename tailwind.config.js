@@ -7,7 +7,19 @@ module.exports = {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        space: {
+          unguhero: '#4A289C',
+          dongkerhero: '#00092B',
+          ungu: '#422B94',
+          back: '#050B33',
+          buttonungu: '#170D66',
+          textungu: '#D73AFF',
+          buttonbiru: '#2563EA',
+        },
+      },
+    },
   },
   plugins: [
       require('flowbite/plugin')

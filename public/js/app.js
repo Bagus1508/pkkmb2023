@@ -6097,6 +6097,17 @@ var module_default = src_default;
 
 /***/ }),
 
+/***/ "./node_modules/aos/dist/aos.js":
+/*!**************************************!*\
+  !*** ./node_modules/aos/dist/aos.js ***!
+  \**************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():0}(this,function(){"use strict";var e="undefined"!=typeof window?window:"undefined"!=typeof __webpack_require__.g?__webpack_require__.g:"undefined"!=typeof self?self:{},t="Expected a function",n=NaN,o="[object Symbol]",i=/^\s+|\s+$/g,a=/^[-+]0x[0-9a-f]+$/i,r=/^0b[01]+$/i,c=/^0o[0-7]+$/i,s=parseInt,u="object"==typeof e&&e&&e.Object===Object&&e,d="object"==typeof self&&self&&self.Object===Object&&self,l=u||d||Function("return this")(),f=Object.prototype.toString,m=Math.max,p=Math.min,b=function(){return l.Date.now()};function v(e,n,o){var i,a,r,c,s,u,d=0,l=!1,f=!1,v=!0;if("function"!=typeof e)throw new TypeError(t);function y(t){var n=i,o=a;return i=a=void 0,d=t,c=e.apply(o,n)}function h(e){var t=e-u;return void 0===u||t>=n||t<0||f&&e-d>=r}function k(){var e=b();if(h(e))return x(e);s=setTimeout(k,function(e){var t=n-(e-u);return f?p(t,r-(e-d)):t}(e))}function x(e){return s=void 0,v&&i?y(e):(i=a=void 0,c)}function O(){var e=b(),t=h(e);if(i=arguments,a=this,u=e,t){if(void 0===s)return function(e){return d=e,s=setTimeout(k,n),l?y(e):c}(u);if(f)return s=setTimeout(k,n),y(u)}return void 0===s&&(s=setTimeout(k,n)),c}return n=w(n)||0,g(o)&&(l=!!o.leading,r=(f="maxWait"in o)?m(w(o.maxWait)||0,n):r,v="trailing"in o?!!o.trailing:v),O.cancel=function(){void 0!==s&&clearTimeout(s),d=0,i=u=a=s=void 0},O.flush=function(){return void 0===s?c:x(b())},O}function g(e){var t=typeof e;return!!e&&("object"==t||"function"==t)}function w(e){if("number"==typeof e)return e;if(function(e){return"symbol"==typeof e||function(e){return!!e&&"object"==typeof e}(e)&&f.call(e)==o}(e))return n;if(g(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=g(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(i,"");var u=r.test(e);return u||c.test(e)?s(e.slice(2),u?2:8):a.test(e)?n:+e}var y=function(e,n,o){var i=!0,a=!0;if("function"!=typeof e)throw new TypeError(t);return g(o)&&(i="leading"in o?!!o.leading:i,a="trailing"in o?!!o.trailing:a),v(e,n,{leading:i,maxWait:n,trailing:a})},h="Expected a function",k=NaN,x="[object Symbol]",O=/^\s+|\s+$/g,j=/^[-+]0x[0-9a-f]+$/i,E=/^0b[01]+$/i,N=/^0o[0-7]+$/i,z=parseInt,C="object"==typeof e&&e&&e.Object===Object&&e,A="object"==typeof self&&self&&self.Object===Object&&self,q=C||A||Function("return this")(),L=Object.prototype.toString,T=Math.max,M=Math.min,S=function(){return q.Date.now()};function D(e){var t=typeof e;return!!e&&("object"==t||"function"==t)}function H(e){if("number"==typeof e)return e;if(function(e){return"symbol"==typeof e||function(e){return!!e&&"object"==typeof e}(e)&&L.call(e)==x}(e))return k;if(D(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=D(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(O,"");var n=E.test(e);return n||N.test(e)?z(e.slice(2),n?2:8):j.test(e)?k:+e}var $=function(e,t,n){var o,i,a,r,c,s,u=0,d=!1,l=!1,f=!0;if("function"!=typeof e)throw new TypeError(h);function m(t){var n=o,a=i;return o=i=void 0,u=t,r=e.apply(a,n)}function p(e){var n=e-s;return void 0===s||n>=t||n<0||l&&e-u>=a}function b(){var e=S();if(p(e))return v(e);c=setTimeout(b,function(e){var n=t-(e-s);return l?M(n,a-(e-u)):n}(e))}function v(e){return c=void 0,f&&o?m(e):(o=i=void 0,r)}function g(){var e=S(),n=p(e);if(o=arguments,i=this,s=e,n){if(void 0===c)return function(e){return u=e,c=setTimeout(b,t),d?m(e):r}(s);if(l)return c=setTimeout(b,t),m(s)}return void 0===c&&(c=setTimeout(b,t)),r}return t=H(t)||0,D(n)&&(d=!!n.leading,a=(l="maxWait"in n)?T(H(n.maxWait)||0,t):a,f="trailing"in n?!!n.trailing:f),g.cancel=function(){void 0!==c&&clearTimeout(c),u=0,o=s=i=c=void 0},g.flush=function(){return void 0===c?r:v(S())},g},W=function(){};function P(e){e&&e.forEach(function(e){var t=Array.prototype.slice.call(e.addedNodes),n=Array.prototype.slice.call(e.removedNodes);if(function e(t){var n=void 0,o=void 0;for(n=0;n<t.length;n+=1){if((o=t[n]).dataset&&o.dataset.aos)return!0;if(o.children&&e(o.children))return!0}return!1}(t.concat(n)))return W()})}function Y(){return window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver}var _={isSupported:function(){return!!Y()},ready:function(e,t){var n=window.document,o=new(Y())(P);W=t,o.observe(n.documentElement,{childList:!0,subtree:!0,removedNodes:!0})}},B=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},F=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),I=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},K=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,G=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,J=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i,Q=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;function R(){return navigator.userAgent||navigator.vendor||window.opera||""}var U=new(function(){function e(){B(this,e)}return F(e,[{key:"phone",value:function(){var e=R();return!(!K.test(e)&&!G.test(e.substr(0,4)))}},{key:"mobile",value:function(){var e=R();return!(!J.test(e)&&!Q.test(e.substr(0,4)))}},{key:"tablet",value:function(){return this.mobile()&&!this.phone()}},{key:"ie11",value:function(){return"-ms-scroll-limit"in document.documentElement.style&&"-ms-ime-align"in document.documentElement.style}}]),e}()),V=function(e,t){var n=void 0;return U.ie11()?(n=document.createEvent("CustomEvent")).initCustomEvent(e,!0,!0,{detail:t}):n=new CustomEvent(e,{detail:t}),document.dispatchEvent(n)},X=function(e){return e.forEach(function(e,t){return function(e,t){var n=e.options,o=e.position,i=e.node,a=(e.data,function(){e.animated&&(function(e,t){t&&t.forEach(function(t){return e.classList.remove(t)})}(i,n.animatedClassNames),V("aos:out",i),e.options.id&&V("aos:in:"+e.options.id,i),e.animated=!1)});n.mirror&&t>=o.out&&!n.once?a():t>=o.in?e.animated||(function(e,t){t&&t.forEach(function(t){return e.classList.add(t)})}(i,n.animatedClassNames),V("aos:in",i),e.options.id&&V("aos:in:"+e.options.id,i),e.animated=!0):e.animated&&!n.once&&a()}(e,window.pageYOffset)})},Z=function(e){for(var t=0,n=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)t+=e.offsetLeft-("BODY"!=e.tagName?e.scrollLeft:0),n+=e.offsetTop-("BODY"!=e.tagName?e.scrollTop:0),e=e.offsetParent;return{top:n,left:t}},ee=function(e,t,n){var o=e.getAttribute("data-aos-"+t);if(void 0!==o){if("true"===o)return!0;if("false"===o)return!1}return o||n},te=function(e,t){return e.forEach(function(e,n){var o=ee(e.node,"mirror",t.mirror),i=ee(e.node,"once",t.once),a=ee(e.node,"id"),r=t.useClassNames&&e.node.getAttribute("data-aos"),c=[t.animatedClassName].concat(r?r.split(" "):[]).filter(function(e){return"string"==typeof e});t.initClassName&&e.node.classList.add(t.initClassName),e.position={in:function(e,t,n){var o=window.innerHeight,i=ee(e,"anchor"),a=ee(e,"anchor-placement"),r=Number(ee(e,"offset",a?0:t)),c=a||n,s=e;i&&document.querySelectorAll(i)&&(s=document.querySelectorAll(i)[0]);var u=Z(s).top-o;switch(c){case"top-bottom":break;case"center-bottom":u+=s.offsetHeight/2;break;case"bottom-bottom":u+=s.offsetHeight;break;case"top-center":u+=o/2;break;case"center-center":u+=o/2+s.offsetHeight/2;break;case"bottom-center":u+=o/2+s.offsetHeight;break;case"top-top":u+=o;break;case"bottom-top":u+=o+s.offsetHeight;break;case"center-top":u+=o+s.offsetHeight/2}return u+r}(e.node,t.offset,t.anchorPlacement),out:o&&function(e,t){window.innerHeight;var n=ee(e,"anchor"),o=ee(e,"offset",t),i=e;return n&&document.querySelectorAll(n)&&(i=document.querySelectorAll(n)[0]),Z(i).top+i.offsetHeight-o}(e.node,t.offset)},e.options={once:i,mirror:o,animatedClassNames:c,id:a}}),e},ne=function(){var e=document.querySelectorAll("[data-aos]");return Array.prototype.map.call(e,function(e){return{node:e}})},oe=[],ie=!1,ae={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,mirror:!1,anchorPlacement:"top-bottom",startEvent:"DOMContentLoaded",animatedClassName:"aos-animate",initClassName:"aos-init",useClassNames:!1,disableMutationObserver:!1,throttleDelay:99,debounceDelay:50},re=function(){return document.all&&!window.atob},ce=function(){arguments.length>0&&void 0!==arguments[0]&&arguments[0]&&(ie=!0),ie&&(oe=te(oe,ae),X(oe),window.addEventListener("scroll",y(function(){X(oe,ae.once)},ae.throttleDelay)))},se=function(){if(oe=ne(),de(ae.disable)||re())return ue();ce()},ue=function(){oe.forEach(function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay"),ae.initClassName&&e.node.classList.remove(ae.initClassName),ae.animatedClassName&&e.node.classList.remove(ae.animatedClassName)})},de=function(e){return!0===e||"mobile"===e&&U.mobile()||"phone"===e&&U.phone()||"tablet"===e&&U.tablet()||"function"==typeof e&&!0===e()};return{init:function(e){return ae=I(ae,e),oe=ne(),ae.disableMutationObserver||_.isSupported()||(console.info('\n      aos: MutationObserver is not supported on this browser,\n      code mutations observing has been disabled.\n      You may have to call "refreshHard()" by yourself.\n    '),ae.disableMutationObserver=!0),ae.disableMutationObserver||_.ready("[data-aos]",se),de(ae.disable)||re()?ue():(document.querySelector("body").setAttribute("data-aos-easing",ae.easing),document.querySelector("body").setAttribute("data-aos-duration",ae.duration),document.querySelector("body").setAttribute("data-aos-delay",ae.delay),-1===["DOMContentLoaded","load"].indexOf(ae.startEvent)?document.addEventListener(ae.startEvent,function(){ce(!0)}):window.addEventListener("load",function(){ce(!0)}),"DOMContentLoaded"===ae.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1&&ce(!0),window.addEventListener("resize",$(ce,ae.debounceDelay,!0)),window.addEventListener("orientationchange",$(ce,ae.debounceDelay,!0)),oe)},refresh:ce,refreshHard:se}});
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -8263,16 +8274,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flowbite */ "./node_modules/flowbite/lib/esm/index.js");
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-/* harmony import */ var _vendor_power_components_livewire_powergrid_dist_powergrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../vendor/power-components/livewire-powergrid/dist/powergrid */ "./vendor/power-components/livewire-powergrid/dist/powergrid.js");
-/* harmony import */ var _vendor_power_components_livewire_powergrid_dist_powergrid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_vendor_power_components_livewire_powergrid_dist_powergrid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _vendor_power_components_livewire_powergrid_dist_powergrid_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../vendor/power-components/livewire-powergrid/dist/powergrid.css */ "./vendor/power-components/livewire-powergrid/dist/powergrid.css");
+/* harmony import */ var scrollreveal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! scrollreveal */ "./node_modules/scrollreveal/dist/scrollreveal.es.js");
+/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
+/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _vendor_power_components_livewire_powergrid_dist_powergrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../vendor/power-components/livewire-powergrid/dist/powergrid */ "./vendor/power-components/livewire-powergrid/dist/powergrid.js");
+/* harmony import */ var _vendor_power_components_livewire_powergrid_dist_powergrid__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_vendor_power_components_livewire_powergrid_dist_powergrid__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _vendor_power_components_livewire_powergrid_dist_powergrid_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../vendor/power-components/livewire-powergrid/dist/powergrid.css */ "./vendor/power-components/livewire-powergrid/dist/powergrid.css");
+/* harmony import */ var aos_dist_aos_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! aos/dist/aos.css */ "./node_modules/aos/dist/aos.css");
 
 
 
+
+
+
+// AlpineJs
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_2__["default"];
 
 
 alpinejs__WEBPACK_IMPORTED_MODULE_2__["default"].start();
+
+// ScrollReveal
+var sr = (0,scrollreveal__WEBPACK_IMPORTED_MODULE_3__["default"])();
+
+// Tentukan konfigurasi animasi
+var animateConfig = {
+  origin: 'bottom',
+  distance: '20px',
+  duration: 1000,
+  delay: 200,
+  scale: 1,
+  easing: 'ease-in-out'
+};
+
+// Terapkan animasi pada elemen
+sr.reveal('.animate__fadeInUp', animateConfig);
+
+// AOS
+ // You can also use <link> for styles
+
+aos__WEBPACK_IMPORTED_MODULE_4___default().init();
 
 /***/ }),
 
@@ -12959,6 +12999,30 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/aos/dist/aos.css":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/aos/dist/aos.css ***!
+  \*************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "[data-aos][data-aos][data-aos-duration=\"50\"],body[data-aos-duration=\"50\"] [data-aos]{transition-duration:50ms}[data-aos][data-aos][data-aos-delay=\"50\"],body[data-aos-delay=\"50\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"50\"].aos-animate,body[data-aos-delay=\"50\"] [data-aos].aos-animate{transition-delay:50ms}[data-aos][data-aos][data-aos-duration=\"100\"],body[data-aos-duration=\"100\"] [data-aos]{transition-duration:.1s}[data-aos][data-aos][data-aos-delay=\"100\"],body[data-aos-delay=\"100\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"100\"].aos-animate,body[data-aos-delay=\"100\"] [data-aos].aos-animate{transition-delay:.1s}[data-aos][data-aos][data-aos-duration=\"150\"],body[data-aos-duration=\"150\"] [data-aos]{transition-duration:.15s}[data-aos][data-aos][data-aos-delay=\"150\"],body[data-aos-delay=\"150\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"150\"].aos-animate,body[data-aos-delay=\"150\"] [data-aos].aos-animate{transition-delay:.15s}[data-aos][data-aos][data-aos-duration=\"200\"],body[data-aos-duration=\"200\"] [data-aos]{transition-duration:.2s}[data-aos][data-aos][data-aos-delay=\"200\"],body[data-aos-delay=\"200\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"200\"].aos-animate,body[data-aos-delay=\"200\"] [data-aos].aos-animate{transition-delay:.2s}[data-aos][data-aos][data-aos-duration=\"250\"],body[data-aos-duration=\"250\"] [data-aos]{transition-duration:.25s}[data-aos][data-aos][data-aos-delay=\"250\"],body[data-aos-delay=\"250\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"250\"].aos-animate,body[data-aos-delay=\"250\"] [data-aos].aos-animate{transition-delay:.25s}[data-aos][data-aos][data-aos-duration=\"300\"],body[data-aos-duration=\"300\"] [data-aos]{transition-duration:.3s}[data-aos][data-aos][data-aos-delay=\"300\"],body[data-aos-delay=\"300\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"300\"].aos-animate,body[data-aos-delay=\"300\"] [data-aos].aos-animate{transition-delay:.3s}[data-aos][data-aos][data-aos-duration=\"350\"],body[data-aos-duration=\"350\"] [data-aos]{transition-duration:.35s}[data-aos][data-aos][data-aos-delay=\"350\"],body[data-aos-delay=\"350\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"350\"].aos-animate,body[data-aos-delay=\"350\"] [data-aos].aos-animate{transition-delay:.35s}[data-aos][data-aos][data-aos-duration=\"400\"],body[data-aos-duration=\"400\"] [data-aos]{transition-duration:.4s}[data-aos][data-aos][data-aos-delay=\"400\"],body[data-aos-delay=\"400\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"400\"].aos-animate,body[data-aos-delay=\"400\"] [data-aos].aos-animate{transition-delay:.4s}[data-aos][data-aos][data-aos-duration=\"450\"],body[data-aos-duration=\"450\"] [data-aos]{transition-duration:.45s}[data-aos][data-aos][data-aos-delay=\"450\"],body[data-aos-delay=\"450\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"450\"].aos-animate,body[data-aos-delay=\"450\"] [data-aos].aos-animate{transition-delay:.45s}[data-aos][data-aos][data-aos-duration=\"500\"],body[data-aos-duration=\"500\"] [data-aos]{transition-duration:.5s}[data-aos][data-aos][data-aos-delay=\"500\"],body[data-aos-delay=\"500\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"500\"].aos-animate,body[data-aos-delay=\"500\"] [data-aos].aos-animate{transition-delay:.5s}[data-aos][data-aos][data-aos-duration=\"550\"],body[data-aos-duration=\"550\"] [data-aos]{transition-duration:.55s}[data-aos][data-aos][data-aos-delay=\"550\"],body[data-aos-delay=\"550\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"550\"].aos-animate,body[data-aos-delay=\"550\"] [data-aos].aos-animate{transition-delay:.55s}[data-aos][data-aos][data-aos-duration=\"600\"],body[data-aos-duration=\"600\"] [data-aos]{transition-duration:.6s}[data-aos][data-aos][data-aos-delay=\"600\"],body[data-aos-delay=\"600\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"600\"].aos-animate,body[data-aos-delay=\"600\"] [data-aos].aos-animate{transition-delay:.6s}[data-aos][data-aos][data-aos-duration=\"650\"],body[data-aos-duration=\"650\"] [data-aos]{transition-duration:.65s}[data-aos][data-aos][data-aos-delay=\"650\"],body[data-aos-delay=\"650\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"650\"].aos-animate,body[data-aos-delay=\"650\"] [data-aos].aos-animate{transition-delay:.65s}[data-aos][data-aos][data-aos-duration=\"700\"],body[data-aos-duration=\"700\"] [data-aos]{transition-duration:.7s}[data-aos][data-aos][data-aos-delay=\"700\"],body[data-aos-delay=\"700\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"700\"].aos-animate,body[data-aos-delay=\"700\"] [data-aos].aos-animate{transition-delay:.7s}[data-aos][data-aos][data-aos-duration=\"750\"],body[data-aos-duration=\"750\"] [data-aos]{transition-duration:.75s}[data-aos][data-aos][data-aos-delay=\"750\"],body[data-aos-delay=\"750\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"750\"].aos-animate,body[data-aos-delay=\"750\"] [data-aos].aos-animate{transition-delay:.75s}[data-aos][data-aos][data-aos-duration=\"800\"],body[data-aos-duration=\"800\"] [data-aos]{transition-duration:.8s}[data-aos][data-aos][data-aos-delay=\"800\"],body[data-aos-delay=\"800\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"800\"].aos-animate,body[data-aos-delay=\"800\"] [data-aos].aos-animate{transition-delay:.8s}[data-aos][data-aos][data-aos-duration=\"850\"],body[data-aos-duration=\"850\"] [data-aos]{transition-duration:.85s}[data-aos][data-aos][data-aos-delay=\"850\"],body[data-aos-delay=\"850\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"850\"].aos-animate,body[data-aos-delay=\"850\"] [data-aos].aos-animate{transition-delay:.85s}[data-aos][data-aos][data-aos-duration=\"900\"],body[data-aos-duration=\"900\"] [data-aos]{transition-duration:.9s}[data-aos][data-aos][data-aos-delay=\"900\"],body[data-aos-delay=\"900\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"900\"].aos-animate,body[data-aos-delay=\"900\"] [data-aos].aos-animate{transition-delay:.9s}[data-aos][data-aos][data-aos-duration=\"950\"],body[data-aos-duration=\"950\"] [data-aos]{transition-duration:.95s}[data-aos][data-aos][data-aos-delay=\"950\"],body[data-aos-delay=\"950\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"950\"].aos-animate,body[data-aos-delay=\"950\"] [data-aos].aos-animate{transition-delay:.95s}[data-aos][data-aos][data-aos-duration=\"1000\"],body[data-aos-duration=\"1000\"] [data-aos]{transition-duration:1s}[data-aos][data-aos][data-aos-delay=\"1000\"],body[data-aos-delay=\"1000\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1000\"].aos-animate,body[data-aos-delay=\"1000\"] [data-aos].aos-animate{transition-delay:1s}[data-aos][data-aos][data-aos-duration=\"1050\"],body[data-aos-duration=\"1050\"] [data-aos]{transition-duration:1.05s}[data-aos][data-aos][data-aos-delay=\"1050\"],body[data-aos-delay=\"1050\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1050\"].aos-animate,body[data-aos-delay=\"1050\"] [data-aos].aos-animate{transition-delay:1.05s}[data-aos][data-aos][data-aos-duration=\"1100\"],body[data-aos-duration=\"1100\"] [data-aos]{transition-duration:1.1s}[data-aos][data-aos][data-aos-delay=\"1100\"],body[data-aos-delay=\"1100\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1100\"].aos-animate,body[data-aos-delay=\"1100\"] [data-aos].aos-animate{transition-delay:1.1s}[data-aos][data-aos][data-aos-duration=\"1150\"],body[data-aos-duration=\"1150\"] [data-aos]{transition-duration:1.15s}[data-aos][data-aos][data-aos-delay=\"1150\"],body[data-aos-delay=\"1150\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1150\"].aos-animate,body[data-aos-delay=\"1150\"] [data-aos].aos-animate{transition-delay:1.15s}[data-aos][data-aos][data-aos-duration=\"1200\"],body[data-aos-duration=\"1200\"] [data-aos]{transition-duration:1.2s}[data-aos][data-aos][data-aos-delay=\"1200\"],body[data-aos-delay=\"1200\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1200\"].aos-animate,body[data-aos-delay=\"1200\"] [data-aos].aos-animate{transition-delay:1.2s}[data-aos][data-aos][data-aos-duration=\"1250\"],body[data-aos-duration=\"1250\"] [data-aos]{transition-duration:1.25s}[data-aos][data-aos][data-aos-delay=\"1250\"],body[data-aos-delay=\"1250\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1250\"].aos-animate,body[data-aos-delay=\"1250\"] [data-aos].aos-animate{transition-delay:1.25s}[data-aos][data-aos][data-aos-duration=\"1300\"],body[data-aos-duration=\"1300\"] [data-aos]{transition-duration:1.3s}[data-aos][data-aos][data-aos-delay=\"1300\"],body[data-aos-delay=\"1300\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1300\"].aos-animate,body[data-aos-delay=\"1300\"] [data-aos].aos-animate{transition-delay:1.3s}[data-aos][data-aos][data-aos-duration=\"1350\"],body[data-aos-duration=\"1350\"] [data-aos]{transition-duration:1.35s}[data-aos][data-aos][data-aos-delay=\"1350\"],body[data-aos-delay=\"1350\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1350\"].aos-animate,body[data-aos-delay=\"1350\"] [data-aos].aos-animate{transition-delay:1.35s}[data-aos][data-aos][data-aos-duration=\"1400\"],body[data-aos-duration=\"1400\"] [data-aos]{transition-duration:1.4s}[data-aos][data-aos][data-aos-delay=\"1400\"],body[data-aos-delay=\"1400\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1400\"].aos-animate,body[data-aos-delay=\"1400\"] [data-aos].aos-animate{transition-delay:1.4s}[data-aos][data-aos][data-aos-duration=\"1450\"],body[data-aos-duration=\"1450\"] [data-aos]{transition-duration:1.45s}[data-aos][data-aos][data-aos-delay=\"1450\"],body[data-aos-delay=\"1450\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1450\"].aos-animate,body[data-aos-delay=\"1450\"] [data-aos].aos-animate{transition-delay:1.45s}[data-aos][data-aos][data-aos-duration=\"1500\"],body[data-aos-duration=\"1500\"] [data-aos]{transition-duration:1.5s}[data-aos][data-aos][data-aos-delay=\"1500\"],body[data-aos-delay=\"1500\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1500\"].aos-animate,body[data-aos-delay=\"1500\"] [data-aos].aos-animate{transition-delay:1.5s}[data-aos][data-aos][data-aos-duration=\"1550\"],body[data-aos-duration=\"1550\"] [data-aos]{transition-duration:1.55s}[data-aos][data-aos][data-aos-delay=\"1550\"],body[data-aos-delay=\"1550\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1550\"].aos-animate,body[data-aos-delay=\"1550\"] [data-aos].aos-animate{transition-delay:1.55s}[data-aos][data-aos][data-aos-duration=\"1600\"],body[data-aos-duration=\"1600\"] [data-aos]{transition-duration:1.6s}[data-aos][data-aos][data-aos-delay=\"1600\"],body[data-aos-delay=\"1600\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1600\"].aos-animate,body[data-aos-delay=\"1600\"] [data-aos].aos-animate{transition-delay:1.6s}[data-aos][data-aos][data-aos-duration=\"1650\"],body[data-aos-duration=\"1650\"] [data-aos]{transition-duration:1.65s}[data-aos][data-aos][data-aos-delay=\"1650\"],body[data-aos-delay=\"1650\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1650\"].aos-animate,body[data-aos-delay=\"1650\"] [data-aos].aos-animate{transition-delay:1.65s}[data-aos][data-aos][data-aos-duration=\"1700\"],body[data-aos-duration=\"1700\"] [data-aos]{transition-duration:1.7s}[data-aos][data-aos][data-aos-delay=\"1700\"],body[data-aos-delay=\"1700\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1700\"].aos-animate,body[data-aos-delay=\"1700\"] [data-aos].aos-animate{transition-delay:1.7s}[data-aos][data-aos][data-aos-duration=\"1750\"],body[data-aos-duration=\"1750\"] [data-aos]{transition-duration:1.75s}[data-aos][data-aos][data-aos-delay=\"1750\"],body[data-aos-delay=\"1750\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1750\"].aos-animate,body[data-aos-delay=\"1750\"] [data-aos].aos-animate{transition-delay:1.75s}[data-aos][data-aos][data-aos-duration=\"1800\"],body[data-aos-duration=\"1800\"] [data-aos]{transition-duration:1.8s}[data-aos][data-aos][data-aos-delay=\"1800\"],body[data-aos-delay=\"1800\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1800\"].aos-animate,body[data-aos-delay=\"1800\"] [data-aos].aos-animate{transition-delay:1.8s}[data-aos][data-aos][data-aos-duration=\"1850\"],body[data-aos-duration=\"1850\"] [data-aos]{transition-duration:1.85s}[data-aos][data-aos][data-aos-delay=\"1850\"],body[data-aos-delay=\"1850\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1850\"].aos-animate,body[data-aos-delay=\"1850\"] [data-aos].aos-animate{transition-delay:1.85s}[data-aos][data-aos][data-aos-duration=\"1900\"],body[data-aos-duration=\"1900\"] [data-aos]{transition-duration:1.9s}[data-aos][data-aos][data-aos-delay=\"1900\"],body[data-aos-delay=\"1900\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1900\"].aos-animate,body[data-aos-delay=\"1900\"] [data-aos].aos-animate{transition-delay:1.9s}[data-aos][data-aos][data-aos-duration=\"1950\"],body[data-aos-duration=\"1950\"] [data-aos]{transition-duration:1.95s}[data-aos][data-aos][data-aos-delay=\"1950\"],body[data-aos-delay=\"1950\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"1950\"].aos-animate,body[data-aos-delay=\"1950\"] [data-aos].aos-animate{transition-delay:1.95s}[data-aos][data-aos][data-aos-duration=\"2000\"],body[data-aos-duration=\"2000\"] [data-aos]{transition-duration:2s}[data-aos][data-aos][data-aos-delay=\"2000\"],body[data-aos-delay=\"2000\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2000\"].aos-animate,body[data-aos-delay=\"2000\"] [data-aos].aos-animate{transition-delay:2s}[data-aos][data-aos][data-aos-duration=\"2050\"],body[data-aos-duration=\"2050\"] [data-aos]{transition-duration:2.05s}[data-aos][data-aos][data-aos-delay=\"2050\"],body[data-aos-delay=\"2050\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2050\"].aos-animate,body[data-aos-delay=\"2050\"] [data-aos].aos-animate{transition-delay:2.05s}[data-aos][data-aos][data-aos-duration=\"2100\"],body[data-aos-duration=\"2100\"] [data-aos]{transition-duration:2.1s}[data-aos][data-aos][data-aos-delay=\"2100\"],body[data-aos-delay=\"2100\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2100\"].aos-animate,body[data-aos-delay=\"2100\"] [data-aos].aos-animate{transition-delay:2.1s}[data-aos][data-aos][data-aos-duration=\"2150\"],body[data-aos-duration=\"2150\"] [data-aos]{transition-duration:2.15s}[data-aos][data-aos][data-aos-delay=\"2150\"],body[data-aos-delay=\"2150\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2150\"].aos-animate,body[data-aos-delay=\"2150\"] [data-aos].aos-animate{transition-delay:2.15s}[data-aos][data-aos][data-aos-duration=\"2200\"],body[data-aos-duration=\"2200\"] [data-aos]{transition-duration:2.2s}[data-aos][data-aos][data-aos-delay=\"2200\"],body[data-aos-delay=\"2200\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2200\"].aos-animate,body[data-aos-delay=\"2200\"] [data-aos].aos-animate{transition-delay:2.2s}[data-aos][data-aos][data-aos-duration=\"2250\"],body[data-aos-duration=\"2250\"] [data-aos]{transition-duration:2.25s}[data-aos][data-aos][data-aos-delay=\"2250\"],body[data-aos-delay=\"2250\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2250\"].aos-animate,body[data-aos-delay=\"2250\"] [data-aos].aos-animate{transition-delay:2.25s}[data-aos][data-aos][data-aos-duration=\"2300\"],body[data-aos-duration=\"2300\"] [data-aos]{transition-duration:2.3s}[data-aos][data-aos][data-aos-delay=\"2300\"],body[data-aos-delay=\"2300\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2300\"].aos-animate,body[data-aos-delay=\"2300\"] [data-aos].aos-animate{transition-delay:2.3s}[data-aos][data-aos][data-aos-duration=\"2350\"],body[data-aos-duration=\"2350\"] [data-aos]{transition-duration:2.35s}[data-aos][data-aos][data-aos-delay=\"2350\"],body[data-aos-delay=\"2350\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2350\"].aos-animate,body[data-aos-delay=\"2350\"] [data-aos].aos-animate{transition-delay:2.35s}[data-aos][data-aos][data-aos-duration=\"2400\"],body[data-aos-duration=\"2400\"] [data-aos]{transition-duration:2.4s}[data-aos][data-aos][data-aos-delay=\"2400\"],body[data-aos-delay=\"2400\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2400\"].aos-animate,body[data-aos-delay=\"2400\"] [data-aos].aos-animate{transition-delay:2.4s}[data-aos][data-aos][data-aos-duration=\"2450\"],body[data-aos-duration=\"2450\"] [data-aos]{transition-duration:2.45s}[data-aos][data-aos][data-aos-delay=\"2450\"],body[data-aos-delay=\"2450\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2450\"].aos-animate,body[data-aos-delay=\"2450\"] [data-aos].aos-animate{transition-delay:2.45s}[data-aos][data-aos][data-aos-duration=\"2500\"],body[data-aos-duration=\"2500\"] [data-aos]{transition-duration:2.5s}[data-aos][data-aos][data-aos-delay=\"2500\"],body[data-aos-delay=\"2500\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2500\"].aos-animate,body[data-aos-delay=\"2500\"] [data-aos].aos-animate{transition-delay:2.5s}[data-aos][data-aos][data-aos-duration=\"2550\"],body[data-aos-duration=\"2550\"] [data-aos]{transition-duration:2.55s}[data-aos][data-aos][data-aos-delay=\"2550\"],body[data-aos-delay=\"2550\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2550\"].aos-animate,body[data-aos-delay=\"2550\"] [data-aos].aos-animate{transition-delay:2.55s}[data-aos][data-aos][data-aos-duration=\"2600\"],body[data-aos-duration=\"2600\"] [data-aos]{transition-duration:2.6s}[data-aos][data-aos][data-aos-delay=\"2600\"],body[data-aos-delay=\"2600\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2600\"].aos-animate,body[data-aos-delay=\"2600\"] [data-aos].aos-animate{transition-delay:2.6s}[data-aos][data-aos][data-aos-duration=\"2650\"],body[data-aos-duration=\"2650\"] [data-aos]{transition-duration:2.65s}[data-aos][data-aos][data-aos-delay=\"2650\"],body[data-aos-delay=\"2650\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2650\"].aos-animate,body[data-aos-delay=\"2650\"] [data-aos].aos-animate{transition-delay:2.65s}[data-aos][data-aos][data-aos-duration=\"2700\"],body[data-aos-duration=\"2700\"] [data-aos]{transition-duration:2.7s}[data-aos][data-aos][data-aos-delay=\"2700\"],body[data-aos-delay=\"2700\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2700\"].aos-animate,body[data-aos-delay=\"2700\"] [data-aos].aos-animate{transition-delay:2.7s}[data-aos][data-aos][data-aos-duration=\"2750\"],body[data-aos-duration=\"2750\"] [data-aos]{transition-duration:2.75s}[data-aos][data-aos][data-aos-delay=\"2750\"],body[data-aos-delay=\"2750\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2750\"].aos-animate,body[data-aos-delay=\"2750\"] [data-aos].aos-animate{transition-delay:2.75s}[data-aos][data-aos][data-aos-duration=\"2800\"],body[data-aos-duration=\"2800\"] [data-aos]{transition-duration:2.8s}[data-aos][data-aos][data-aos-delay=\"2800\"],body[data-aos-delay=\"2800\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2800\"].aos-animate,body[data-aos-delay=\"2800\"] [data-aos].aos-animate{transition-delay:2.8s}[data-aos][data-aos][data-aos-duration=\"2850\"],body[data-aos-duration=\"2850\"] [data-aos]{transition-duration:2.85s}[data-aos][data-aos][data-aos-delay=\"2850\"],body[data-aos-delay=\"2850\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2850\"].aos-animate,body[data-aos-delay=\"2850\"] [data-aos].aos-animate{transition-delay:2.85s}[data-aos][data-aos][data-aos-duration=\"2900\"],body[data-aos-duration=\"2900\"] [data-aos]{transition-duration:2.9s}[data-aos][data-aos][data-aos-delay=\"2900\"],body[data-aos-delay=\"2900\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2900\"].aos-animate,body[data-aos-delay=\"2900\"] [data-aos].aos-animate{transition-delay:2.9s}[data-aos][data-aos][data-aos-duration=\"2950\"],body[data-aos-duration=\"2950\"] [data-aos]{transition-duration:2.95s}[data-aos][data-aos][data-aos-delay=\"2950\"],body[data-aos-delay=\"2950\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"2950\"].aos-animate,body[data-aos-delay=\"2950\"] [data-aos].aos-animate{transition-delay:2.95s}[data-aos][data-aos][data-aos-duration=\"3000\"],body[data-aos-duration=\"3000\"] [data-aos]{transition-duration:3s}[data-aos][data-aos][data-aos-delay=\"3000\"],body[data-aos-delay=\"3000\"] [data-aos]{transition-delay:0s}[data-aos][data-aos][data-aos-delay=\"3000\"].aos-animate,body[data-aos-delay=\"3000\"] [data-aos].aos-animate{transition-delay:3s}[data-aos]{pointer-events:none}[data-aos].aos-animate{pointer-events:auto}[data-aos][data-aos][data-aos-easing=linear],body[data-aos-easing=linear] [data-aos]{transition-timing-function:cubic-bezier(.25,.25,.75,.75)}[data-aos][data-aos][data-aos-easing=ease],body[data-aos-easing=ease] [data-aos]{transition-timing-function:ease}[data-aos][data-aos][data-aos-easing=ease-in],body[data-aos-easing=ease-in] [data-aos]{transition-timing-function:ease-in}[data-aos][data-aos][data-aos-easing=ease-out],body[data-aos-easing=ease-out] [data-aos]{transition-timing-function:ease-out}[data-aos][data-aos][data-aos-easing=ease-in-out],body[data-aos-easing=ease-in-out] [data-aos]{transition-timing-function:ease-in-out}[data-aos][data-aos][data-aos-easing=ease-in-back],body[data-aos-easing=ease-in-back] [data-aos]{transition-timing-function:cubic-bezier(.6,-.28,.735,.045)}[data-aos][data-aos][data-aos-easing=ease-out-back],body[data-aos-easing=ease-out-back] [data-aos]{transition-timing-function:cubic-bezier(.175,.885,.32,1.275)}[data-aos][data-aos][data-aos-easing=ease-in-out-back],body[data-aos-easing=ease-in-out-back] [data-aos]{transition-timing-function:cubic-bezier(.68,-.55,.265,1.55)}[data-aos][data-aos][data-aos-easing=ease-in-sine],body[data-aos-easing=ease-in-sine] [data-aos]{transition-timing-function:cubic-bezier(.47,0,.745,.715)}[data-aos][data-aos][data-aos-easing=ease-out-sine],body[data-aos-easing=ease-out-sine] [data-aos]{transition-timing-function:cubic-bezier(.39,.575,.565,1)}[data-aos][data-aos][data-aos-easing=ease-in-out-sine],body[data-aos-easing=ease-in-out-sine] [data-aos]{transition-timing-function:cubic-bezier(.445,.05,.55,.95)}[data-aos][data-aos][data-aos-easing=ease-in-quad],body[data-aos-easing=ease-in-quad] [data-aos]{transition-timing-function:cubic-bezier(.55,.085,.68,.53)}[data-aos][data-aos][data-aos-easing=ease-out-quad],body[data-aos-easing=ease-out-quad] [data-aos]{transition-timing-function:cubic-bezier(.25,.46,.45,.94)}[data-aos][data-aos][data-aos-easing=ease-in-out-quad],body[data-aos-easing=ease-in-out-quad] [data-aos]{transition-timing-function:cubic-bezier(.455,.03,.515,.955)}[data-aos][data-aos][data-aos-easing=ease-in-cubic],body[data-aos-easing=ease-in-cubic] [data-aos]{transition-timing-function:cubic-bezier(.55,.085,.68,.53)}[data-aos][data-aos][data-aos-easing=ease-out-cubic],body[data-aos-easing=ease-out-cubic] [data-aos]{transition-timing-function:cubic-bezier(.25,.46,.45,.94)}[data-aos][data-aos][data-aos-easing=ease-in-out-cubic],body[data-aos-easing=ease-in-out-cubic] [data-aos]{transition-timing-function:cubic-bezier(.455,.03,.515,.955)}[data-aos][data-aos][data-aos-easing=ease-in-quart],body[data-aos-easing=ease-in-quart] [data-aos]{transition-timing-function:cubic-bezier(.55,.085,.68,.53)}[data-aos][data-aos][data-aos-easing=ease-out-quart],body[data-aos-easing=ease-out-quart] [data-aos]{transition-timing-function:cubic-bezier(.25,.46,.45,.94)}[data-aos][data-aos][data-aos-easing=ease-in-out-quart],body[data-aos-easing=ease-in-out-quart] [data-aos]{transition-timing-function:cubic-bezier(.455,.03,.515,.955)}@media screen{html:not(.no-js) [data-aos^=fade][data-aos^=fade]{opacity:0;transition-property:opacity,transform}html:not(.no-js) [data-aos^=fade][data-aos^=fade].aos-animate{opacity:1;transform:none}html:not(.no-js) [data-aos=fade-up]{transform:translate3d(0,100px,0)}html:not(.no-js) [data-aos=fade-down]{transform:translate3d(0,-100px,0)}html:not(.no-js) [data-aos=fade-right]{transform:translate3d(-100px,0,0)}html:not(.no-js) [data-aos=fade-left]{transform:translate3d(100px,0,0)}html:not(.no-js) [data-aos=fade-up-right]{transform:translate3d(-100px,100px,0)}html:not(.no-js) [data-aos=fade-up-left]{transform:translate3d(100px,100px,0)}html:not(.no-js) [data-aos=fade-down-right]{transform:translate3d(-100px,-100px,0)}html:not(.no-js) [data-aos=fade-down-left]{transform:translate3d(100px,-100px,0)}html:not(.no-js) [data-aos^=zoom][data-aos^=zoom]{opacity:0;transition-property:opacity,transform}html:not(.no-js) [data-aos^=zoom][data-aos^=zoom].aos-animate{opacity:1;transform:translateZ(0) scale(1)}html:not(.no-js) [data-aos=zoom-in]{transform:scale(.6)}html:not(.no-js) [data-aos=zoom-in-up]{transform:translate3d(0,100px,0) scale(.6)}html:not(.no-js) [data-aos=zoom-in-down]{transform:translate3d(0,-100px,0) scale(.6)}html:not(.no-js) [data-aos=zoom-in-right]{transform:translate3d(-100px,0,0) scale(.6)}html:not(.no-js) [data-aos=zoom-in-left]{transform:translate3d(100px,0,0) scale(.6)}html:not(.no-js) [data-aos=zoom-out]{transform:scale(1.2)}html:not(.no-js) [data-aos=zoom-out-up]{transform:translate3d(0,100px,0) scale(1.2)}html:not(.no-js) [data-aos=zoom-out-down]{transform:translate3d(0,-100px,0) scale(1.2)}html:not(.no-js) [data-aos=zoom-out-right]{transform:translate3d(-100px,0,0) scale(1.2)}html:not(.no-js) [data-aos=zoom-out-left]{transform:translate3d(100px,0,0) scale(1.2)}html:not(.no-js) [data-aos^=slide][data-aos^=slide]{transition-property:transform;visibility:hidden}html:not(.no-js) [data-aos^=slide][data-aos^=slide].aos-animate{visibility:visible;transform:translateZ(0)}html:not(.no-js) [data-aos=slide-up]{transform:translate3d(0,100%,0)}html:not(.no-js) [data-aos=slide-down]{transform:translate3d(0,-100%,0)}html:not(.no-js) [data-aos=slide-right]{transform:translate3d(-100%,0,0)}html:not(.no-js) [data-aos=slide-left]{transform:translate3d(100%,0,0)}html:not(.no-js) [data-aos^=flip][data-aos^=flip]{backface-visibility:hidden;transition-property:transform}html:not(.no-js) [data-aos=flip-left]{transform:perspective(2500px) rotateY(-100deg)}html:not(.no-js) [data-aos=flip-left].aos-animate{transform:perspective(2500px) rotateY(0)}html:not(.no-js) [data-aos=flip-right]{transform:perspective(2500px) rotateY(100deg)}html:not(.no-js) [data-aos=flip-right].aos-animate{transform:perspective(2500px) rotateY(0)}html:not(.no-js) [data-aos=flip-up]{transform:perspective(2500px) rotateX(-100deg)}html:not(.no-js) [data-aos=flip-up].aos-animate{transform:perspective(2500px) rotateX(0)}html:not(.no-js) [data-aos=flip-down]{transform:perspective(2500px) rotateX(100deg)}html:not(.no-js) [data-aos=flip-down].aos-animate{transform:perspective(2500px) rotateX(0)}}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./vendor/power-components/livewire-powergrid/dist/powergrid.css":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./vendor/power-components/livewire-powergrid/dist/powergrid.css ***!
@@ -12976,7 +13040,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "[x-cloak]{display:none}table{width:100%}.bootstrap-select,.dropdown-menu,.power-grid-table input,select{font-size:.85rem!important}.btn-light{background-color:#fff;border-color:#d7dbdf;color:#000;font-size:.85rem}.form-control:disabled,.form-control[readonly]{background-color:#fff!important;opacity:1}.btn-light:hover{background-color:#fff;border-color:#d7dbdf;color:#000;font-size:.85rem}.btn-light,.has-search .form-control{padding-left:10px!important}.table .checkbox-column{max-width:50px!important;text-align:center;width:50px!important}.accordion-button{padding:.7rem}.btn-light,.has-search .form-control{padding-left:2.375rem}.page-item.active .page-link,.page-item.disabled .page-link,.page-link,.page-link:hover,.page-link:last-child{@apply bg-white text-gray-300 border-gray-200}.page-link{color:gray!important}.page-item.active .page-link{background-color:gray;border-color:gray;color:#fff!important}.loader{animation:spinner 1.5s linear infinite;border-top-color:#222}@keyframes spinner{0%{transform:rotate(0)}to{transform:rotate(1turn)}}table thead{color:#6b6a6a;font-size:.75rem;padding-bottom:8px;padding-left:15px;padding-top:8px;text-transform:uppercase}.dropdown-toggle{background:#fff!important;color:#7a7e82!important;padding-left:10px!important}.power_grid,select{font-size:.85rem!important;opacity:1!important;padding-left:10px!important}.badge{font-size:.77em}.btn,.form-control{box-shadow:none!important}.dropdown-item,.dropdown-toggle{color:#454444;display:inline-block;font-size:.85rem;padding-bottom:8px;padding-left:15px;padding-top:8px;vertical-align:middle}.bootstrap-select{padding-left:0!important}.btn-group-vertical>.btn,.btn-group>.btn{border-color:#ced4da!important;flex:1 1 auto;position:relative}[x-ref=editable].pg-single-line{overflow:hidden;white-space:nowrap}[x-ref=editable].pg-single-line br{display:none}[x-ref=editable].pg-single-line *{display:inline;white-space:nowrap}[x-ref=editable][placeholder]:empty:before{background-color:transparent;color:gray;content:attr(placeholder);position:absolute}.power-grid-button{width:100%}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "[x-cloak]{display:none}table{width:100%}.bootstrap-select,.dropdown-menu,.power-grid-table input,select{font-size:.85rem!important}.btn-light{background-color:#fff;border-color:#d7dbdf;color:#000;font-size:.85rem}.form-control:disabled,.form-control[readonly]{background-color:#fff!important;opacity:1}.btn-light:hover{background-color:#fff;border-color:#d7dbdf;color:#000;font-size:.85rem}.btn-light,.has-search .form-control{padding-left:10px!important}.table .checkbox-column{max-width:50px!important;text-align:center;width:50px!important}.accordion-button{padding:.7rem}.btn-light,.has-search .form-control{padding-left:2.375rem}.page-item.active .page-link,.page-item.disabled .page-link,.page-link,.page-link:hover,.page-link:last-child{@apply bg-white text-gray-300 border-gray-200}.page-link{color:gray!important}.page-item.active .page-link{background-color:gray;border-color:gray;color:#fff!important}.loader{animation:spinner 1.5s linear infinite;border-top-color:#222}@keyframes spinner{0%{transform:rotate(0)}to{transform:rotate(1turn)}}table thead{color:#6b6a6a;font-size:.75rem;padding-bottom:8px;padding-left:15px;padding-top:8px;text-transform:uppercase}.dropdown-toggle{background:#fff!important;color:#7a7e82!important;padding-left:10px!important}.power_grid,select{font-size:.85rem!important;opacity:1!important;padding-left:10px!important}.badge{font-size:.77em}.btn,.form-control{box-shadow:none!important}.dropdown-item,.dropdown-toggle{color:#454444;display:inline-block;font-size:.85rem;padding-bottom:8px;padding-left:15px;padding-top:8px;vertical-align:middle}.bootstrap-select{padding-left:0!important}.btn-group-vertical>.btn,.btn-group>.btn{border-color:#ced4da!important;flex:1 1 auto;position:relative}[x-ref=editable].pg-single-line{overflow:hidden;white-space:nowrap}[x-ref=editable].pg-single-line br{display:none}[x-ref=editable].pg-single-line *{display:inline;white-space:nowrap}[x-ref=editable][placeholder]:empty:before{background-color:transparent;color:gray;content:attr(placeholder);position:absolute}.power-grid-button{width:100%}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15789,6 +15853,109 @@ events.init();
 // export all init functions
 
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/is-dom-node-list/dist/is-dom-node-list.es.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/is-dom-node-list/dist/is-dom-node-list.es.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var is_dom_node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-dom-node */ "./node_modules/is-dom-node/dist/is-dom-node.es.js");
+/*! @license is-dom-node-list v1.2.1
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+
+
+function isDomNodeList(x) {
+	var prototypeToString = Object.prototype.toString.call(x);
+	var regex = /^\[object (HTMLCollection|NodeList|Object)\]$/;
+
+	return typeof window.NodeList === 'object'
+		? x instanceof window.NodeList
+		: x !== null &&
+				typeof x === 'object' &&
+				typeof x.length === 'number' &&
+				regex.test(prototypeToString) &&
+				(x.length === 0 || (0,is_dom_node__WEBPACK_IMPORTED_MODULE_0__["default"])(x[0]))
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isDomNodeList);
+
+
+/***/ }),
+
+/***/ "./node_modules/is-dom-node/dist/is-dom-node.es.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/is-dom-node/dist/is-dom-node.es.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*! @license is-dom-node v1.0.4
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+function isDomNode(x) {
+	return typeof window.Node === 'object'
+		? x instanceof window.Node
+		: x !== null &&
+				typeof x === 'object' &&
+				typeof x.nodeType === 'number' &&
+				typeof x.nodeName === 'string'
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isDomNode);
+
 
 /***/ }),
 
@@ -33017,6 +33184,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/miniraf/dist/miniraf.es.js":
+/*!*************************************************!*\
+  !*** ./node_modules/miniraf/dist/miniraf.es.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*! @license miniraf v1.0.0
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+var polyfill = (function () {
+	var clock = Date.now();
+
+	return function (callback) {
+		var currentTime = Date.now();
+		if (currentTime - clock > 16) {
+			clock = currentTime;
+			callback(currentTime);
+		} else {
+			setTimeout(function () { return polyfill(callback); }, 0);
+		}
+	}
+})();
+
+var index = window.requestAnimationFrame ||
+	window.webkitRequestAnimationFrame ||
+	window.mozRequestAnimationFrame ||
+	polyfill;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
+
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -33208,6 +33433,1697 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+
+/***/ "./node_modules/rematrix/dist/rematrix.es.js":
+/*!***************************************************!*\
+  !*** ./node_modules/rematrix/dist/rematrix.es.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   format: () => (/* binding */ format),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   inverse: () => (/* binding */ inverse),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   parse: () => (/* binding */ parse),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   rotateX: () => (/* binding */ rotateX),
+/* harmony export */   rotateY: () => (/* binding */ rotateY),
+/* harmony export */   rotateZ: () => (/* binding */ rotateZ),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   scaleX: () => (/* binding */ scaleX),
+/* harmony export */   scaleY: () => (/* binding */ scaleY),
+/* harmony export */   scaleZ: () => (/* binding */ scaleZ),
+/* harmony export */   skew: () => (/* binding */ skew),
+/* harmony export */   skewX: () => (/* binding */ skewX),
+/* harmony export */   skewY: () => (/* binding */ skewY),
+/* harmony export */   toString: () => (/* binding */ toString),
+/* harmony export */   translate: () => (/* binding */ translate),
+/* harmony export */   translateX: () => (/* binding */ translateX),
+/* harmony export */   translateY: () => (/* binding */ translateY),
+/* harmony export */   translateZ: () => (/* binding */ translateZ)
+/* harmony export */ });
+/*! @license Rematrix v0.3.0
+
+	Copyright 2018 Julian Lloyd.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
+*/
+/**
+ * @module Rematrix
+ */
+
+/**
+ * Transformation matrices in the browser come in two flavors:
+ *
+ *  - `matrix` using 6 values (short)
+ *  - `matrix3d` using 16 values (long)
+ *
+ * This utility follows this [conversion guide](https://goo.gl/EJlUQ1)
+ * to expand short form matrices to their equivalent long form.
+ *
+ * @param  {array} source - Accepts both short and long form matrices.
+ * @return {array}
+ */
+function format(source) {
+	if (source.constructor !== Array) {
+		throw new TypeError('Expected array.')
+	}
+	if (source.length === 16) {
+		return source
+	}
+	if (source.length === 6) {
+		var matrix = identity();
+		matrix[0] = source[0];
+		matrix[1] = source[1];
+		matrix[4] = source[2];
+		matrix[5] = source[3];
+		matrix[12] = source[4];
+		matrix[13] = source[5];
+		return matrix
+	}
+	throw new RangeError('Expected array with either 6 or 16 values.')
+}
+
+/**
+ * Returns a matrix representing no transformation. The product of any matrix
+ * multiplied by the identity matrix will be the original matrix.
+ *
+ * > **Tip:** Similar to how `5 * 1 === 5`, where `1` is the identity.
+ *
+ * @return {array}
+ */
+function identity() {
+	var matrix = [];
+	for (var i = 0; i < 16; i++) {
+		i % 5 == 0 ? matrix.push(1) : matrix.push(0);
+	}
+	return matrix
+}
+
+/**
+ * Returns a matrix describing the inverse transformation of the source
+ * matrix. The product of any matrix multiplied by its inverse will be the
+ * identity matrix.
+ *
+ * > **Tip:** Similar to how `5 * (1/5) === 1`, where `1/5` is the inverse.
+ *
+ * @param  {array} source - Accepts both short and long form matrices.
+ * @return {array}
+ */
+function inverse(source) {
+	var m = format(source);
+
+	var s0 = m[0] * m[5] - m[4] * m[1];
+	var s1 = m[0] * m[6] - m[4] * m[2];
+	var s2 = m[0] * m[7] - m[4] * m[3];
+	var s3 = m[1] * m[6] - m[5] * m[2];
+	var s4 = m[1] * m[7] - m[5] * m[3];
+	var s5 = m[2] * m[7] - m[6] * m[3];
+
+	var c5 = m[10] * m[15] - m[14] * m[11];
+	var c4 = m[9] * m[15] - m[13] * m[11];
+	var c3 = m[9] * m[14] - m[13] * m[10];
+	var c2 = m[8] * m[15] - m[12] * m[11];
+	var c1 = m[8] * m[14] - m[12] * m[10];
+	var c0 = m[8] * m[13] - m[12] * m[9];
+
+	var determinant = 1 / (s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0);
+
+	if (isNaN(determinant) || determinant === Infinity) {
+		throw new Error('Inverse determinant attempted to divide by zero.')
+	}
+
+	return [
+		(m[5] * c5 - m[6] * c4 + m[7] * c3) * determinant,
+		(-m[1] * c5 + m[2] * c4 - m[3] * c3) * determinant,
+		(m[13] * s5 - m[14] * s4 + m[15] * s3) * determinant,
+		(-m[9] * s5 + m[10] * s4 - m[11] * s3) * determinant,
+
+		(-m[4] * c5 + m[6] * c2 - m[7] * c1) * determinant,
+		(m[0] * c5 - m[2] * c2 + m[3] * c1) * determinant,
+		(-m[12] * s5 + m[14] * s2 - m[15] * s1) * determinant,
+		(m[8] * s5 - m[10] * s2 + m[11] * s1) * determinant,
+
+		(m[4] * c4 - m[5] * c2 + m[7] * c0) * determinant,
+		(-m[0] * c4 + m[1] * c2 - m[3] * c0) * determinant,
+		(m[12] * s4 - m[13] * s2 + m[15] * s0) * determinant,
+		(-m[8] * s4 + m[9] * s2 - m[11] * s0) * determinant,
+
+		(-m[4] * c3 + m[5] * c1 - m[6] * c0) * determinant,
+		(m[0] * c3 - m[1] * c1 + m[2] * c0) * determinant,
+		(-m[12] * s3 + m[13] * s1 - m[14] * s0) * determinant,
+		(m[8] * s3 - m[9] * s1 + m[10] * s0) * determinant
+	]
+}
+
+/**
+ * Returns a 4x4 matrix describing the combined transformations
+ * of both arguments.
+ *
+ * > **Note:** Order is very important. For example, rotating 45°
+ * along the Z-axis, followed by translating 500 pixels along the
+ * Y-axis... is not the same as translating 500 pixels along the
+ * Y-axis, followed by rotating 45° along on the Z-axis.
+ *
+ * @param  {array} m - Accepts both short and long form matrices.
+ * @param  {array} x - Accepts both short and long form matrices.
+ * @return {array}
+ */
+function multiply(m, x) {
+	var fm = format(m);
+	var fx = format(x);
+	var product = [];
+
+	for (var i = 0; i < 4; i++) {
+		var row = [fm[i], fm[i + 4], fm[i + 8], fm[i + 12]];
+		for (var j = 0; j < 4; j++) {
+			var k = j * 4;
+			var col = [fx[k], fx[k + 1], fx[k + 2], fx[k + 3]];
+			var result =
+				row[0] * col[0] + row[1] * col[1] + row[2] * col[2] + row[3] * col[3];
+
+			product[i + k] = result;
+		}
+	}
+
+	return product
+}
+
+/**
+ * Attempts to return a 4x4 matrix describing the CSS transform
+ * matrix passed in, but will return the identity matrix as a
+ * fallback.
+ *
+ * > **Tip:** This method is used to convert a CSS matrix (retrieved as a
+ * `string` from computed styles) to its equivalent array format.
+ *
+ * @param  {string} source - `matrix` or `matrix3d` CSS Transform value.
+ * @return {array}
+ */
+function parse(source) {
+	if (typeof source === 'string') {
+		var match = source.match(/matrix(3d)?\(([^)]+)\)/);
+		if (match) {
+			var raw = match[2].split(', ').map(parseFloat);
+			return format(raw)
+		}
+	}
+	return identity()
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis rotation.
+ *
+ * > **Tip:** This is just an alias for `Rematrix.rotateZ` for parity with CSS
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotate(angle) {
+	return rotateZ(angle)
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis rotation.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotateX(angle) {
+	var theta = Math.PI / 180 * angle;
+	var matrix = identity();
+
+	matrix[5] = matrix[10] = Math.cos(theta);
+	matrix[6] = matrix[9] = Math.sin(theta);
+	matrix[9] *= -1;
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis rotation.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotateY(angle) {
+	var theta = Math.PI / 180 * angle;
+	var matrix = identity();
+
+	matrix[0] = matrix[10] = Math.cos(theta);
+	matrix[2] = matrix[8] = Math.sin(theta);
+	matrix[2] *= -1;
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis rotation.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotateZ(angle) {
+	var theta = Math.PI / 180 * angle;
+	var matrix = identity();
+
+	matrix[0] = matrix[5] = Math.cos(theta);
+	matrix[1] = matrix[4] = Math.sin(theta);
+	matrix[4] *= -1;
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing 2D scaling. The first argument
+ * is used for both X and Y-axis scaling, unless an optional
+ * second argument is provided to explicitly define Y-axis scaling.
+ *
+ * @param  {number} scalar    - Decimal multiplier.
+ * @param  {number} [scalarY] - Decimal multiplier.
+ * @return {array}
+ */
+function scale(scalar, scalarY) {
+	var matrix = identity();
+
+	matrix[0] = scalar;
+	matrix[5] = typeof scalarY === 'number' ? scalarY : scalar;
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis scaling.
+ *
+ * @param  {number} scalar - Decimal multiplier.
+ * @return {array}
+ */
+function scaleX(scalar) {
+	var matrix = identity();
+	matrix[0] = scalar;
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis scaling.
+ *
+ * @param  {number} scalar - Decimal multiplier.
+ * @return {array}
+ */
+function scaleY(scalar) {
+	var matrix = identity();
+	matrix[5] = scalar;
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis scaling.
+ *
+ * @param  {number} scalar - Decimal multiplier.
+ * @return {array}
+ */
+function scaleZ(scalar) {
+	var matrix = identity();
+	matrix[10] = scalar;
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing shear. The first argument
+ * defines X-axis shearing, and an optional second argument
+ * defines Y-axis shearing.
+ *
+ * @param  {number} angleX   - Measured in degrees.
+ * @param  {number} [angleY] - Measured in degrees.
+ * @return {array}
+ */
+function skew(angleX, angleY) {
+	var thetaX = Math.PI / 180 * angleX;
+	var matrix = identity();
+
+	matrix[4] = Math.tan(thetaX);
+
+	if (angleY) {
+		var thetaY = Math.PI / 180 * angleY;
+		matrix[1] = Math.tan(thetaY);
+	}
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis shear.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function skewX(angle) {
+	var theta = Math.PI / 180 * angle;
+	var matrix = identity();
+
+	matrix[4] = Math.tan(theta);
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis shear.
+ *
+ * @param  {number} angle - Measured in degrees
+ * @return {array}
+ */
+function skewY(angle) {
+	var theta = Math.PI / 180 * angle;
+	var matrix = identity();
+
+	matrix[1] = Math.tan(theta);
+
+	return matrix
+}
+
+/**
+ * Returns a CSS Transform property value equivalent to the source matrix.
+ *
+ * @param  {array} source - Accepts both short and long form matrices.
+ * @return {string}
+ */
+function toString(source) {
+	return ("matrix3d(" + (format(source).join(', ')) + ")")
+}
+
+/**
+ * Returns a 4x4 matrix describing 2D translation. The first
+ * argument defines X-axis translation, and an optional second
+ * argument defines Y-axis translation.
+ *
+ * @param  {number} distanceX   - Measured in pixels.
+ * @param  {number} [distanceY] - Measured in pixels.
+ * @return {array}
+ */
+function translate(distanceX, distanceY) {
+	var matrix = identity();
+	matrix[12] = distanceX;
+
+	if (distanceY) {
+		matrix[13] = distanceY;
+	}
+
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis translation.
+ *
+ * @param  {number} distance - Measured in pixels.
+ * @return {array}
+ */
+function translateX(distance) {
+	var matrix = identity();
+	matrix[12] = distance;
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis translation.
+ *
+ * @param  {number} distance - Measured in pixels.
+ * @return {array}
+ */
+function translateY(distance) {
+	var matrix = identity();
+	matrix[13] = distance;
+	return matrix
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis translation.
+ *
+ * @param  {number} distance - Measured in pixels.
+ * @return {array}
+ */
+function translateZ(distance) {
+	var matrix = identity();
+	matrix[14] = distance;
+	return matrix
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/scrollreveal/dist/scrollreveal.es.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/scrollreveal/dist/scrollreveal.es.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var tealight__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tealight */ "./node_modules/tealight/dist/tealight.es.js");
+/* harmony import */ var rematrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rematrix */ "./node_modules/rematrix/dist/rematrix.es.js");
+/* harmony import */ var miniraf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! miniraf */ "./node_modules/miniraf/dist/miniraf.es.js");
+/*! @license ScrollReveal v4.0.9
+
+	Copyright 2021 Fisssion LLC.
+
+	Licensed under the GNU General Public License 3.0 for
+	compatible open source projects and non-commercial use.
+
+	For commercial sites, themes, projects, and applications,
+	keep your source code private/proprietary by purchasing
+	a commercial license from https://scrollrevealjs.org/
+*/
+
+
+
+
+var defaults = {
+	delay: 0,
+	distance: '0',
+	duration: 600,
+	easing: 'cubic-bezier(0.5, 0, 0, 1)',
+	interval: 0,
+	opacity: 0,
+	origin: 'bottom',
+	rotate: {
+		x: 0,
+		y: 0,
+		z: 0
+	},
+	scale: 1,
+	cleanup: false,
+	container: document.documentElement,
+	desktop: true,
+	mobile: true,
+	reset: false,
+	useDelay: 'always',
+	viewFactor: 0.0,
+	viewOffset: {
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0
+	},
+	afterReset: function afterReset() {},
+	afterReveal: function afterReveal() {},
+	beforeReset: function beforeReset() {},
+	beforeReveal: function beforeReveal() {}
+};
+
+function failure() {
+	document.documentElement.classList.remove('sr');
+
+	return {
+		clean: function clean() {},
+		destroy: function destroy() {},
+		reveal: function reveal() {},
+		sync: function sync() {},
+		get noop() {
+			return true
+		}
+	}
+}
+
+function success() {
+	document.documentElement.classList.add('sr');
+
+	if (document.body) {
+		document.body.style.height = '100%';
+	} else {
+		document.addEventListener('DOMContentLoaded', function () {
+			document.body.style.height = '100%';
+		});
+	}
+}
+
+var mount = { success: success, failure: failure };
+
+function isObject(x) {
+	return (
+		x !== null &&
+		x instanceof Object &&
+		(x.constructor === Object ||
+			Object.prototype.toString.call(x) === '[object Object]')
+	)
+}
+
+function each(collection, callback) {
+	if (isObject(collection)) {
+		var keys = Object.keys(collection);
+		return keys.forEach(function (key) { return callback(collection[key], key, collection); })
+	}
+	if (collection instanceof Array) {
+		return collection.forEach(function (item, i) { return callback(item, i, collection); })
+	}
+	throw new TypeError('Expected either an array or object literal.')
+}
+
+function logger(message) {
+	var details = [], len = arguments.length - 1;
+	while ( len-- > 0 ) details[ len ] = arguments[ len + 1 ];
+
+	if (this.constructor.debug && console) {
+		var report = "%cScrollReveal: " + message;
+		details.forEach(function (detail) { return (report += "\n — " + detail); });
+		console.log(report, 'color: #ea654b;'); // eslint-disable-line no-console
+	}
+}
+
+function rinse() {
+	var this$1 = this;
+
+	var struct = function () { return ({
+		active: [],
+		stale: []
+	}); };
+
+	var elementIds = struct();
+	var sequenceIds = struct();
+	var containerIds = struct();
+
+	/**
+	 * Take stock of active element IDs.
+	 */
+	try {
+		each((0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-sr-id]'), function (node) {
+			var id = parseInt(node.getAttribute('data-sr-id'));
+			elementIds.active.push(id);
+		});
+	} catch (e) {
+		throw e
+	}
+	/**
+	 * Destroy stale elements.
+	 */
+	each(this.store.elements, function (element) {
+		if (elementIds.active.indexOf(element.id) === -1) {
+			elementIds.stale.push(element.id);
+		}
+	});
+
+	each(elementIds.stale, function (staleId) { return delete this$1.store.elements[staleId]; });
+
+	/**
+	 * Take stock of active container and sequence IDs.
+	 */
+	each(this.store.elements, function (element) {
+		if (containerIds.active.indexOf(element.containerId) === -1) {
+			containerIds.active.push(element.containerId);
+		}
+		if (element.hasOwnProperty('sequence')) {
+			if (sequenceIds.active.indexOf(element.sequence.id) === -1) {
+				sequenceIds.active.push(element.sequence.id);
+			}
+		}
+	});
+
+	/**
+	 * Destroy stale containers.
+	 */
+	each(this.store.containers, function (container) {
+		if (containerIds.active.indexOf(container.id) === -1) {
+			containerIds.stale.push(container.id);
+		}
+	});
+
+	each(containerIds.stale, function (staleId) {
+		var stale = this$1.store.containers[staleId].node;
+		stale.removeEventListener('scroll', this$1.delegate);
+		stale.removeEventListener('resize', this$1.delegate);
+		delete this$1.store.containers[staleId];
+	});
+
+	/**
+	 * Destroy stale sequences.
+	 */
+	each(this.store.sequences, function (sequence) {
+		if (sequenceIds.active.indexOf(sequence.id) === -1) {
+			sequenceIds.stale.push(sequence.id);
+		}
+	});
+
+	each(sequenceIds.stale, function (staleId) { return delete this$1.store.sequences[staleId]; });
+}
+
+var getPrefixedCssProp = (function () {
+	var properties = {};
+	var style = document.documentElement.style;
+
+	function getPrefixedCssProperty(name, source) {
+		if ( source === void 0 ) source = style;
+
+		if (name && typeof name === 'string') {
+			if (properties[name]) {
+				return properties[name]
+			}
+			if (typeof source[name] === 'string') {
+				return (properties[name] = name)
+			}
+			if (typeof source[("-webkit-" + name)] === 'string') {
+				return (properties[name] = "-webkit-" + name)
+			}
+			throw new RangeError(("Unable to find \"" + name + "\" style property."))
+		}
+		throw new TypeError('Expected a string.')
+	}
+
+	getPrefixedCssProperty.clearCache = function () { return (properties = {}); };
+
+	return getPrefixedCssProperty
+})();
+
+function style(element) {
+	var computed = window.getComputedStyle(element.node);
+	var position = computed.position;
+	var config = element.config;
+
+	/**
+	 * Generate inline styles
+	 */
+	var inline = {};
+	var inlineStyle = element.node.getAttribute('style') || '';
+	var inlineMatch = inlineStyle.match(/[\w-]+\s*:\s*[^;]+\s*/gi) || [];
+
+	inline.computed = inlineMatch ? inlineMatch.map(function (m) { return m.trim(); }).join('; ') + ';' : '';
+
+	inline.generated = inlineMatch.some(function (m) { return m.match(/visibility\s?:\s?visible/i); })
+		? inline.computed
+		: inlineMatch.concat( ['visibility: visible']).map(function (m) { return m.trim(); }).join('; ') + ';';
+
+	/**
+	 * Generate opacity styles
+	 */
+	var computedOpacity = parseFloat(computed.opacity);
+	var configOpacity = !isNaN(parseFloat(config.opacity))
+		? parseFloat(config.opacity)
+		: parseFloat(computed.opacity);
+
+	var opacity = {
+		computed: computedOpacity !== configOpacity ? ("opacity: " + computedOpacity + ";") : '',
+		generated: computedOpacity !== configOpacity ? ("opacity: " + configOpacity + ";") : ''
+	};
+
+	/**
+	 * Generate transformation styles
+	 */
+	var transformations = [];
+
+	if (parseFloat(config.distance)) {
+		var axis = config.origin === 'top' || config.origin === 'bottom' ? 'Y' : 'X';
+
+		/**
+		 * Let’s make sure our our pixel distances are negative for top and left.
+		 * e.g. { origin: 'top', distance: '25px' } starts at `top: -25px` in CSS.
+		 */
+		var distance = config.distance;
+		if (config.origin === 'top' || config.origin === 'left') {
+			distance = /^-/.test(distance) ? distance.substr(1) : ("-" + distance);
+		}
+
+		var ref = distance.match(/(^-?\d+\.?\d?)|(em$|px$|%$)/g);
+		var value = ref[0];
+		var unit = ref[1];
+
+		switch (unit) {
+			case 'em':
+				distance = parseInt(computed.fontSize) * value;
+				break
+			case 'px':
+				distance = value;
+				break
+			case '%':
+				/**
+				 * Here we use `getBoundingClientRect` instead of
+				 * the existing data attached to `element.geometry`
+				 * because only the former includes any transformations
+				 * current applied to the element.
+				 *
+				 * If that behavior ends up being unintuitive, this
+				 * logic could instead utilize `element.geometry.height`
+				 * and `element.geoemetry.width` for the distance calculation
+				 */
+				distance =
+					axis === 'Y'
+						? (element.node.getBoundingClientRect().height * value) / 100
+						: (element.node.getBoundingClientRect().width * value) / 100;
+				break
+			default:
+				throw new RangeError('Unrecognized or missing distance unit.')
+		}
+
+		if (axis === 'Y') {
+			transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.translateY)(distance));
+		} else {
+			transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.translateX)(distance));
+		}
+	}
+
+	if (config.rotate.x) { transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.rotateX)(config.rotate.x)); }
+	if (config.rotate.y) { transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.rotateY)(config.rotate.y)); }
+	if (config.rotate.z) { transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.rotateZ)(config.rotate.z)); }
+	if (config.scale !== 1) {
+		if (config.scale === 0) {
+			/**
+			 * The CSS Transforms matrix interpolation specification
+			 * basically disallows transitions of non-invertible
+			 * matrixes, which means browsers won't transition
+			 * elements with zero scale.
+			 *
+			 * That’s inconvenient for the API and developer
+			 * experience, so we simply nudge their value
+			 * slightly above zero; this allows browsers
+			 * to transition our element as expected.
+			 *
+			 * `0.0002` was the smallest number
+			 * that performed across browsers.
+			 */
+			transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.scale)(0.0002));
+		} else {
+			transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.scale)(config.scale));
+		}
+	}
+
+	var transform = {};
+	if (transformations.length) {
+		transform.property = getPrefixedCssProp('transform');
+		/**
+		 * The default computed transform value should be one of:
+		 * undefined || 'none' || 'matrix()' || 'matrix3d()'
+		 */
+		transform.computed = {
+			raw: computed[transform.property],
+			matrix: (0,rematrix__WEBPACK_IMPORTED_MODULE_1__.parse)(computed[transform.property])
+		};
+
+		transformations.unshift(transform.computed.matrix);
+		var product = transformations.reduce(rematrix__WEBPACK_IMPORTED_MODULE_1__.multiply);
+
+		transform.generated = {
+			initial: ((transform.property) + ": matrix3d(" + (product.join(', ')) + ");"),
+			final: ((transform.property) + ": matrix3d(" + (transform.computed.matrix.join(', ')) + ");")
+		};
+	} else {
+		transform.generated = {
+			initial: '',
+			final: ''
+		};
+	}
+
+	/**
+	 * Generate transition styles
+	 */
+	var transition = {};
+	if (opacity.generated || transform.generated.initial) {
+		transition.property = getPrefixedCssProp('transition');
+		transition.computed = computed[transition.property];
+		transition.fragments = [];
+
+		var delay = config.delay;
+		var duration = config.duration;
+		var easing = config.easing;
+
+		if (opacity.generated) {
+			transition.fragments.push({
+				delayed: ("opacity " + (duration / 1000) + "s " + easing + " " + (delay / 1000) + "s"),
+				instant: ("opacity " + (duration / 1000) + "s " + easing + " 0s")
+			});
+		}
+
+		if (transform.generated.initial) {
+			transition.fragments.push({
+				delayed: ((transform.property) + " " + (duration / 1000) + "s " + easing + " " + (delay / 1000) + "s"),
+				instant: ((transform.property) + " " + (duration / 1000) + "s " + easing + " 0s")
+			});
+		}
+
+		/**
+		 * The default computed transition property should be undefined, or one of:
+		 * '' || 'none 0s ease 0s' || 'all 0s ease 0s' || 'all 0s 0s cubic-bezier()'
+		 */
+		var hasCustomTransition =
+			transition.computed && !transition.computed.match(/all 0s|none 0s/);
+
+		if (hasCustomTransition) {
+			transition.fragments.unshift({
+				delayed: transition.computed,
+				instant: transition.computed
+			});
+		}
+
+		var composed = transition.fragments.reduce(
+			function (composition, fragment, i) {
+				composition.delayed += i === 0 ? fragment.delayed : (", " + (fragment.delayed));
+				composition.instant += i === 0 ? fragment.instant : (", " + (fragment.instant));
+				return composition
+			},
+			{
+				delayed: '',
+				instant: ''
+			}
+		);
+
+		transition.generated = {
+			delayed: ((transition.property) + ": " + (composed.delayed) + ";"),
+			instant: ((transition.property) + ": " + (composed.instant) + ";")
+		};
+	} else {
+		transition.generated = {
+			delayed: '',
+			instant: ''
+		};
+	}
+
+	return {
+		inline: inline,
+		opacity: opacity,
+		position: position,
+		transform: transform,
+		transition: transition
+	}
+}
+
+/**
+ * apply a CSS string to an element using the CSSOM (element.style) rather
+ * than setAttribute, which may violate the content security policy.
+ *
+ * @param {Node}   [el]  Element to receive styles.
+ * @param {string} [declaration] Styles to apply.
+ */
+function applyStyle (el, declaration) {
+	declaration.split(';').forEach(function (pair) {
+		var ref = pair.split(':');
+		var property = ref[0];
+		var value = ref.slice(1);
+		if (property && value) {
+			el.style[property.trim()] = value.join(':');
+		}
+	});
+}
+
+function clean(target) {
+	var this$1 = this;
+
+	var dirty;
+	try {
+		each((0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(target), function (node) {
+			var id = node.getAttribute('data-sr-id');
+			if (id !== null) {
+				dirty = true;
+				var element = this$1.store.elements[id];
+				if (element.callbackTimer) {
+					window.clearTimeout(element.callbackTimer.clock);
+				}
+				applyStyle(element.node, element.styles.inline.generated);
+				node.removeAttribute('data-sr-id');
+				delete this$1.store.elements[id];
+			}
+		});
+	} catch (e) {
+		return logger.call(this, 'Clean failed.', e.message)
+	}
+
+	if (dirty) {
+		try {
+			rinse.call(this);
+		} catch (e) {
+			return logger.call(this, 'Clean failed.', e.message)
+		}
+	}
+}
+
+function destroy() {
+	var this$1 = this;
+
+	/**
+	 * Remove all generated styles and element ids
+	 */
+	each(this.store.elements, function (element) {
+		applyStyle(element.node, element.styles.inline.generated);
+		element.node.removeAttribute('data-sr-id');
+	});
+
+	/**
+	 * Remove all event listeners.
+	 */
+	each(this.store.containers, function (container) {
+		var target =
+			container.node === document.documentElement ? window : container.node;
+		target.removeEventListener('scroll', this$1.delegate);
+		target.removeEventListener('resize', this$1.delegate);
+	});
+
+	/**
+	 * Clear all data from the store
+	 */
+	this.store = {
+		containers: {},
+		elements: {},
+		history: [],
+		sequences: {}
+	};
+}
+
+function deepAssign(target) {
+	var sources = [], len = arguments.length - 1;
+	while ( len-- > 0 ) sources[ len ] = arguments[ len + 1 ];
+
+	if (isObject(target)) {
+		each(sources, function (source) {
+			each(source, function (data, key) {
+				if (isObject(data)) {
+					if (!target[key] || !isObject(target[key])) {
+						target[key] = {};
+					}
+					deepAssign(target[key], data);
+				} else {
+					target[key] = data;
+				}
+			});
+		});
+		return target
+	} else {
+		throw new TypeError('Target must be an object literal.')
+	}
+}
+
+function isMobile(agent) {
+	if ( agent === void 0 ) agent = navigator.userAgent;
+
+	return /Android|iPhone|iPad|iPod/i.test(agent)
+}
+
+var nextUniqueId = (function () {
+	var uid = 0;
+	return function () { return uid++; }
+})();
+
+function initialize() {
+	var this$1 = this;
+
+	rinse.call(this);
+
+	each(this.store.elements, function (element) {
+		var styles = [element.styles.inline.generated];
+
+		if (element.visible) {
+			styles.push(element.styles.opacity.computed);
+			styles.push(element.styles.transform.generated.final);
+			element.revealed = true;
+		} else {
+			styles.push(element.styles.opacity.generated);
+			styles.push(element.styles.transform.generated.initial);
+			element.revealed = false;
+		}
+
+		applyStyle(element.node, styles.filter(function (s) { return s !== ''; }).join(' '));
+	});
+
+	each(this.store.containers, function (container) {
+		var target =
+			container.node === document.documentElement ? window : container.node;
+		target.addEventListener('scroll', this$1.delegate);
+		target.addEventListener('resize', this$1.delegate);
+	});
+
+	/**
+	 * Manually invoke delegate once to capture
+	 * element and container dimensions, container
+	 * scroll position, and trigger any valid reveals
+	 */
+	this.delegate();
+
+	/**
+	 * Wipe any existing `setTimeout` now
+	 * that initialization has completed.
+	 */
+	this.initTimeout = null;
+}
+
+function animate(element, force) {
+	if ( force === void 0 ) force = {};
+
+	var pristine = force.pristine || this.pristine;
+	var delayed =
+		element.config.useDelay === 'always' ||
+		(element.config.useDelay === 'onload' && pristine) ||
+		(element.config.useDelay === 'once' && !element.seen);
+
+	var shouldReveal = element.visible && !element.revealed;
+	var shouldReset = !element.visible && element.revealed && element.config.reset;
+
+	if (force.reveal || shouldReveal) {
+		return triggerReveal.call(this, element, delayed)
+	}
+
+	if (force.reset || shouldReset) {
+		return triggerReset.call(this, element)
+	}
+}
+
+function triggerReveal(element, delayed) {
+	var styles = [
+		element.styles.inline.generated,
+		element.styles.opacity.computed,
+		element.styles.transform.generated.final
+	];
+	if (delayed) {
+		styles.push(element.styles.transition.generated.delayed);
+	} else {
+		styles.push(element.styles.transition.generated.instant);
+	}
+	element.revealed = element.seen = true;
+	applyStyle(element.node, styles.filter(function (s) { return s !== ''; }).join(' '));
+	registerCallbacks.call(this, element, delayed);
+}
+
+function triggerReset(element) {
+	var styles = [
+		element.styles.inline.generated,
+		element.styles.opacity.generated,
+		element.styles.transform.generated.initial,
+		element.styles.transition.generated.instant
+	];
+	element.revealed = false;
+	applyStyle(element.node, styles.filter(function (s) { return s !== ''; }).join(' '));
+	registerCallbacks.call(this, element);
+}
+
+function registerCallbacks(element, isDelayed) {
+	var this$1 = this;
+
+	var duration = isDelayed
+		? element.config.duration + element.config.delay
+		: element.config.duration;
+
+	var beforeCallback = element.revealed
+		? element.config.beforeReveal
+		: element.config.beforeReset;
+
+	var afterCallback = element.revealed
+		? element.config.afterReveal
+		: element.config.afterReset;
+
+	var elapsed = 0;
+	if (element.callbackTimer) {
+		elapsed = Date.now() - element.callbackTimer.start;
+		window.clearTimeout(element.callbackTimer.clock);
+	}
+
+	beforeCallback(element.node);
+
+	element.callbackTimer = {
+		start: Date.now(),
+		clock: window.setTimeout(function () {
+			afterCallback(element.node);
+			element.callbackTimer = null;
+			if (element.revealed && !element.config.reset && element.config.cleanup) {
+				clean.call(this$1, element.node);
+			}
+		}, duration - elapsed)
+	};
+}
+
+function sequence(element, pristine) {
+	if ( pristine === void 0 ) pristine = this.pristine;
+
+	/**
+	 * We first check if the element should reset.
+	 */
+	if (!element.visible && element.revealed && element.config.reset) {
+		return animate.call(this, element, { reset: true })
+	}
+
+	var seq = this.store.sequences[element.sequence.id];
+	var i = element.sequence.index;
+
+	if (seq) {
+		var visible = new SequenceModel(seq, 'visible', this.store);
+		var revealed = new SequenceModel(seq, 'revealed', this.store);
+
+		seq.models = { visible: visible, revealed: revealed };
+
+		/**
+		 * If the sequence has no revealed members,
+		 * then we reveal the first visible element
+		 * within that sequence.
+		 *
+		 * The sequence then cues a recursive call
+		 * in both directions.
+		 */
+		if (!revealed.body.length) {
+			var nextId = seq.members[visible.body[0]];
+			var nextElement = this.store.elements[nextId];
+
+			if (nextElement) {
+				cue.call(this, seq, visible.body[0], -1, pristine);
+				cue.call(this, seq, visible.body[0], +1, pristine);
+				return animate.call(this, nextElement, { reveal: true, pristine: pristine })
+			}
+		}
+
+		/**
+		 * If our element isn’t resetting, we check the
+		 * element sequence index against the head, and
+		 * then the foot of the sequence.
+		 */
+		if (
+			!seq.blocked.head &&
+			i === [].concat( revealed.head ).pop() &&
+			i >= [].concat( visible.body ).shift()
+		) {
+			cue.call(this, seq, i, -1, pristine);
+			return animate.call(this, element, { reveal: true, pristine: pristine })
+		}
+
+		if (
+			!seq.blocked.foot &&
+			i === [].concat( revealed.foot ).shift() &&
+			i <= [].concat( visible.body ).pop()
+		) {
+			cue.call(this, seq, i, +1, pristine);
+			return animate.call(this, element, { reveal: true, pristine: pristine })
+		}
+	}
+}
+
+function Sequence(interval) {
+	var i = Math.abs(interval);
+	if (!isNaN(i)) {
+		this.id = nextUniqueId();
+		this.interval = Math.max(i, 16);
+		this.members = [];
+		this.models = {};
+		this.blocked = {
+			head: false,
+			foot: false
+		};
+	} else {
+		throw new RangeError('Invalid sequence interval.')
+	}
+}
+
+function SequenceModel(seq, prop, store) {
+	var this$1 = this;
+
+	this.head = [];
+	this.body = [];
+	this.foot = [];
+
+	each(seq.members, function (id, index) {
+		var element = store.elements[id];
+		if (element && element[prop]) {
+			this$1.body.push(index);
+		}
+	});
+
+	if (this.body.length) {
+		each(seq.members, function (id, index) {
+			var element = store.elements[id];
+			if (element && !element[prop]) {
+				if (index < this$1.body[0]) {
+					this$1.head.push(index);
+				} else {
+					this$1.foot.push(index);
+				}
+			}
+		});
+	}
+}
+
+function cue(seq, i, direction, pristine) {
+	var this$1 = this;
+
+	var blocked = ['head', null, 'foot'][1 + direction];
+	var nextId = seq.members[i + direction];
+	var nextElement = this.store.elements[nextId];
+
+	seq.blocked[blocked] = true;
+
+	setTimeout(function () {
+		seq.blocked[blocked] = false;
+		if (nextElement) {
+			sequence.call(this$1, nextElement, pristine);
+		}
+	}, seq.interval);
+}
+
+function reveal(target, options, syncing) {
+	var this$1 = this;
+	if ( options === void 0 ) options = {};
+	if ( syncing === void 0 ) syncing = false;
+
+	var containerBuffer = [];
+	var sequence$$1;
+	var interval = options.interval || defaults.interval;
+
+	try {
+		if (interval) {
+			sequence$$1 = new Sequence(interval);
+		}
+
+		var nodes = (0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(target);
+		if (!nodes.length) {
+			throw new Error('Invalid reveal target.')
+		}
+
+		var elements = nodes.reduce(function (elementBuffer, elementNode) {
+			var element = {};
+			var existingId = elementNode.getAttribute('data-sr-id');
+
+			if (existingId) {
+				deepAssign(element, this$1.store.elements[existingId]);
+
+				/**
+				 * In order to prevent previously generated styles
+				 * from throwing off the new styles, the style tag
+				 * has to be reverted to its pre-reveal state.
+				 */
+				applyStyle(element.node, element.styles.inline.computed);
+			} else {
+				element.id = nextUniqueId();
+				element.node = elementNode;
+				element.seen = false;
+				element.revealed = false;
+				element.visible = false;
+			}
+
+			var config = deepAssign({}, element.config || this$1.defaults, options);
+
+			if ((!config.mobile && isMobile()) || (!config.desktop && !isMobile())) {
+				if (existingId) {
+					clean.call(this$1, element);
+				}
+				return elementBuffer // skip elements that are disabled
+			}
+
+			var containerNode = (0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(config.container)[0];
+			if (!containerNode) {
+				throw new Error('Invalid container.')
+			}
+			if (!containerNode.contains(elementNode)) {
+				return elementBuffer // skip elements found outside the container
+			}
+
+			var containerId;
+			{
+				containerId = getContainerId(
+					containerNode,
+					containerBuffer,
+					this$1.store.containers
+				);
+				if (containerId === null) {
+					containerId = nextUniqueId();
+					containerBuffer.push({ id: containerId, node: containerNode });
+				}
+			}
+
+			element.config = config;
+			element.containerId = containerId;
+			element.styles = style(element);
+
+			if (sequence$$1) {
+				element.sequence = {
+					id: sequence$$1.id,
+					index: sequence$$1.members.length
+				};
+				sequence$$1.members.push(element.id);
+			}
+
+			elementBuffer.push(element);
+			return elementBuffer
+		}, []);
+
+		/**
+		 * Modifying the DOM via setAttribute needs to be handled
+		 * separately from reading computed styles in the map above
+		 * for the browser to batch DOM changes (limiting reflows)
+		 */
+		each(elements, function (element) {
+			this$1.store.elements[element.id] = element;
+			element.node.setAttribute('data-sr-id', element.id);
+		});
+	} catch (e) {
+		return logger.call(this, 'Reveal failed.', e.message)
+	}
+
+	/**
+	 * Now that element set-up is complete...
+	 * Let’s commit any container and sequence data we have to the store.
+	 */
+	each(containerBuffer, function (container) {
+		this$1.store.containers[container.id] = {
+			id: container.id,
+			node: container.node
+		};
+	});
+	if (sequence$$1) {
+		this.store.sequences[sequence$$1.id] = sequence$$1;
+	}
+
+	/**
+	 * If reveal wasn't invoked by sync, we want to
+	 * make sure to add this call to the history.
+	 */
+	if (syncing !== true) {
+		this.store.history.push({ target: target, options: options });
+
+		/**
+		 * Push initialization to the event queue, giving
+		 * multiple reveal calls time to be interpreted.
+		 */
+		if (this.initTimeout) {
+			window.clearTimeout(this.initTimeout);
+		}
+		this.initTimeout = window.setTimeout(initialize.bind(this), 0);
+	}
+}
+
+function getContainerId(node) {
+	var collections = [], len = arguments.length - 1;
+	while ( len-- > 0 ) collections[ len ] = arguments[ len + 1 ];
+
+	var id = null;
+	each(collections, function (collection) {
+		each(collection, function (container) {
+			if (id === null && container.node === node) {
+				id = container.id;
+			}
+		});
+	});
+	return id
+}
+
+/**
+ * Re-runs the reveal method for each record stored in history,
+ * for capturing new content asynchronously loaded into the DOM.
+ */
+function sync() {
+	var this$1 = this;
+
+	each(this.store.history, function (record) {
+		reveal.call(this$1, record.target, record.options, true);
+	});
+
+	initialize.call(this);
+}
+
+var polyfill = function (x) { return (x > 0) - (x < 0) || +x; };
+var mathSign = Math.sign || polyfill;
+
+function getGeometry(target, isContainer) {
+	/**
+	 * We want to ignore padding and scrollbars for container elements.
+	 * More information here: https://goo.gl/vOZpbz
+	 */
+	var height = isContainer ? target.node.clientHeight : target.node.offsetHeight;
+	var width = isContainer ? target.node.clientWidth : target.node.offsetWidth;
+
+	var offsetTop = 0;
+	var offsetLeft = 0;
+	var node = target.node;
+
+	do {
+		if (!isNaN(node.offsetTop)) {
+			offsetTop += node.offsetTop;
+		}
+		if (!isNaN(node.offsetLeft)) {
+			offsetLeft += node.offsetLeft;
+		}
+		node = node.offsetParent;
+	} while (node)
+
+	return {
+		bounds: {
+			top: offsetTop,
+			right: offsetLeft + width,
+			bottom: offsetTop + height,
+			left: offsetLeft
+		},
+		height: height,
+		width: width
+	}
+}
+
+function getScrolled(container) {
+	var top, left;
+	if (container.node === document.documentElement) {
+		top = window.pageYOffset;
+		left = window.pageXOffset;
+	} else {
+		top = container.node.scrollTop;
+		left = container.node.scrollLeft;
+	}
+	return { top: top, left: left }
+}
+
+function isElementVisible(element) {
+	if ( element === void 0 ) element = {};
+
+	var container = this.store.containers[element.containerId];
+	if (!container) { return }
+
+	var viewFactor = Math.max(0, Math.min(1, element.config.viewFactor));
+	var viewOffset = element.config.viewOffset;
+
+	var elementBounds = {
+		top: element.geometry.bounds.top + element.geometry.height * viewFactor,
+		right: element.geometry.bounds.right - element.geometry.width * viewFactor,
+		bottom: element.geometry.bounds.bottom - element.geometry.height * viewFactor,
+		left: element.geometry.bounds.left + element.geometry.width * viewFactor
+	};
+
+	var containerBounds = {
+		top: container.geometry.bounds.top + container.scroll.top + viewOffset.top,
+		right: container.geometry.bounds.right + container.scroll.left - viewOffset.right,
+		bottom:
+			container.geometry.bounds.bottom + container.scroll.top - viewOffset.bottom,
+		left: container.geometry.bounds.left + container.scroll.left + viewOffset.left
+	};
+
+	return (
+		(elementBounds.top < containerBounds.bottom &&
+			elementBounds.right > containerBounds.left &&
+			elementBounds.bottom > containerBounds.top &&
+			elementBounds.left < containerBounds.right) ||
+		element.styles.position === 'fixed'
+	)
+}
+
+function delegate(
+	event,
+	elements
+) {
+	var this$1 = this;
+	if ( event === void 0 ) event = { type: 'init' };
+	if ( elements === void 0 ) elements = this.store.elements;
+
+	(0,miniraf__WEBPACK_IMPORTED_MODULE_2__["default"])(function () {
+		var stale = event.type === 'init' || event.type === 'resize';
+
+		each(this$1.store.containers, function (container) {
+			if (stale) {
+				container.geometry = getGeometry.call(this$1, container, true);
+			}
+			var scroll = getScrolled.call(this$1, container);
+			if (container.scroll) {
+				container.direction = {
+					x: mathSign(scroll.left - container.scroll.left),
+					y: mathSign(scroll.top - container.scroll.top)
+				};
+			}
+			container.scroll = scroll;
+		});
+
+		/**
+		 * Due to how the sequencer is implemented, it’s
+		 * important that we update the state of all
+		 * elements, before any animation logic is
+		 * evaluated (in the second loop below).
+		 */
+		each(elements, function (element) {
+			if (stale || element.geometry === undefined) {
+				element.geometry = getGeometry.call(this$1, element);
+			}
+			element.visible = isElementVisible.call(this$1, element);
+		});
+
+		each(elements, function (element) {
+			if (element.sequence) {
+				sequence.call(this$1, element);
+			} else {
+				animate.call(this$1, element);
+			}
+		});
+
+		this$1.pristine = false;
+	});
+}
+
+function isTransformSupported() {
+	var style = document.documentElement.style;
+	return 'transform' in style || 'WebkitTransform' in style
+}
+
+function isTransitionSupported() {
+	var style = document.documentElement.style;
+	return 'transition' in style || 'WebkitTransition' in style
+}
+
+var version = "4.0.9";
+
+var boundDelegate;
+var boundDestroy;
+var boundReveal;
+var boundClean;
+var boundSync;
+var config;
+var debug;
+var instance;
+
+function ScrollReveal(options) {
+	if ( options === void 0 ) options = {};
+
+	var invokedWithoutNew =
+		typeof this === 'undefined' ||
+		Object.getPrototypeOf(this) !== ScrollReveal.prototype;
+
+	if (invokedWithoutNew) {
+		return new ScrollReveal(options)
+	}
+
+	if (!ScrollReveal.isSupported()) {
+		logger.call(this, 'Instantiation failed.', 'This browser is not supported.');
+		return mount.failure()
+	}
+
+	var buffer;
+	try {
+		buffer = config
+			? deepAssign({}, config, options)
+			: deepAssign({}, defaults, options);
+	} catch (e) {
+		logger.call(this, 'Invalid configuration.', e.message);
+		return mount.failure()
+	}
+
+	try {
+		var container = (0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(buffer.container)[0];
+		if (!container) {
+			throw new Error('Invalid container.')
+		}
+	} catch (e) {
+		logger.call(this, e.message);
+		return mount.failure()
+	}
+
+	config = buffer;
+
+	if ((!config.mobile && isMobile()) || (!config.desktop && !isMobile())) {
+		logger.call(
+			this,
+			'This device is disabled.',
+			("desktop: " + (config.desktop)),
+			("mobile: " + (config.mobile))
+		);
+		return mount.failure()
+	}
+
+	mount.success();
+
+	this.store = {
+		containers: {},
+		elements: {},
+		history: [],
+		sequences: {}
+	};
+
+	this.pristine = true;
+
+	boundDelegate = boundDelegate || delegate.bind(this);
+	boundDestroy = boundDestroy || destroy.bind(this);
+	boundReveal = boundReveal || reveal.bind(this);
+	boundClean = boundClean || clean.bind(this);
+	boundSync = boundSync || sync.bind(this);
+
+	Object.defineProperty(this, 'delegate', { get: function () { return boundDelegate; } });
+	Object.defineProperty(this, 'destroy', { get: function () { return boundDestroy; } });
+	Object.defineProperty(this, 'reveal', { get: function () { return boundReveal; } });
+	Object.defineProperty(this, 'clean', { get: function () { return boundClean; } });
+	Object.defineProperty(this, 'sync', { get: function () { return boundSync; } });
+
+	Object.defineProperty(this, 'defaults', { get: function () { return config; } });
+	Object.defineProperty(this, 'version', { get: function () { return version; } });
+	Object.defineProperty(this, 'noop', { get: function () { return false; } });
+
+	return instance ? instance : (instance = this)
+}
+
+ScrollReveal.isSupported = function () { return isTransformSupported() && isTransitionSupported(); };
+
+Object.defineProperty(ScrollReveal, 'debug', {
+	get: function () { return debug || false; },
+	set: function (value) { return (debug = typeof value === 'boolean' ? value : debug); }
+});
+
+ScrollReveal();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScrollReveal);
+
+
+/***/ }),
+
+/***/ "./node_modules/aos/dist/aos.css":
+/*!***************************************!*\
+  !*** ./node_modules/aos/dist/aos.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_aos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./aos.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/aos/dist/aos.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_aos_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_aos_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -33517,6 +35433,67 @@ module.exports = function (list, options) {
     lastIdentifiers = newLastIdentifiers;
   };
 };
+
+/***/ }),
+
+/***/ "./node_modules/tealight/dist/tealight.es.js":
+/*!***************************************************!*\
+  !*** ./node_modules/tealight/dist/tealight.es.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var is_dom_node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-dom-node */ "./node_modules/is-dom-node/dist/is-dom-node.es.js");
+/* harmony import */ var is_dom_node_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! is-dom-node-list */ "./node_modules/is-dom-node-list/dist/is-dom-node-list.es.js");
+/*! @license Tealight v0.3.6
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+
+
+
+function tealight(target, context) {
+  if ( context === void 0 ) context = document;
+
+  if (target instanceof Array) { return target.filter(is_dom_node__WEBPACK_IMPORTED_MODULE_0__["default"]); }
+  if ((0,is_dom_node__WEBPACK_IMPORTED_MODULE_0__["default"])(target)) { return [target]; }
+  if ((0,is_dom_node_list__WEBPACK_IMPORTED_MODULE_1__["default"])(target)) { return Array.prototype.slice.call(target); }
+  if (typeof target === "string") {
+    try {
+      var query = context.querySelectorAll(target);
+      return Array.prototype.slice.call(query);
+    } catch (err) {
+      return [];
+    }
+  }
+  return [];
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tealight);
+
 
 /***/ })
 

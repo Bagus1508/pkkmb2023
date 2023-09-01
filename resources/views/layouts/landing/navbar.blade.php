@@ -1,5 +1,35 @@
-<nav id="header" class="w-full z-20 top-0 py-5 shadow-md">
-    <div class="w-full container mx-auto flex flex-wrap items-center mt-0 py-2 h-1/5">
+<nav class="absolute bg-transparent w-full items-center z-40">
+    <div class="container w-full px-2 lg:px-4 items-center">
+        <div class="flex justify-center">
+            
+            <div class="flex">
+                <div class="hidden justify-between w-full md:flex md:w-auto md:order-1 items-center space-x-1">
+                    <a href="{{ route('index-landing') }}" class="block {{ request()->is('/') ? 'pt-8 pb-1 px-2 text-white font-sans font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 transition duration-300' : 'pt-8 pb-1 px-2 text-white font-sans font-normal hover:text-gray-300 hover:border-b-2 hover:border-gray-300 transition duration-300' }}">Beranda</a>
+                    <a href="{{ route('informasi-landing') }}" class="block {{ request()->is('informasi', 'informasi/berita', 'informasi/kegiatan', 'informasi/pengumuman') ? 'pt-8 pb-1 px-2 text-white font-sans font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 transition duration-300' : 'pt-8 pb-1 px-2 text-white font-sans font-normal hover:text-gray-300 hover:border-b-2 hover:border-gray-300 transition duration-300' }}">Informasi</a>
+                    <a href="{{ route('home-presences.indexuserdashboard') }}" class="block {{ request()->is('login') ? 'pt-8 pb-1 px-2 text-white font-sans font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 transition duration-300' : 'pt-8 pb-1 px-2 text-white font-sans font-normal hover:text-gray-300 hover:border-b-2 hover:border-gray-300 transition duration-300' }}">Dashboard</a>
+                </div>
+            </div>
+            
+            <div class="lg:hidden flex items-center">
+                <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 mobile-menu-button">
+                    <span class="hamburger-line transision duration-300 ease-in-out  origin-bottom-left"></span>
+                    <span class="hamburger-line transision duration-300 ease-in-out"></span>
+                    <span class="hamburger-line transision duration-300 ease-in-out origin-bottom-left"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="hidden mobile-menu">
+        <ul>
+            <li><a href="{{ route('index-landing') }}" class="block {{ request()->is('/') ? 'text-sm px-2 py-4 font-sans font-normal text-white bg-primary hover:bg-orange-300 transition duration-500' : 'text-sm px-2 py-4 font-sans font-normal text-gray-600 hover:text-white hover:bg-orange-300 transition duration-500' }}">Beranda</a></li>
+            <li><a href="{{ route('informasi-landing') }}" class="block {{ request()->is('informasi') ? 'text-sm px-2 py-4 font-sans font-normal text-white bg-primary hover:bg-orange-300 transition duration-500' : 'text-sm px-2 py-4 font-sans font-normal text-gray-600 hover:text-white hover:bg-orange-300 transition duration-500' }}">Informasi</a></li>
+            <li><a href="{{ route('home-presences.indexuserdashboard') }}" class="block {{ request()->is('login') ? 'text-sm px-2 py-4 font-sans font-normal text-white bg-primary hover:bg-orange-300 transition duration-500' : 'text-sm px-2 py-4 font-sans font-normal text-gray-600 hover:text-white hover:bg-orange-300 transition duration-500' }}">Dashboard</a></li>
+        </ul>
+    </div>
+    
+    {{-- <div class="w-full container mx-auto flex flex-wrap items-center mt-0 py-2 h-1/5">
         <div class="pl-4 flex items-center">
             <a class="absolute z-50 lg:w-2/12 w-4/12" href="/home">
                 <img src="../src/img/logo/logo.png" alt="logopkkmb" class="">
@@ -47,5 +77,5 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div> --}}
 </nav>

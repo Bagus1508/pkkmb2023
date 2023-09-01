@@ -26,6 +26,18 @@ class LandingController extends Controller
 
     public function viewinformation() {
         return view('landing.information', [
+            "title" => "Kegiatan"
+        ]);
+    }
+
+    public function viewnews() {
+        return view('landing.informationnews', [
+            "title" => "Berita"
+        ]);
+    }
+
+    public function information() {
+        return view('landing.informationintro', [
             "title" => "Informasi"
         ]);
     }
