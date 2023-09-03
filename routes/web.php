@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function () {
         //profile
         Route::get('/dashboard/user/profil', [ProfileController::class, 'profileindex'])->name('profileindex');
         Route::get('/dashboard/user/profil/edit', [ProfileController::class, 'profileedit'])->name('profileedit');
+        Route::patch('/dashboard/user/profil/edit/{user}', [ProfileController::class, 'profileupdate'])->name('profileupdate');
     });
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
