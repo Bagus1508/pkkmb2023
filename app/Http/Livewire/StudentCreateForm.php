@@ -110,6 +110,6 @@ class StudentCreateForm extends Component
 
     public function render()
     {
-        return view('livewire.Student-create-form');
+        return view('livewire.student-create-form');
     }
 }
