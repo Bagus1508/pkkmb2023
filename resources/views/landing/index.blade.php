@@ -20,7 +20,7 @@
     <div class="relative">
       @include('includes.landing.navbarlanding')
 
-      <section id="hero" class="animation-container h-screen w-full hero-background relative">
+      <section id="hero" class="animation-container h-screen w-full hero-background relative flex items-center">
         <img 
           src="{{ asset('/src/img/hero/bintang.png') }}" 
           alt="bintang" 
@@ -36,7 +36,7 @@
           <img 
             src="{{ asset('/src/img/logo/logo.png') }}" 
             alt="" 
-            class="h-16 bg-white py-1 px-6 rounded-lg mb-7"
+            class="h-14 bg-white py-1 px-6 rounded-lg mb-5"
             data-aos="fade-down"
             data-aos-easing="linear"
             data-aos-delay="1500"
@@ -50,8 +50,8 @@
             data-aos-delay="1000"
             data-aos-duration="1000"
           >
-            <h2 id="title1" class="text-space-textungu text-6xl font-extrabold mb-3">WUJUDKAN MIMPI</h2>
-            <h2 id="title2" class="text-white text-6xl font-extrabold mb-7">TAKLUKAN DUNIA</h2>
+            <h2 id="title1" class="text-space-textungu text-6xl font-extrabold mb-0">WUJUDKAN MIMPI</h2>
+            <h2 id="title2" class="text-white text-6xl font-extrabold mb-5">TAKLUKAN DUNIA</h2>
           </div>
 
           <div
@@ -88,7 +88,7 @@
           data-aos-offset="0"
         >
           <a href="#dashboard">
-            <button class="text-white font-bold text-xl mt-40 py-2 px-7 bg-space-buttonungu rounded-full shadow-sm">
+            <button class="text-white font-bold text-xl mt-28 py-2 px-7 bg-space-buttonungu rounded-full shadow-sm">
               Mulai
             </button>
           </a>
@@ -105,13 +105,22 @@
           data-aos-offset="0"
         >
         <img 
+          src="{{ asset('/src/img/hero/2/bulan.png') }}" 
+          alt="bulan"
+          class="absolute mt-0 ml-0 h-screen object-cover"
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-delay="3000"
+          data-aos-duration="1000"
+        >
+        <img 
           src="{{ asset('/src/img/hero/2/roketmeluncur.png') }}" 
           alt="roketmeluncur" 
           class="absolute mt-0 ml-0 h-screen object-cover"
           data-aos="fade-up"
-          data-aos-anchor-placement="bottom-bottom"
+          data-aos-easing="linear"
+          data-aos-delay="2000"
           data-aos-duration="1000"
-          data-aos-offset="0"
         >
     
         <div class="absolute ml-36 h-screen">
@@ -170,6 +179,7 @@
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-duration="1000"
+          data-aos-delay="2000"
           data-aos-offset="200"
         >
         <div 
@@ -220,7 +230,7 @@
               href="{{ route('informasi-landing') }}"
               data-aos="fade-zoom-in"
               data-aos-easing="ease-in-back"
-              data-aos-delay="2800"
+              data-aos-delay="2500"
               data-aos-duration="1000"
             >
               <button class="text-white font-bold text-lg py-2 px-9 bg-space-buttonungu border-2 border-white rounded-full shadow-xl">
