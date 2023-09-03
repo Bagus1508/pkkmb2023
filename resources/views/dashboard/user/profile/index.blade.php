@@ -26,11 +26,11 @@
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <label for="Nama Lengkap" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" id="nama_lengkap" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" value="{{ auth()->user()->detailuser->nama_lengkap }}" disabled/>
+                <input type="text" name="nama_lengkap" id="nama_lengkap" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" value="{{ auth()->user()->detailuser->nama_lengkap}}" disabled/>
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <label for="Kelompok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelompok</label>
-                <input type="text" name="kelompok" id="kelompok" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->kelompok->name }}" disabled/>
+                <input type="text" name="kelompok" id="kelompok" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->kelompok->name  ?? 'Belum masuk kelompok'  }}" disabled/>
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <label for="Posisi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posisi</label>
