@@ -1231,6 +1231,9 @@ input:checked + .toggle-bg {
 .mb-10 {
   margin-bottom: 2.5rem;
 }
+.mt-40 {
+  margin-top: 10rem;
+}
 .block {
   display: block;
 }
@@ -2131,6 +2134,12 @@ input:checked + .toggle-bg {
 }
 .pt-28 {
   padding-top: 7rem;
+}
+.pt-60 {
+  padding-top: 15rem;
+}
+.pt-64 {
+  padding-top: 16rem;
 }
 .text-left {
   text-align: left;

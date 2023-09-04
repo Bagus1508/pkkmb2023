@@ -32,7 +32,7 @@
           data-aos-offset="0"
         >
     
-        <div class="lg:absolute w-full h-screen flex flex-col items-center text-center pt-72 lg:pt-36">
+        <div class="lg:absolute w-full h-screen flex flex-col items-center text-center pt-60 lg:pt-36">
           <img 
             src="{{ asset('/src/img/logo/logo.png') }}" 
             alt="" 
@@ -88,7 +88,7 @@
           data-aos-offset="0"
         >
           <a href="#dashboard">
-            <button class="text-white font-bold text-base lg:text-xl mt-52 lg:mt-44 py-1 lg:py-2 px-6 lg:px-7 bg-space-buttonungu rounded-full shadow-sm">
+            <button class="text-white font-bold text-base lg:text-xl mt-40 lg:mt-44 py-1 lg:py-2 px-6 lg:px-7 bg-space-buttonungu rounded-full shadow-sm">
               Mulai
             </button>
           </a>
@@ -125,7 +125,7 @@
         >
     
         <div class="lg:absolute w-full h-screen">
-          <div class="flex flex-col items-center text-center pt-80 lg:pt-36">
+          <div class="flex flex-col items-center text-center pt-64 lg:pt-36">
             <h2 
               id="title1" 
               class="text-white text-3xl lg:text-6xl font-extrabold mb-0"
@@ -195,7 +195,7 @@
         </div>
     
         <div class="absolute ml-5 lg:ml-36 h-screen">
-          <div class="flex flex-col mt-64 lg:mt-48">
+          <div class="flex flex-col mt-52 lg:mt-48">
             <h2 
               id="title1" 
               class="text-orange-500 text-3xl lg:text-5xl font-extrabold mb-0 lg:mb-1"
