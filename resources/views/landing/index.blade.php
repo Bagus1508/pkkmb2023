@@ -117,7 +117,7 @@
         <img 
           src="{{ asset('/src/img/hero/2/roketmeluncur.png') }}" 
           alt="roketmeluncur" 
-          class="absolute mt-0 ml-0 h-screen object-cover"
+          class="hidden lg:block absolute mt-0 ml-0 h-screen object-cover"
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-delay="2000"
