@@ -14,10 +14,10 @@
                     data-aos-offset="0"
                 >
 
-                <div class="absolute w-full h-screen flex flex-col items-center text-center pt-32">
+                <div class="absolute w-full h-screen flex flex-col items-center text-center pt-24">
                     <h2 
                         id="title" 
-                        class="gradient-text-information text-5xl font-extrabold mb-5"
+                        class="gradient-text-information text-3xl lg:text-5xl font-extrabold mb-5"
                         data-aos="fade-up"
                         data-aos-anchor-placement="center-bottom"
                         data-aos-delay="1200"
@@ -28,7 +28,7 @@
                     
                     <h3 
                         id="text1" 
-                        class="text-white text-lg font-light mb-12"
+                        class="text-white text-base font-light mb-10"
                         data-aos="fade-up"
                         data-aos-easing="linear"
                         data-aos-delay="1500"
@@ -46,7 +46,7 @@
                         data-aos-duration="1000"
                         data-aos-offset="0"
                     >
-                        <button class="bg-space-buttonbiru px-8 py-3 text-white text-base rounded-lg mb-12">
+                        <button class="bg-space-buttonbiru px-7 py-2 text-white text-base rounded-lg mb-12">
                             Selengkapnya
                         </button>
                     </a>
@@ -67,26 +67,61 @@
     <section id="infopkkmb" class="h-screen w-full bg-white">
         <div class="container">
             <div class="h-screen information-background relative">
-                <img src="{{ asset('/src/img/hero/2/bintang.png') }}" alt="bintang" class="absolute mt-0 ml-0 h-screen object-cover">
+                <img 
+                    src="{{ asset('/src/img/hero/2/bintang.png') }}" 
+                    alt="bintang" 
+                    class="absolute mt-0 ml-0 h-screen object-cover"
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-duration="1000"
+                    data-aos-offset="0"
+                >
 
                 <div class="absolute w-full h-screen flex flex-col items-center text-center pt-24">
-                    <h2 id="title" class="gradient-text-information text-5xl font-extrabold mb-5">
+                    <h2 
+                        id="title" 
+                        class="gradient-text-information text-5xl font-extrabold mb-5"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom"
+                        data-aos-delay="1200"
+                    >
                         Carilah Informasi Terbaik <br>
                         Untuk Menunjangan Kegiatanmu
                     </h2>
                     
-                    <h3 id="text1" class="text-white text-lg font-light mb-12">
+                    <h3 
+                        id="text1" 
+                        class="text-white text-base font-light mb-10"
+                        data-aos="fade-up"
+                        data-aos-easing="linear"
+                        data-aos-delay="1500"
+                        data-aos-duration="500"
+                    >
                         Dengan informasi terbaik langkahmu semakin lancar <br>
                         Dengan informasi terbaik jalanmu semakin mudah
                     </h3>
                     
-                    <a href="{{ route('informasi-kegiatan') }}">
-                        <button class="bg-space-buttonbiru px-8 py-3 text-white text-base rounded-lg mb-12">
+                    <a 
+                        href="{{ route('informasi-berita') }}"
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="2500"
+                        data-aos-duration="1000"
+                        data-aos-offset="0"
+                    >
+                        <button class="bg-space-buttonbiru px-7 py-2 text-white text-base rounded-lg mb-12">
                             Selengkapnya
                         </button>
                     </a>
 
-                    <img src="/src/img/information/1/card.png" alt="card" class="h-52">
+                    <img
+                        src="/src/img/information/1/card.png" 
+                        alt="card" 
+                        class="h-52"
+                        data-aos="fade-up"
+                        data-aos-delay="1500"
+                        data-aos-duration="3000"
+                    >
                 </div>
             </div>
         </div>
@@ -95,26 +130,61 @@
     <section id="announcement" class="h-screen w-full bg-white">
         <div class="container">
             <div class="h-screen information-background relative">
-                <img src="{{ asset('/src/img/hero/2/bintang.png') }}" alt="bintang" class="absolute mt-0 ml-0 h-screen object-cover">
+                <img 
+                    src="{{ asset('/src/img/hero/2/bintang.png') }}" 
+                    alt="bintang" 
+                    class="absolute mt-0 ml-0 h-screen object-cover"
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-duration="1000"
+                    data-aos-offset="0"
+                >
 
                 <div class="absolute w-full h-screen flex flex-col items-center text-center pt-24">
-                    <h2 id="title" class="gradient-text-information text-5xl font-extrabold mb-5">
+                    <h2 
+                        id="title" 
+                        class="gradient-text-information text-5xl font-extrabold mb-5"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom"
+                        data-aos-delay="1200"
+                    >
                         Berjuang Sungguh-Sungguh <br>
                         Mendapat Hasil Kemudian
                     </h2>
                     
-                    <h3 id="text1" class="text-white text-lg font-light mb-12">
+                    <h3 
+                        id="text1" 
+                        class="text-white text-base font-light mb-10"
+                        data-aos="fade-up"
+                        data-aos-easing="linear"
+                        data-aos-delay="1500"
+                        data-aos-duration="500"
+                    >
                         Perjuanganmu tidak mungkin sia-sia <br>
                         Hasilmu saat ini adalah perjuanganmu dimasa lampau
                     </h3>
                     
-                    <a href="{{ route('pengumuman-landing') }}">
-                        <button class="bg-space-buttonbiru px-8 py-3 text-white text-base rounded-lg mb-12">
+                    <a 
+                        href="{{ route('informasi-berita') }}"
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="2500"
+                        data-aos-duration="1000"
+                        data-aos-offset="0"
+                    >
+                        <button class="bg-space-buttonbiru px-7 py-2 text-white text-base rounded-lg mb-12">
                             Cek Sekarang
                         </button>
                     </a>
 
-                    <img src="/src/img/information/1/card.png" alt="card" class="h-52">
+                    <img
+                        src="/src/img/information/1/card.png" 
+                        alt="card" 
+                        class="h-52"
+                        data-aos="fade-up"
+                        data-aos-delay="1500"
+                        data-aos-duration="3000"
+                    >
                 </div>
             </div>
         </div>

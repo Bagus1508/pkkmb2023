@@ -13,6 +13,24 @@
     })
 </script>
 
+{{-- Hamburger --}}
+<script>
+    const hamburger = document.querySelector('#hamburger');
+    const navMenu = document.querySelector('#nav-menu');
+
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('hamburger-active');
+        navMenu.classList.toggle('hidden');
+    });
+
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+</script>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();

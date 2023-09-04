@@ -1,4 +1,32 @@
-<nav class="absolute bg-transparent w-full items-center z-40">
+{{-- <header class="bg-transparent absolute w-full flex items-center z-40">
+    <div class="container">
+        <div class="flex items-center justify-center relative">
+            <div class="flex items-center py-7 px-4">
+                <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 mobile-menu-button">
+                    <span class="hamburger-line transision duration-300 ease-in-out origin-bottom-left"></span>
+                    <span class="hamburger-line transision duration-300 ease-in-out"></span>
+                    <span class="hamburger-line transision duration-300 ease-in-out origin-bottom-left"></span>
+                </button>
+
+                <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w[250px] w-full right-4 top-full">
+                    <ul class="block">
+                        <li class="">
+                            <a href="{{ route('index-landing') }}" class="block {{ request()->is('/') ? 'py-2 px-2 text-white bg-orange-400 font-bold hover:bg-orange-300 transition duration-300' : 'py-2 px-2 text-slate-500 font-sans font-normal hover:text-slate-300 hover:border-b-2 hover:border-slate-300 transition duration-300' }}">Beranda</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('informasi-landing') }}" class="block {{ request()->is('informasi') ? 'py-2 px-2 text-white bg-orange-400 font-bold hover:bg-orange-300 transition duration-300' : 'py-2 px-2 text-slate-500 font-sans font-normal hover:text-slate-300 hover:border-b-2 hover:border-slate-300 transition duration-300' }}">Informasi</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('home-presences.indexuserdashboard') }}" class="block {{ request()->is('login') ? 'py-2 px-2 text-white bg-orange-400 font-bold hover:bg-orange-300 transition duration-300' : 'py-2 px-2 text-slate-500 font-sans font-normal hover:text-slate-300 hover:border-b-2 hover:border-slate-300 transition duration-300' }}">Dashboard</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header> --}}
+
+<nav class="hidden lg:block absolute bg-transparent w-full items-center z-40">
     <div class="container w-full px-2 lg:px-4 items-center">
         <div class="flex justify-center">
             

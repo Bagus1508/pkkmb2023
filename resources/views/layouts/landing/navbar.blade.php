@@ -1,4 +1,4 @@
-<nav class="absolute bg-transparent w-full items-center z-40">
+<nav class="hidden lg:block absolute bg-transparent w-full items-center z-40">
     <div class="container w-full px-2 lg:px-4 items-center">
         <div class="flex justify-center">
             

@@ -1,21 +1,11 @@
 <footer class="w-full md:px-10 md:py-4 py-4 px-5 m-auto text-white bg-black z-40">
   <div class="container">
-    {{-- <div class="flex justify-center items-center">
-      <div class="flex my-auto border">
-        <p class="text-xs pr-10">COPYRIGHT © 2023 PENGGAWA DEV TEAM KMH</p>
-        <a href="{{ url('') }}" target="_blank" class="text-xs font-bold px-4">INSTAGRAM</a>
-        <a href="{{ url('') }}" target="_blank" class="text-xs font-bold px-4 border-l border-white">TIKTOK</a>
-        <a href="{{ url('') }}" target="_blank" class="text-xs font-bold px-4 border-l border-white">KEMAHASISWAAN</a>
-        <p class="text-xs pl-10 justify-end">INDONESIA</p>
-      </div>
-    </div> --}}
-
     <div class="w-full md:flex justify-center between md:justify-between items-center">
       <div class="md:flex md:justify-start my-auto">
         <p class="text-xs pr-10">COPYRIGHT © 2023 PENGGAWA DEV TEAM KMH</p>
-        <a href="{{ url('') }}" target="_blank" class="text-xs font-bold px-0 pr-4 md:px-4">INSTAGRAM</a>
-        <a href="{{ url('') }}" target="_blank" class="text-xs font-bold px-4 border-l border-white">TIKTOK</a>
-        <a href="{{ url('') }}" target="_blank" class="text-xs font-bold px-4 border-l border-white">KEMAHASISWAAN</a>
+        <a href="{{ url('https://www.instagram.com/pkkmb_narotama/') }}" target="_blank" class="text-xs font-bold px-0 pr-4 md:px-4">INSTAGRAM</a>
+        <a href="{{ url('https://www.tiktok.com/@pkkmb_narotama') }}" target="_blank" class="text-xs font-bold px-4 border-l border-white">TIKTOK</a>
+        <a href="{{ url('https://sikawan.narotama.ac.id/') }}" target="_blank" class="text-xs font-bold px-4 border-l border-white">KEMAHASISWAAN</a>
       </div>
 
       <div class="hidden md:block">
