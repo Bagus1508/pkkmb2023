@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
         Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
     });
-
+    
     Route::middleware('role:superadmin')->group(function (){
         // akun admin
         Route::get('/dashboard/admin/akun-admin', [StudentController::class, 'adminindex'])->name('admin.index');
