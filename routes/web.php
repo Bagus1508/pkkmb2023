@@ -40,27 +40,29 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/kelompok/tambah-data', [KelompokController::class, 'create'])->name('kelompok.create');
         Route::get('/dashboard/admin/kelompok/edit', [KelompokController::class, 'edit'])->name('kelompok.edit');
         Route::delete('/dashboard/admin/kelompok/{kelompok}', [KelompokController::class, 'destroy'])->name('kelompok.destroy');
-        // akun admin
-        Route::get('/dashboard/admin/akun-admin', [StudentController::class, 'adminindex'])->name('admin.index');
-        Route::get('/dashboard/admin/akun-admin/tambah-data', [StudentController::class, 'admincreate'])->name('admin.create');
-        Route::get('/dashboard/admin/akun-admin/edit', [StudentController::class, 'adminedit'])->name('admin.edit');
-        Route::delete('/dashboard/admin/akun-admin/{users}', [StudentController::class, 'admindestroy'])->name('admin.destroy');
         // akun peserta
         Route::get('/dashboard/admin/peserta', [StudentController::class, 'index'])->name('students.index');
         Route::get('/dashboard/admin/peserta/tambah-data', [StudentController::class, 'create'])->name('students.create');
         Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
         Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
-        // attendances (user/presensi)
-        Route::get('/dashboard/admin/kehadiran', [AttendanceController::class, 'index'])->name('attendances.index');
-        Route::get('/dashboard/admin/kehadiran/tambah-data', [AttendanceController::class, 'create'])->name('attendances.create');
-        Route::get('/dashboard/admin/kehadiran/edit', [AttendanceController::class, 'edit'])->name('attendances.edit');
-        Route::delete('/dashboard/admin/kehadiran/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
+    });
 
+    Route::middleware('role:superadmin')->group(function (){
+        // akun admin
+        Route::get('/dashboard/admin/akun-admin', [StudentController::class, 'adminindex'])->name('admin.index');
+        Route::get('/dashboard/admin/akun-admin/tambah-data', [StudentController::class, 'admincreate'])->name('admin.create');
+        Route::get('/dashboard/admin/akun-admin/edit', [StudentController::class, 'adminedit'])->name('admin.edit');
+        Route::delete('/dashboard/admin/akun-admin/{users}', [StudentController::class, 'admindestroy'])->name('admin.destroy');
         // presensi (kehadiran)
         Route::get('/dashboard/admin/presensi', [PresenceController::class, 'index'])->name('presences.index');
         Route::get('/dashboard/admin/presensi/qrcode', [PresenceController::class, 'showQrcode'])->name('presences.qrcode');
         Route::get('/dashboard/admin/presensi/{attendance}', [PresenceController::class, 'show'])->name('presences.show');
         Route::delete('/dashboard/admin/presensi/{presence}', [PresenceController::class, 'destroy'])->name('presence.destroy');
+        // attendances (user/presensi)
+        Route::get('/dashboard/admin/kehadiran', [AttendanceController::class, 'index'])->name('attendances.index');
+        Route::get('/dashboard/admin/kehadiran/tambah-data', [AttendanceController::class, 'create'])->name('attendances.create');
+        Route::get('/dashboard/admin/kehadiran/edit', [AttendanceController::class, 'edit'])->name('attendances.edit');
+        Route::delete('/dashboard/admin/kehadiran/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
         // not present data
         Route::get('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent'])->name('presences.not-present');
         Route::post('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent']);
@@ -108,3 +110,4 @@ Route::middleware('auth')->group(function () {
     // auth
     Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'authenticate']);
+

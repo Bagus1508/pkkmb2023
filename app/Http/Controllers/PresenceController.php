@@ -17,7 +17,7 @@ class PresenceController extends Controller
         $attendances = Attendance::all()->sortByDesc('data.is_end')->sortByDesc('data.is_start');
 
         return view('dashboard.admin.presences.index', [
-            "title" => "Daftar Absensi Dengan Kehadiran",
+            "title" => "Daftar Presensi Dengan Kehadiran",
             "attendances" => $attendances
         ]);
     }

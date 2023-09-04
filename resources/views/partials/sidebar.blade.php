@@ -62,25 +62,25 @@
             </button>
             <ul id="dropdown-admin" class="hidden py-2 space-y-2">
                   <li>
-                     <a href="/dashboard/admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Dashboard Admin</a>
+                     <a href="/dashboard/admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Dashboard Admin</a>
                   </li>
                   <li>
-                     <a href="/dashboard/admin/peserta" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Akun Peserta</a>
+                     <a href="/dashboard/admin/peserta" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/peserta') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Akun Peserta</a>
                   </li>
                   @if(auth()->user()->role->name === 'superadmin')
                   <li>
-                     <a href="/dashboard/admin/akun-admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Akun Administrator</a>
+                     <a href="/dashboard/admin/akun-admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/akun-admin') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Akun Administrator</a>
                   </li>
                   @endif
                   <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Tugas Peserta</a>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/tugas') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Tugas Peserta</a>
                   </li>
                   <li>
-                     <a href="/dashboard/admin/kelompok" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Data Kelompok</a>
+                     <a href="/dashboard/admin/kelompok" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/kelompok') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Kelompok</a>
                   </li>
                   @if(auth()->user()->role->name === 'superadmin')
                   <li>
-                    <a href="/dashboard/admin/posisi" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Posisi Pengguna</a>
+                    <a href="/dashboard/admin/posisi" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/posisi') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Posisi Pengguna</a>
                  </li>
                  @endif
             </ul>
@@ -99,16 +99,14 @@
             </button>
             <ul id="dropdown-presences" class="hidden py-2 space-y-2">
                   <li>
-                     <a href="/dashboard/admin/kehadiran" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Presensi</a>
+                     <a href="/dashboard/admin/kehadiran" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/kehadiran') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Presensi</a>
                   </li>
                   <li>
-                     <a href="/dashboard/admin/presensi" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500">Data Kehadiran</a>
+                     <a href="/dashboard/admin/presensi" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/presensi') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Kehadiran</a>
                   </li>
             </ul>
-          </li>
-                       
+          </li>        
          @endif        
-
           <li>
             <form action="{{ route('auth.logout') }}" method="POST" onsubmit="return confirm('Apakah anda yakin ingin keluar?')">
                 @method('DELETE')

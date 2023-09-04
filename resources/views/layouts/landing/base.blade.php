@@ -7,7 +7,7 @@
         @include('partials.tailwindstyles')
         @stack('style')
     
-        <title>{{ $title }} | PKKMB Narotama 2023</title>
+        <title>PKKMB Narotama 2023</title>
 
         @stack('before-style')
 
@@ -18,7 +18,7 @@
     <body class="antialiased font-poppins">
         <div class="relative">
             
-            @include('layouts.landing.navbar')
+           {{--  @include('layouts.landing.navbar') --}}
             
             @yield('content')
 
