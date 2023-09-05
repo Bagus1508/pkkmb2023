@@ -32,7 +32,7 @@
           data-aos-offset="0"
         >
     
-        <div class="lg:absolute w-full h-screen flex flex-col items-center text-center pt-72 lg:pt-36">
+        <div class="lg:absolute w-full h-screen flex flex-col items-center text-center pt-56 lg:pt-36">
           <img 
             src="{{ asset('/src/img/logo/logo.png') }}" 
             alt="" 
@@ -68,7 +68,7 @@
         <img 
           src="{{ asset('/src/img/hero/planet.png') }}" 
           alt="planet" 
-          class="hidden lg:block absolute mt-0 ml-0 h-screen w-full object-cover"
+          class="absolute mt-0 ml-0 h-screen lg:w-full object-cover"
           data-aos="fade-up"
         >
         <img
@@ -88,7 +88,7 @@
           data-aos-offset="0"
         >
           <a href="#dashboard">
-            <button class="text-white font-bold text-base lg:text-xl mt-52 lg:mt-44 py-1 lg:py-2 px-6 lg:px-7 bg-space-buttonungu rounded-full shadow-sm">
+            <button class="text-white font-bold text-base lg:text-xl mt-48 lg:mt-44 py-1 lg:py-2 px-6 lg:px-7 bg-space-buttonungu rounded-full shadow-sm">
               Mulai
             </button>
           </a>
@@ -117,7 +117,7 @@
         <img 
           src="{{ asset('/src/img/hero/2/roketmeluncur.png') }}" 
           alt="roketmeluncur" 
-          class="hidden lg:block absolute mt-0 ml-0 h-screen object-cover"
+          class="absolute mt-0 ml-0 h-screen object-cover"
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-delay="2000"
@@ -125,7 +125,7 @@
         >
     
         <div class="lg:absolute w-full h-screen">
-          <div class="flex flex-col items-center text-center pt-80 lg:pt-36">
+          <div class="flex flex-col items-center text-center pt-60 lg:pt-36">
             <h2 
               id="title1" 
               class="text-white text-3xl lg:text-6xl font-extrabold mb-0"
@@ -159,6 +159,7 @@
     
             <a 
               href="{{ route('home-presences.indexuserdashboard') }}"
+              class="absolute w-full h-screen flex flex-col items-center text-center pt-40 lg:pt-52"
               data-aos="fade-zoom-in"
               data-aos-easing="ease-in-back"
               data-aos-delay="2500"
@@ -195,10 +196,10 @@
         </div>
     
         <div class="absolute ml-5 lg:ml-36 h-screen">
-          <div class="flex flex-col mt-64 lg:mt-48">
+          <div class="flex flex-col mt-52 lg:mt-48">
             <h2 
               id="title1" 
-              class="text-orange-500 text-3xl lg:text-5xl font-extrabold mb-0 lg:mb-1"
+              class="text-orange-500 text-[28px] lg:text-5xl font-extrabold mb-0 lg:mb-1"
               data-aos="fade-right"
               data-aos-easing="linear"
               data-aos-delay="2100"

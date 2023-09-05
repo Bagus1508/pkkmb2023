@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
 
 class LandingController extends Controller
 {
@@ -25,6 +28,8 @@ class LandingController extends Controller
     }
 
     public function viewinformation() {
+        // $users = DetailUser::where('user_id', Auth::user()->id)->get();
+        
         return view('landing.information', [
             "title" => "Kegiatan"
         ]);
