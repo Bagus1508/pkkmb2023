@@ -72,11 +72,11 @@
 
 @section('content')
     {{-- Hero Page --}}
-    <section id="hero" class="animation-container h-screen w-full hero-background relative">
+    <section id="hero" class="lg:h-screen w-full hero-background lg:relative flex items-center">
         <img 
           src="{{ asset('/src/img/hero/bintang.png') }}" 
           alt="bintang" 
-          class="animate__animated animate__fadeInUp absolute mt-0 ml-0 h-screen w-full object-cover"
+          class="hidden lg:block absolute mt-0 ml-0 h-screen w-full object-cover"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-delay="1000"
@@ -87,25 +87,28 @@
         <img 
           src="{{ asset('/src/img/hero/planet.png') }}" 
           alt="planet" 
-          class="absolute mt-0 ml-0 h-screen w-full object-cover"
+          class="absolute mt-0 ml-0 h-screen lg:w-full object-cover"
           data-aos="fade-up"
         >
         <img
           src="{{ asset('/src/img/hero/planett.png') }}"
           alt="planett"
-          class="absolute mt-0 ml-0 h-screen w-full object-cover"
+          class="hidden lg:block absolute mt-0 ml-0 h-screen w-full object-cover"
           data-aos="zoom-in"
           data-aos-delay="500"
         >
 
-        <div class="absolute w-full flex flex-col items-center pt-36">
+        <div class="lg:absolute w-full h-screen flex flex-col items-center text-center pt-56 lg:pt-36">
             <img 
                 src="{{ asset('/src/img/hero/pkkmb_hero.png') }}" 
                 alt="PKKMB Mascot"
-                class="flex items-center h-80 shadow-lg"
+                class="flex items-center h-28 lg:h-80 shadow-lg"
+                data-aos="zoom-in-up"
+                data-aos-delay="1500"
+                data-aos-duration="1000"
             >
         </div>
-    </section>
+      </section>
 
 
     {{-- Content --}}
@@ -114,29 +117,29 @@
             <div class="w-full">
 
                 <div class="tab bg-space-back">
-                    <ul class="flex text-base text-center text-white">
+                    <ul class="flex flex-col lg:flex-row text-base text-center text-white">
                         <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pengenalan')" id="defaultOpen">
+                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pengenalan')" id="defaultOpen">
                                 Pengenalan
                             </button>
                         </li>
                         <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pedoman')">
+                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pedoman')">
                                 Pedoman
                             </button>
                         </li>
                         <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'seragam')">
+                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'seragam')">
                                 Seragam
                             </button>
                         </li>
                         <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'jadwal')">
+                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'jadwal')">
                                 Jadwal
                             </button>
                         </li>
                         <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'tugas')">
+                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'tugas')">
                                 Tugas
                             </button>
                         </li>

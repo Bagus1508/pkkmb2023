@@ -26,25 +26,18 @@
     </div>
 </header> --}}
 
-<nav class="hidden lg:block absolute bg-transparent w-full items-center z-40">
+<nav class="hidden lg:block absolute bg-transparent w-full z-40">
     <div class="container w-full px-2 lg:px-4 items-center">
         <div class="flex justify-center">
             
             <div class="flex">
-                <div class="hidden justify-between w-full md:flex md:w-auto md:order-1 items-center space-x-1">
+                <div class="hidden justify-center w-full md:flex md:w-auto md:order-1 items-center space-x-1">
                     <a href="{{ route('index-landing') }}" class="block {{ request()->is('/') ? 'pt-8 pb-1 px-2 text-orange-400 font-sans font-bold hover:text-orange-300 border-b-2 border-orange-400 hover:border-orange-300 transition duration-300' : 'pt-8 pb-1 px-2 text-white font-sans font-normal hover:text-gray-300 hover:border-b-2 hover:border-gray-300 transition duration-300' }}">Beranda</a>
                     <a href="{{ route('informasi-landing') }}" class="block {{ request()->is('informasi') ? 'pt-8 pb-1 px-2 text-orange-400 font-sans font-bold hover:text-orange-300 border-b-2 border-orange-400 hover:border-orange-300 transition duration-300' : 'pt-8 pb-1 px-2 text-white font-sans font-normal hover:text-gray-300 hover:border-b-2 hover:border-gray-300 transition duration-300' }}">Informasi</a>
                     <a href="{{ route('home-presences.indexuserdashboard') }}" class="block {{ request()->is('login') ? 'pt-8 pb-1 px-2 text-orange-400 font-sans font-bold hover:text-orange-300 border-b-2 border-orange-400 hover:border-orange-300 transition duration-300' : 'pt-8 pb-1 px-2 text-white font-sans font-normal hover:text-gray-300 hover:border-b-2 hover:border-gray-300 transition duration-300' }}">Dashboard</a>
                 </div>
             </div>
 
-            <div class="lg:hidden flex items-center">
-                <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 mobile-menu-button">
-                    <span class="hamburger-line transision duration-300 ease-in-out  origin-bottom-left"></span>
-                    <span class="hamburger-line transision duration-300 ease-in-out"></span>
-                    <span class="hamburger-line transision duration-300 ease-in-out origin-bottom-left"></span>
-                </button>
-            </div>
         </div>
     </div>
 
