@@ -13,7 +13,7 @@ use App\Models\DetailUser;
 use App\Models\Kelompok;
 use Illuminate\Validation\ValidationException;
 
-class DatabaseSeeder extends Seeder
+class PesertaSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -22,10 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RoleSeeder::class);
-        $this->call(PositionSeeder::class);
 
-        $csvFile = storage_path('datauser/datapanitia.csv');
+        $csvFile = storage_path('datauser/datapeserta.csv');
 
         if (($handle = fopen($csvFile, "r")) !== false) {
             $header = null;
