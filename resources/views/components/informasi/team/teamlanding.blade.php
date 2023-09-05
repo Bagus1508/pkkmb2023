@@ -2,7 +2,7 @@
     <a id="pak_tahegga" href="{{ url('https://www.instagram.com/taheggaalfath/') }}" class="inline-block px-3 mb-5 lg:mb-0" target="_blank">
         <div class="w-44 h-80 bg-slate-200 hover:bg-space-textungu rounded-full overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
     
-            <img src="{{ asset('/src/img/panitia/1.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
+            <img src="{{ asset('/src/img/Panitia/1.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
     
             <!--Title and Date-->
             <h1 style="text-transform: capitalize;" class="font-bold text-space-back text-base mb-3">
@@ -18,7 +18,7 @@
     <a id="pak_chandra" href="{{ url('https://www.instagram.com/achan_id/') }}" class="inline-block px-3 mb-5 lg:mb-0" target="_blank">
         <div class="w-44 h-80 bg-slate-200 hover:bg-space-textungu rounded-full overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
     
-            <img src="{{ asset('/src/img/panitia/2.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
+            <img src="{{ asset('/src/img/Panitia/2.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
     
             <!--Title and Date-->
             <h1 style="text-transform: capitalize;" class="font-bold text-dark hover:text-primary text-base mb-3">
@@ -34,7 +34,7 @@
     <a id="pak_deny" href="{{ url('https://www.instagram.com/denny_setiawan24/') }}" class="inline-block px-3 mb-5 lg:mb-0" target="_blank">
         <div class="w-44 h-80 bg-slate-200 hover:bg-space-textungu rounded-full overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
     
-            <img src="{{ asset('/src/img/panitia/3.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
+            <img src="{{ asset('/src/img/Panitia/3.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
     
             <!--Title and Date-->
             <h1 style="text-transform: capitalize;" class="font-bold text-dark hover:text-primary text-base mb-3">
@@ -50,7 +50,7 @@
     <a id="mas_pandu" href="{{ url('https://www.instagram.com/ardhyapan/') }}" class="inline-block px-3 mb-5 lg:mb-0" target="_blank">
         <div class="w-44 h-80 bg-slate-200 hover:bg-space-textungu rounded-full overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
     
-            <img src="{{ asset('/src/img/panitia/4.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
+            <img src="{{ asset('/src/img/Panitia/4.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
     
             <!--Title and Date-->
             <h1 style="text-transform: capitalize;" class="font-bold text-dark hover:text-primary text-base mb-3">
@@ -66,7 +66,7 @@
     <a id="fredy" href="{{ url('https://www.instagram.com/fredypradanapu2/') }}" class="inline-block px-3 mb-5 lg:mb-0" target="_blank">
         <div class="w-44 h-80 bg-slate-200 hover:bg-space-textungu rounded-full overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
     
-            <img src="{{ asset('/src/img/panitia/8.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
+            <img src="{{ asset('/src/img/Panitia/8.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
     
             <!--Title and Date-->
             <h1 style="text-transform: capitalize;" class="font-bold text-dark hover:text-primary text-base mb-3">
@@ -82,7 +82,7 @@
     <a id="vanessca" href="{{ url('https://www.instagram.com/fredypradanapu2/') }}" class="inline-block px-3 mb-5 lg:mb-0" target="_blank">
         <div class="w-44 h-80 bg-slate-200 hover:bg-space-textungu rounded-full overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
     
-            <img src="{{ asset('/src/img/panitia/6.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
+            <img src="{{ asset('/src/img/Panitia/6.png') }}" alt="placeholder" class="rounded-full h-40 w-40 mb-3">
     
             <!--Title and Date-->
             <h1 style="text-transform: capitalize;" class="font-bold text-dark hover:text-primary text-base mb-3">
