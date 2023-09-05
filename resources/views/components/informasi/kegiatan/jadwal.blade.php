@@ -1,8 +1,10 @@
 <div class="bg-purple-300">
-    {{-- @auth
-        <div class="px-5 lg:px-36 py-5 lg:py-20 w-full">
-            <iframe src="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" width="100%" height="1000px"></iframe>
-        </div>
+    @auth
+    <div class="px-5 lg:px-36 py-5 lg:py-20 w-full">
+        <iframe class="mb-5" src="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" width="100%" height="1000px"></iframe>
+
+        <a href="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" download="jadwal_kegiatan_pkkmb2023.pdf" class="bg-space-buttonbiru hover:bg-blue-400 px-8 py-3 text-white text-base rounded-lg">Unduh File</a>
+    </div>
     @endauth
     @guest
         <div class="w-full h-[420px] lg:h-screen flex flex-col items-center justify-center">
@@ -22,10 +24,12 @@
                 </div>
             </div>    
         </div>
-    @endguest --}}
+    @endguest
 
-    <div class="px-5 lg:px-36 py-5 lg:py-20 w-full">
+    {{-- <div class="px-5 lg:px-36 py-5 lg:py-20 w-full">
         <iframe src="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" width="100%" height="1000px"></iframe>
-    </div>
+
+        <a href="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" download="jadwal_kegiatan_pkkmb2023.pdf" class="bg-space-buttonbiru hover:bg-blue-400 px-8 py-3 text-white text-base rounded-lg">Unduh File</a>
+    </div> --}}
 </div>
 
