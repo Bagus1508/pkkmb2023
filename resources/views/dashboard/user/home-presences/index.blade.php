@@ -24,7 +24,7 @@
             </li>
             <li class="flex space-x-2 items-center">
                 <span class="leading-tight">Kelompok : </span>
-                <span>{{ auth()->user()->detailuser->kelompok }}</span>
+                <span>{{ auth()->user()->kelompok->name ?? 'Belum masuk kelompok' }}</span>
             </li>
         </ul>
     </div>
