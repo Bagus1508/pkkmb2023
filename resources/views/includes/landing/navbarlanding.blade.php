@@ -27,7 +27,7 @@
 </header> --}}
 
 <nav class="hidden lg:block absolute bg-transparent w-full z-40">
-    <div class="container w-full px-2 lg:px-4 items-center">
+    <div class="w-full px-2 lg:px-4 items-center">
         <div class="flex justify-center">
             
             <div class="flex">
