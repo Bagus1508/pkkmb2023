@@ -159,7 +159,7 @@
     
             <a 
               href="{{ route('home-presences.indexuserdashboard') }}"
-              class="absolute w-full h-screen flex flex-col items-center text-center pt-40"
+              class="absolute w-full h-screen flex flex-col items-center text-center pt-40 lg:pt-52"
               data-aos="fade-zoom-in"
               data-aos-easing="ease-in-back"
               data-aos-delay="2500"

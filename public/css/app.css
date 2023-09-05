@@ -3626,6 +3626,14 @@ input:checked + .toggle-bg {
     padding-left: 1.25rem;
   }
 
+  .lg\:pt-56 {
+    padding-top: 14rem;
+  }
+
+  .lg\:pt-52 {
+    padding-top: 13rem;
+  }
+
   .lg\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;

@@ -72,7 +72,7 @@
 
 @section('content')
     {{-- Hero Page --}}
-    <section id="hero" class="lg:h-screen w-full hero-background lg:relative flex items-center">
+    <section id="hero" class="lg:h-screen w-full hero-background flex items-center">
         <img 
           src="{{ asset('/src/img/hero/bintang.png') }}" 
           alt="bintang" 
@@ -113,60 +113,58 @@
 
     {{-- Content --}}
     <section id="informasi-kegiatan">
-        <div class="container">
-            <div class="w-full">
+        <div class="w-full">
 
-                <div class="tab bg-space-back">
-                    <ul class="flex flex-col lg:flex-row text-base text-center text-white">
-                        <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pengenalan')" id="defaultOpen">
-                                Pengenalan
-                            </button>
-                        </li>
-                        <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pedoman')">
-                                Pedoman
-                            </button>
-                        </li>
-                        <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'seragam')">
-                                Seragam
-                            </button>
-                        </li>
-                        <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'jadwal')">
-                                Jadwal
-                            </button>
-                        </li>
-                        <li class="w-full" role="presentation">
-                            <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'tugas')">
-                                Tugas
-                            </button>
-                        </li>
-                    </ul>
+            <div class="tab bg-space-back">
+                <ul class="flex flex-col lg:flex-row text-base text-center text-white">
+                    <li class="w-full" role="presentation">
+                        <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pengenalan')" id="defaultOpen">
+                            Pengenalan
+                        </button>
+                    </li>
+                    <li class="w-full" role="presentation">
+                        <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'pedoman')">
+                            Pedoman
+                        </button>
+                    </li>
+                    <li class="w-full" role="presentation">
+                        <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'seragam')">
+                            Seragam
+                        </button>
+                    </li>
+                    <li class="w-full" role="presentation">
+                        <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'jadwal')">
+                            Jadwal
+                        </button>
+                    </li>
+                    <li class="w-full" role="presentation">
+                        <button class="tablinks inline-block border-t-2 border-space-buttonungu py-2 lg:py-8 w-full text-base text-center text-gray-400 hover:text-gray-700 hover:bg-slate-100" onclick="openCity(event, 'tugas')">
+                            Tugas
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div>
+                <div id="pengenalan" class="tabcontent">
+                    @include('components.informasi.kegiatan.pengenalan')
                 </div>
 
+                <div id="pedoman" class="tabcontent">
+                    @include('components.informasi.kegiatan.pedoman')
+                </div>
 
-                <div>
-                    <div id="pengenalan" class="tabcontent">
-                        @include('components.informasi.kegiatan.pengenalan')
-                    </div>
+                <div id="seragam" class="tabcontent">
+                    @include('components.informasi.kegiatan.seragam')
+                </div>
 
-                    <div id="pedoman" class="tabcontent">
-                        @include('components.informasi.kegiatan.pedoman')
-                    </div>
+                <div id="jadwal" class="tabcontent">
+                    @include('components.informasi.kegiatan.jadwal')
+                </div>
 
-                    <div id="seragam" class="tabcontent">
-                        @include('components.informasi.kegiatan.seragam')
-                    </div>
-
-                    <div id="jadwal" class="tabcontent">
-                        @include('components.informasi.kegiatan.jadwal')
-                    </div>
-
-                    <div id="tugas" class="tabcontent">
-                        @include('components.informasi.kegiatan.tugas')
-                    </div>
+                <div id="tugas" class="tabcontent">
+                    @include('components.informasi.kegiatan.tugas')
                 </div>
             </div>
         </div>
