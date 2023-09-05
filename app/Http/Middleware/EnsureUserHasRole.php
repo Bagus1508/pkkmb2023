@@ -25,7 +25,7 @@ class EnsureUserHasRole
             }
         }
 
-        // return abort(403);
+        // returnn abort(403);
         return abort(403, 'Kamu tidak memilik izin untuk mengakses halaman tersebut.');
     }
 }

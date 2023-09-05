@@ -1,5 +1,5 @@
 @extends('layouts.landing.base')
-
+{{-- 404 --}}
 @section('content')
 <section id="error" class="z-50 bg-slate-200">
     <div class="container px-0">

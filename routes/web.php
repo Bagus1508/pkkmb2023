@@ -30,7 +30,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin,superadmin')->group(function () {
         Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard.indexadmin');
-        // positions
+        // positionss
         Route::get('/dashboard/admin/posisi', [PositionController::class, 'index'])->name('positions.index');
         Route::get('/dashboard/admin/posisi/tambah-data', [PositionController::class, 'create'])->name('positions.create');
         Route::get('/dashboard/admin/posisi/edit', [PositionController::class, 'edit'])->name('positions.edit');

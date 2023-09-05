@@ -60,6 +60,7 @@
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                   </svg>
             </button>
+            {{-- dashboard admin --}}
             <ul id="dropdown-admin" class="hidden py-2 space-y-2">
                   <li>
                      <a href="/dashboard/admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Dashboard Admin</a>
