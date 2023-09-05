@@ -95,8 +95,11 @@
                 Dengan informasi terbaik jalanmu semakin mudah
             </h3>
             
+            <lottie-player class="absolute h-[600px] mt-10 lg:mt-28" src="https://lottie.host/48c5b1fc-2762-4ded-a3f7-b7545e223e4f/YpldIOFUpi.json" background="transparent" speed="0.5" direction="1" mode="normal" loop autoplay></lottie-player>
+
             <a 
                 href="{{ route('informasi-kegiatan') }}"
+                class="absolute w-full mt-52"
                 data-aos="fade-zoom-in"
                 data-aos-easing="ease-in-back"
                 data-aos-delay="2500"
@@ -107,15 +110,6 @@
                     Selengkapnya
                 </button>
             </a>
-
-            <img
-                src="/src/img/information/1/card.png" 
-                alt="card" 
-                class="h-48 lg:h-52"
-                data-aos="fade-up"
-                data-aos-delay="1500"
-                data-aos-duration="3000"
-            >
         </div>
     </section>
 
@@ -153,9 +147,12 @@
                 Perjuanganmu tidak mungkin sia-sia <br>
                 Hasilmu saat ini adalah perjuanganmu dimasa lampau
             </h3>
+
+            <lottie-player class="absolute h-48 lg:h-[300px] mt-72 lg:mt-56" src="https://lottie.host/3f4a4cd3-b12c-480d-aff7-fc11e101f4a8/flXzAEAZw9.json" background="transparent" speed="1" direction="1" mode="normal" loop autoplay></lottie-player>
             
             <a 
                 href="{{ route('pengumuman-landing') }}"
+                class="absolute w-full mt-56 lg:mt-48"
                 data-aos="fade-zoom-in"
                 data-aos-easing="ease-in-back"
                 data-aos-delay="2500"
@@ -166,15 +163,6 @@
                     Cek Sekarang
                 </button>
             </a>
-
-            <img
-                src="/src/img/information/1/card.png" 
-                alt="card" 
-                class="h-48 lg:h-52"
-                data-aos="fade-up"
-                data-aos-delay="1500"
-                data-aos-duration="3000"
-            >
         </div>
     </section>
 @endsection

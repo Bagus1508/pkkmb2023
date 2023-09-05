@@ -1249,6 +1249,18 @@ input:checked + .toggle-bg {
 .mb-14 {
   margin-bottom: 3.5rem;
 }
+.mt-44 {
+  margin-top: 11rem;
+}
+.mt-56 {
+  margin-top: 14rem;
+}
+.mt-60 {
+  margin-top: 15rem;
+}
+.mt-72 {
+  margin-top: 18rem;
+}
 .block {
   display: block;
 }
@@ -1336,6 +1348,39 @@ input:checked + .toggle-bg {
 .h-72 {
   height: 18rem;
 }
+.h-\[300px\] {
+  height: 300px;
+}
+.h-\[400px\] {
+  height: 400px;
+}
+.h-\[600px\] {
+  height: 600px;
+}
+.h-96 {
+  height: 24rem;
+}
+.h-\[420px\] {
+  height: 420px;
+}
+.h-60 {
+  height: 15rem;
+}
+.h-\[180px\] {
+  height: 180px;
+}
+.h-\[200px\] {
+  height: 200px;
+}
+.h-\[215px\] {
+  height: 215px;
+}
+.h-\[100px\] {
+  height: 100px;
+}
+.h-\[500px\] {
+  height: 500px;
+}
 .max-h-full {
   max-height: 100%;
 }
@@ -1404,6 +1449,27 @@ input:checked + .toggle-bg {
 }
 .w-44 {
   width: 11rem;
+}
+.w-60 {
+  width: 15rem;
+}
+.w-\[380px\] {
+  width: 380px;
+}
+.w-\[320px\] {
+  width: 320px;
+}
+.w-\[340px\] {
+  width: 340px;
+}
+.w-\[345px\] {
+  width: 345px;
+}
+.w-10 {
+  width: 2.5rem;
+}
+.w-24 {
+  width: 6rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -3448,6 +3514,22 @@ input:checked + .toggle-bg {
     margin-bottom: 2rem;
   }
 
+  .lg\:mt-56 {
+    margin-top: 14rem;
+  }
+
+  .lg\:mt-32 {
+    margin-top: 8rem;
+  }
+
+  .lg\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .lg\:mt-28 {
+    margin-top: 7rem;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -3484,6 +3566,34 @@ input:checked + .toggle-bg {
     height: 20rem;
   }
 
+  .lg\:h-\[400px\] {
+    height: 400px;
+  }
+
+  .lg\:h-\[500px\] {
+    height: 500px;
+  }
+
+  .lg\:h-\[600px\] {
+    height: 600px;
+  }
+
+  .lg\:h-\[300px\] {
+    height: 300px;
+  }
+
+  .lg\:h-full {
+    height: 100%;
+  }
+
+  .lg\:h-40 {
+    height: 10rem;
+  }
+
+  .lg\:h-\[215px\] {
+    height: 215px;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
@@ -3510,6 +3620,18 @@ input:checked + .toggle-bg {
 
   .lg\:w-3\/12 {
     width: 25%;
+  }
+
+  .lg\:w-44 {
+    width: 11rem;
+  }
+
+  .lg\:w-40 {
+    width: 10rem;
+  }
+
+  .lg\:w-\[430px\] {
+    width: 430px;
   }
 
   .lg\:max-w-screen-2xl {

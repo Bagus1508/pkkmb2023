@@ -5,10 +5,10 @@
         </div>
     @endauth
     @guest
-        <div class="w-full h-72 lg:h-screen flex flex-col items-center justify-center">
+        <div class="w-full h-[420px] lg:h-screen flex flex-col items-center justify-center">
             <div class="w-full px-4">
                 <div class="flex items-center justify-center mb-5">
-                    <img src="{{ asset('/src/img/maskot_pkkmb_maaf_2.png') }}" alt="Sorry Maskot" class="w-40">
+                    <img src="{{ asset('/src/img/maskot_pkkmb_maaf_2.png') }}" alt="Sorry Maskot" class="w-24 lg:w-40">
                 </div>
             </div>
         

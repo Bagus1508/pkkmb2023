@@ -1,14 +1,14 @@
 <div class="bg-purple-300">
-    @auth
+    {{-- @auth
         <div class="px-5 lg:px-36 py-5 lg:py-20 w-full">
             <iframe src="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" width="100%" height="1000px"></iframe>
         </div>
     @endauth
     @guest
-        <div class="w-full h-72 lg:h-screen flex flex-col items-center justify-center">
+        <div class="w-full h-[420px] lg:h-screen flex flex-col items-center justify-center">
             <div class="w-full px-4">
                 <div class="flex items-center justify-center mb-5">
-                    <img src="{{ asset('/src/img/maskot_pkkmb_maaf_2.png') }}" alt="Sorry Maskot" class="w-40">
+                    <img src="{{ asset('/src/img/maskot_pkkmb_maaf_2.png') }}" alt="Sorry Maskot" class="w-24 lg:w-40">
                 </div>
             </div>
         
@@ -22,6 +22,10 @@
                 </div>
             </div>    
         </div>
-    @endguest
+    @endguest --}}
+
+    <div class="px-5 lg:px-36 py-5 lg:py-20 w-full">
+        <iframe src="{{ asset('/src/document/jadwal_kegiatan_pkkmb2023.pdf') }}" width="100%" height="1000px"></iframe>
+    </div>
 </div>
 

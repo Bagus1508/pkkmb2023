@@ -68,3 +68,6 @@
     // Default Open
     document.getElementById("defaultOpen").click();
 </script>
+
+{{-- LottieFiles --}}
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
