@@ -27,6 +27,12 @@ class LandingController extends Controller
         ]);
     }
 
+    public function viewpanitia() {
+        return view('landing.teamfull', [
+            "title" => "Panitia"
+        ]);
+    }
+    
     public function viewinformation() {
         // $users = DetailUser::where('user_id', Auth::user()->id)->get();
         
