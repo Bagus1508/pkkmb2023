@@ -5,7 +5,7 @@
 <aside id="drawer-navigation" class="fixed top-0 left-0 z-40 w-64 h-screen bg-gray-50 overflow-y-auto transition-transform -translate-x-full dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
        <a href="/" class="w-full items-center justify-center center mx-auto mb-5">
-          <img src="../../../src/img/PKKMB 1.png" class="justify-center mx-auto items-center mb-5 rounded-2xl" alt="PKKMB 2023" />
+          <img src="{{ asset('/src/img/PKKMB 1.png') }}" class="justify-center mx-auto items-center mb-5 rounded-2xl" alt="PKKMB 2023" />
        </a>
        <div class="text-gray-500 mx-auto w-full text-center">
           {{-- <p class="pb-2">Halo, {{ auth()->user()->name}}</p>
@@ -84,6 +84,9 @@
                     <a href="/dashboard/admin/posisi" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/posisi') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Posisi Pengguna</a>
                  </li>
                  @endif
+                  <li>
+                     <a href="/dashboard/admin" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Berita</a>
+                  </li>
             </ul>
           </li>        
           <li class="border-t">

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RoleSeeder::class);
         $this->call(PositionSeeder::class);
+        $this->call(KelompokSeeder::class);
 
         $csvFile = storage_path('datauser/datapanitia.csv');
 
