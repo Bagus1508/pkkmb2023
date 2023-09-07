@@ -41,6 +41,12 @@ class LandingController extends Controller
         ]);
     }
 
+    public function detailviewnews() {
+        return view('landing.detailinformationnews', [
+            "title" => "Berita"
+        ]);
+    }
+
     public function viewnews() {
         return view('landing.informationnews', [
             "title" => "Berita"

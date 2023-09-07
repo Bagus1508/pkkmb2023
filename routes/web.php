@@ -104,6 +104,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/informasi/pengumuman', [LandingController::class, 'viewannounce'])->name('pengumuman-landing');
     Route::get('/informasi/kegiatan/panitia', [LandingController::class, 'viewpanitia'])->name('informasi-panitia');
     Route::get('/informasi/kegiatan', [LandingController::class, 'viewinformation'])->name('informasi-kegiatan');
+    Route::get('/informasi/berita/detail/1', [LandingController::class, 'detailviewnews'])->name('detail-informasi-berita');
     Route::get('/informasi/berita', [LandingController::class, 'viewnews'])->name('informasi-berita');
     Route::get('/informasi', [LandingController::class, 'information'])->name('informasi-landing');
     Route::get('/panitia', [LandingController::class, 'viewcommittee'])->name('panitia-landing');
