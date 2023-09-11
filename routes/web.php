@@ -11,6 +11,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\NewsController;
 
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -30,21 +31,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin,superadmin')->group(function () {
         Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard.indexadmin');
-        // positionss
-        Route::get('/dashboard/admin/posisi', [PositionController::class, 'index'])->name('positions.index');
-        Route::get('/dashboard/admin/posisi/tambah-data', [PositionController::class, 'create'])->name('positions.create');
-        Route::get('/dashboard/admin/posisi/edit', [PositionController::class, 'edit'])->name('positions.edit');
-        Route::delete('/dashboard/admin/posisi/{position}', [PositionController::class, 'destroy'])->name('positions.destroy');
-        //kelompok
-        Route::get('/dashboard/admin/kelompok', [KelompokController::class, 'index'])->name('kelompok.index');
-        Route::get('/dashboard/admin/kelompok/tambah-data', [KelompokController::class, 'create'])->name('kelompok.create');
-        Route::get('/dashboard/admin/kelompok/edit', [KelompokController::class, 'edit'])->name('kelompok.edit');
-        Route::delete('/dashboard/admin/kelompok/{kelompok}', [KelompokController::class, 'destroy'])->name('kelompok.destroy');
-        // akun peserta
-        Route::get('/dashboard/admin/peserta', [StudentController::class, 'index'])->name('students.index');
-        Route::get('/dashboard/admin/peserta/tambah-data', [StudentController::class, 'create'])->name('students.create');
-        Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
-        Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
+        // News
+        Route::group(['prefix' => 'dashboard/admin/', 'as' => 'admin.'],
+        function () {
+            Route::resource('news', NewsController::class);
+        });
     });
     
     Route::middleware('role:superadmin')->group(function (){
@@ -70,8 +61,22 @@ Route::middleware('auth')->group(function () {
         Route::post('/dashboard/admin/presensi/{attendance}/hadir', [PresenceController::class, 'presentUser'])->name('presences.present');
         Route::post('/dashboard/admin/presensi/{attendance}/beriIzin', [PresenceController::class, 'acceptPermissionByAdmin'])->name('presences.acceptPermissionByAdmin');
         // students permissions
-
         Route::get('/dashboard/presensi/{attendance}/izin', [PresenceController::class, 'permissions'])->name('presences.permissions');
+        // positionss
+        Route::get('/dashboard/admin/posisi', [PositionController::class, 'index'])->name('positions.index');
+        Route::get('/dashboard/admin/posisi/tambah-data', [PositionController::class, 'create'])->name('positions.create');
+        Route::get('/dashboard/admin/posisi/edit', [PositionController::class, 'edit'])->name('positions.edit');
+        Route::delete('/dashboard/admin/posisi/{position}', [PositionController::class, 'destroy'])->name('positions.destroy');
+        //kelompok
+        Route::get('/dashboard/admin/kelompok', [KelompokController::class, 'index'])->name('kelompok.index');
+        Route::get('/dashboard/admin/kelompok/tambah-data', [KelompokController::class, 'create'])->name('kelompok.create');
+        Route::get('/dashboard/admin/kelompok/edit', [KelompokController::class, 'edit'])->name('kelompok.edit');
+        Route::delete('/dashboard/admin/kelompok/{kelompok}', [KelompokController::class, 'destroy'])->name('kelompok.destroy');
+        // akun peserta
+        Route::get('/dashboard/admin/peserta', [StudentController::class, 'index'])->name('students.index');
+        Route::get('/dashboard/admin/peserta/tambah-data', [StudentController::class, 'create'])->name('students.create');
+        Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
+        Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
     });
 
     Route::middleware('role:user,admin,superadmin')->name('home-presences.')->group(function () {
@@ -104,7 +109,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/informasi/pengumuman', [LandingController::class, 'viewannounce'])->name('pengumuman-landing');
     Route::get('/informasi/kegiatan/panitia', [LandingController::class, 'viewpanitia'])->name('informasi-panitia');
     Route::get('/informasi/kegiatan', [LandingController::class, 'viewinformation'])->name('informasi-kegiatan');
-    Route::get('/informasi/berita/detail/1', [LandingController::class, 'detailviewnews'])->name('detail-informasi-berita');
+    Route::get('/informasi/berita/detail/{id}', [LandingController::class, 'detailviewnews'])->name('detail-informasi-berita');
     Route::get('/informasi/berita', [LandingController::class, 'viewnews'])->name('informasi-berita');
     Route::get('/informasi', [LandingController::class, 'information'])->name('informasi-landing');
     Route::get('/panitia', [LandingController::class, 'viewcommittee'])->name('panitia-landing');
