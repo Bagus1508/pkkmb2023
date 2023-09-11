@@ -7,7 +7,7 @@
     @include('partials.tailwindstyles')
     @stack('style')
 
-    <title>Error 403 | PKKMB Narotama 2023</title>
+    <title>Error 404 | PKKMB Narotama 2023</title>
 
     @stack('before-style')
 
@@ -27,7 +27,7 @@
     
                 <div class="w-full px-4">
                     <div class="max-w-2xl mx-auto text-center mb-14 ">
-                        <h2 class="font-bold text-xl mb-5 lg:text-2xl ">Mohon Maaf Kak {{ explode(' ', Auth::user()->name)[0] }} Tidak Bisa Mengakses Halaman Ini</h2>
+                        <h2 class="font-bold text-xl mb-5 lg:text-2xl ">Mohon Maaf Kakak Tidak Bisa Mengakses Halaman Ini</h2>
                         <p class="font-normal text-xs text-secondary lg:text-sm ">Akun yang kakak miliki tidak dapat mengakses pada halaman ini</p>
                         <p class="font-normal text-xs mb-10 text-secondary lg:text-sm ">Dikarenakan akun tidak memiliki hak akses tersebut</p>
                         <a href="{{ route('home-presences.indexuserdashboard') }}" class="font-medium text-xs text-white bg-blue-500 py-3 px-4 mb-4 rounded-md hover:shadow-lg hover:opacity-90 transition duration-300 ease-in-out">
