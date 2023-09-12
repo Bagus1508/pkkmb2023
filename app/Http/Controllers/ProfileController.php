@@ -17,7 +17,6 @@ class ProfileController extends Controller
 
     public function profileedit(Request $request)
     {
-
         return view('dashboard.user.profile.edit', [
             "title" => "Edit Data Peserta",
             "user" => $request->user()

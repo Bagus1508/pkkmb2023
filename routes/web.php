@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomePresenceController;
 use App\Http\Controllers\KelompokController;
 use App\Http\Controllers\PositionController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TambahTugasController;
 use App\Http\Controllers\TaskController;
 
 use Illuminate\Support\Facades\Route;
@@ -63,6 +65,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/kehadiran/tambah-data', [AttendanceController::class, 'create'])->name('attendances.create');
         Route::get('/dashboard/admin/kehadiran/edit', [AttendanceController::class, 'edit'])->name('attendances.edit');
         Route::delete('/dashboard/admin/kehadiran/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
+        // Tambah Tugas
+        Route::get('/dashboard/admin/tugas', [TambahTugasController::class, 'index'])->name('tambahtugas.index');
+        Route::get('/dashboard/admin/tugas/tambah-data', [TambahTugasController::class, 'create'])->name('tambahtugas.create');
+        Route::get('/dashboard/admin/tugas/edit', [TambahTugasController::class, 'edit'])->name('tambahtugas.edit');
+        Route::delete('/dashboard/admin/tugas/{tambahtugas}', [TambahTugasController::class, 'destroy'])->name('tambahtugas.destroy');
         // not present data
         Route::get('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent'])->name('presences.not-present');
         Route::post('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent']);
@@ -74,6 +81,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/presensi/{attendance}/izin', [PresenceController::class, 'permissions'])->name('presences.permissions');
     });
 
+    //PRESENCES USER (USER, ADMIN, SUPERADMIN)
     Route::middleware('role:user,admin,superadmin')->name('home-presences.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'indexuserdashboard'])->name('indexuserdashboard');
 
@@ -84,12 +92,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/user/presensi/{attendance}', [HomePresenceController::class, 'show'])->name('show');
     });
 
-    Route::middleware('role:user,admin,superadmin')->name('dashboard-user.')->group(function () {
-        //task
-        Route::get('/dashboard/user/tugas', [TaskController::class, 'taskindex'])->name('taskindex');
-        Route::get('/dashboard/user/tugas/individu', [TaskController::class, 'taskindividual'])->name('taskindividual');
-        Route::get('/dashboard/user/tugas/kelompok', [TaskController::class, 'taskgroup'])->name('taskgroup');
 
+    //DASHBOARD USER (USER,ADMIN, SUPERADMIN)
+    Route::middleware('role:user,admin,superadmin')->name('dashboard-user.')->group(function () {
+        //tugas
+        Route::get('/dashboard/user/tugas', [TaskController::class, 'taskindex'])->name('taskindex');
+        Route::get('/dashboard/user/tugas/edit-text/{id}', [TaskController::class, 'taskedit'])->name('taskedit');
+        Route::get('/dashboard/user/tugas/{tambahtugas}', [TaskController::class, 'taskshow'])->name('taskshow');
+        Route::get('/dashboard/user/tugas/download/{folder}/{filename}', [FileController::class, 'download'])->name('download');
+        Route::post('/dashboard/user/tugas/file/{tambahtugas}', [TaskController::class, 'uploadFile'])->name('uploadFile');
+        Route::post('/dashboard/user/tugas/{tambahtugas}/unggah', [TaskController::class, 'sendTask'])->name('sendTask');
+        Route::post('/dashboard/user/tugas/edit-text/{tambahtugas}', [TaskController::class, 'updateTask'])->name('updateTask');
         //profile
         Route::get('/dashboard/user/profil', [ProfileController::class, 'profileindex'])->name('profileindex');
         Route::get('/dashboard/user/profil/edit', [ProfileController::class, 'profileedit'])->name('profileedit');
