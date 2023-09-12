@@ -8,7 +8,7 @@
     <div class="row">
         @include('partials.sidebar')
 
-        <main class="px-10 lg:px-20">
+        <main class="px-7 lg:px-20">
             <div
                 class="items-center pt-3 pb-2 mb-3 border-b-4">
                 <h1 class="font-semibold text-lg">{{ $title }}</h1>
@@ -26,6 +26,8 @@
             </div>
 
             <div class="py-4">
+                @include('sweetalert::alert')
+
                 @yield('content')
             </div>
         </main>

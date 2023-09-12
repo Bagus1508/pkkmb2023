@@ -108,7 +108,7 @@
                 data-aos-duration="1000"
             >
         </div>
-      </section>
+    </section>
 
 
     {{-- Content --}}

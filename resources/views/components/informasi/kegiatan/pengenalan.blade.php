@@ -33,7 +33,7 @@
                 @include('components.informasi.team.teamlanding')
             </div>
 
-            <a href="#">
+            <a href="{{ route('informasi-panitia') }}">
                 <button class="bg-space-buttonbiru px-8 py-3 text-white text-base rounded-lg">
                     Selengkapnya
                 </button>

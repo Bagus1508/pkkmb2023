@@ -47,7 +47,7 @@ class PesertaSeeder extends Seeder
                         'password' => Hash::make($data['password']),
                         'position_id' => $data['position_id'],
                         'role_id' => $data['role_id'],
-                        'kelompok_id' => null,
+                        'kelompok_id' => $data['kelompok'],
                     ]);
 
                     /* $kelompok = Kelompok::create([

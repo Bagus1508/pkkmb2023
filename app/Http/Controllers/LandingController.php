@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailUser;
+use App\Models\News;
+use App\Models\ThumbnailNews;
+use App\Models\Tagline;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +30,12 @@ class LandingController extends Controller
         ]);
     }
 
+    public function viewpanitia() {
+        return view('landing.teamfull', [
+            "title" => "Panitia"
+        ]);
+    }
+    
     public function viewinformation() {
         // $users = DetailUser::where('user_id', Auth::user()->id)->get();
         
@@ -35,10 +44,20 @@ class LandingController extends Controller
         ]);
     }
 
+    public function detailviewnews($id) {
+
+        $news = News::where('id', $id)->first();
+
+        $thumbnail_news = ThumbnailNews::where('news_id', $id)->get();
+        $tagline = Tagline::where('news_id', $id)->get();
+        
+        return view('landing.detailinformationnews', compact('news', 'thumbnail_news', 'tagline'));
+    }
+
     public function viewnews() {
-        return view('landing.informationnews', [
-            "title" => "Berita"
-        ]);
+        $newss = News::orderBy('created_at', 'desc')->get();
+
+        return view('landing.informationnews', compact('newss'), ["title" => "Berita"]);
     }
 
     public function information() {

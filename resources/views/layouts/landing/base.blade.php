@@ -18,7 +18,7 @@
     <body class="antialiased font-poppins">
         <div class="relative">
             
-           {{--  @include('layouts.landing.navbar') --}}
+            @include('layouts.landing.navbar')
             
             @yield('content')
 

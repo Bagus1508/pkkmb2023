@@ -100,4 +100,9 @@ class User extends Authenticatable
         return $this->role_id === self::USER_ROLE_ID;
     }
 
+    public function news()
+    {
+        return $this->hasMany('App\Models\News', 'users_id');
+    }
+
 }
