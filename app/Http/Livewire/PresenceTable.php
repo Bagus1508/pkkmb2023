@@ -60,6 +60,7 @@ final class PresenceTable extends PowerGridComponent
         return Presence::query()
             ->where('attendance_id', $this->attendanceId)
             ->join('users', 'presences.user_id', '=', 'users.id')
+            ->join('kelompoks', 'kelompoks.name')
             ->select('presences.*', 'users.name as user_name', 'users.nim as user_nim');
     }
     
@@ -115,6 +116,7 @@ final class PresenceTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('user_nim')
+            ->addColumn('user_name')
             ->addColumn('user_name')
             ->addColumn("presence_date")
             ->addColumn("presence_enter_time")

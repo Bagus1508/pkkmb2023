@@ -36,8 +36,10 @@
         <div class="border px-4 py-4 mb-3 rounded-lg shadow-lg">
             <h5 class="mb-3 font-bold">Jawaban :</h5>
             @if ($tambahtugas->input_type == 'Text')
-                <a rel="stylesheet" href="{{ $histo->text }}">{{ $histo->text }}</a>
+            <div class="flex">
+                <a rel="stylesheet" href="{{ $histo->text }}" class="text-blue-500 hover:text-blue-700 hover:underline">{{ $histo->text }}</a>
                 <a type="button" href="{{ route('dashboard-user.taskedit', ['id' => $histo->id]) }}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Edit</a>
+            </div>
             @else
                 <h3 class="font-semibold">File Tugas : <span class="">"{{ $histo->tambahtugas->title }}"</span></h3>
                 @if (!empty($histo) && !empty($histo->files))
