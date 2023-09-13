@@ -1355,6 +1355,9 @@ input:checked + .toggle-bg {
 .min-h-screen {
   min-height: 100vh;
 }
+.w-1\/12 {
+  width: 8.333333%;
+}
 .w-1\/2 {
   width: 50%;
 }
@@ -1429,6 +1432,18 @@ input:checked + .toggle-bg {
 }
 .w-full {
   width: 100%;
+}
+.w-8\/12 {
+  width: 66.666667%;
+}
+.w-7\/12 {
+  width: 58.333333%;
+}
+.w-2\/12 {
+  width: 16.666667%;
+}
+.w-6\/12 {
+  width: 50%;
 }
 .min-w-0 {
   min-width: 0px;

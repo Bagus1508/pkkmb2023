@@ -1,23 +1,23 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    @if (count($ketentuann))
-                
+    @if (count($jenisketentuann))
+            
         <main class="h-full overflow-y-auto">
             <div class="container mx-auto">
                 <div class="grid w-full gap-5 px-10 mx-auto lg:grid-cols-12">
                     <div class="col-span-8">
                         <h2 class="mt-6 mb-1 text-2xl font-semibold text-gray-700">
-                            Ketentuan Pelanggaran
+                            Jenis Ketentuan Pelanggaran
                         </h2>
-                        <p class="text-sm text-gray-400">
-                            Total {{ count($ketentuann) }} Ketentuan
-                        </p>
+                        {{-- <p class="text-sm text-gray-400">
+                            Total {{ auth()->user()->pelanggaran()->ketentuan()->jenisketentuann()->count() }} Ketentuan
+                        </p> --}}
                     </div>
                     <div class="col-span-4 lg:text-right">
                         <div class="relative mt-0 lg:mt-6">
-                            <a href="{{ route('admin.ketentuan.create') }}" class="inline-block px-4 py-2 mt-2 text-left text-white rounded-lg bg-space-textungu">
-                                + Tambah Ketentuan
+                            <a href="{{ route('admin.jenisketentuan.create') }}" class="inline-block px-4 py-2 mt-2 text-left text-white rounded-lg bg-space-textungu">
+                                + Tambah Jenis Ketentuan
                             </a>
                         </div>
                     </div>
@@ -32,53 +32,33 @@
                                 <thead>
                                     <tr class="text-sm font-normal text-left text-gray-900 border-b border-b-gray-600">
                                         <th class="py-4" scope="">No</th>
-                                        <th class="py-4" scope="">Ketentuan</th>
                                         <th class="py-4" scope="">Jenis Ketentuan</th>
-                                        <th class="py-4" scope="">Poin</th>
                                         <th class="py-4" scope="">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white">
 
-                                    @forelse ($ketentuann as $key => $ketentuan)
+                                    @forelse ($jenisketentuann as $key => $jenisketentuan)
                                         <tr class="text-gray-700 border-b">
                                             <td class="w-1/12">
                                                 {{ $key + 1 }}
                                             </td>
-                                            <td class="w-6/12 px-1 py-5">
+                                            <td class="w-9/12 px-1 py-5">
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <a href="{{ '#' }}" class="font-medium text-black">
-                                                            {{ ucfirst($ketentuan->title ?? '') }}
+                                                            {{ ucfirst($jenisketentuan->title ?? '') }}
                                                         </a>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="w-2/12 px-1 py-5">
-                                                <div class="flex items-center text-sm">
-                                                    <div>
-                                                        <h2 class="font-medium text-black">
-                                                            {{ ucfirst($ketentuan->jenis_ketentuan ?? '') }}
-                                                        </h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="w-1/12 px-1 py-5">
-                                                <div class="flex items-center text-sm">
-                                                    <div>
-                                                        <h2 class="font-medium text-black">
-                                                            {{ $ketentuan->poin ?? '' }}
-                                                        </h2>
-                                                    </div>
-                                                </div>
-                                            </td>
                                             <td class="px-1 py-5 text-sm">
-                                                <a href="{{ route('admin.ketentuan.edit', $ketentuan['id']) }}" class="px-4 py-2 mt-2 text-left text-white rounded-xl bg-space-buttonbiru">
+                                                <a href="{{ route('admin.jenisketentuan.edit', $jenisketentuan['id']) }}" class="px-4 py-2 mt-2 text-left text-white rounded-xl bg-space-buttonbiru">
                                                     Edit
                                                 </a>
                                             </td>
                                             <td class="px-0">
-                                                <form action="{{ route('admin.ketentuan.destroy', $ketentuan['id']) }}" method="POST" style="display: inline-block;">
+                                                <form action="{{ route('admin.jenisketentuan.destroy', $jenisketentuan['id']) }}" method="POST" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="mt-2">
@@ -114,17 +94,17 @@
                 <img src="{{ asset('/src/img/maskot_pkkmb_maaf_2.png') }}" alt="" class="w-32 mx-auto mb-2">
 
                 <h2 class="mb-1 text-2xl lg:text-3xl font-semibold text-gray-700">
-                    Anda belum pernah membuat ketentuan
+                    Anda belum pernah membuat jenis ketentuan
                 </h2>
                 
                 <p class="text-sm lg:text-base text-gray-400 mb-4">
-                    Sepertinya Anda belum pernah membuat ketentuan. <br>
-                    Yuk, buat ketentuan pertamamu!
+                    Sepertinya Anda belum pernah membuat jenis ketentuan. <br>
+                    Yuk, buat jenis ketentuan pertamamu!
                 </p>
 
                 <div class="relative">
-                    <a href="{{ route('admin.ketentuan.create') }}" class="px-4 py-2 mt-10 lg:mt-2 text-left text-white rounded-md lg:rounded-xl bg-space-textungu">
-                        + Tambah Ketentuan
+                    <a href="{{ route('admin.jenisketentuan.create') }}" class="px-4 py-2 mt-10 lg:mt-2 text-left text-white rounded-md lg:rounded-xl bg-space-textungu">
+                        + Tambah Jenis Ketentuan
                     </a>
                 </div>
             </div>

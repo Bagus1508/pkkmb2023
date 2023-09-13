@@ -12,6 +12,8 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\JenisKetentuanController;
+use App\Http\Controllers\KetentuanController;
 
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -31,9 +33,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin,superadmin')->group(function () {
         Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard.indexadmin');
-        // News
         Route::group(['prefix' => 'dashboard/admin/', 'as' => 'admin.'],
         function () {
+            Route::resource('news', NewsController::class);
+            Route::resource('jenisketentuan', JenisKetentuanController::class);
+            Route::resource('ketentuan', KetentuanController::class);
             Route::resource('news', NewsController::class);
         });
     });

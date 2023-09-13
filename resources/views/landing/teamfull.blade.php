@@ -123,7 +123,7 @@
                 </div>
             </a>
 
-            <a id="ilda" href="{{ url('https://www.instagram.com/ildannisa') }}" class="inline-block px-3 mb-5 lg:mb-0 lg:mt-5" target="_blank">
+            <a id="ilda" href="{{ url('https://www.instagram.com/ildannisaa') }}" class="inline-block px-3 mb-5 lg:mb-0 lg:mt-5" target="_blank">
                 <div class="w-64 lg:w-44 h-[420px] lg:h-80 bg-slate-200 hover:bg-space-textungu rounded-full shadow-xl overflow-hidden transform transition-all hover:-translate-y-2 duration-300 flex flex-col items-center pt-2">
             
                     <img src="{{ asset('/src/img/Panitia/7.png') }}" alt="placeholder" class="rounded-full h-60 lg:h-40 w-60 lg:w-40 mb-3">
