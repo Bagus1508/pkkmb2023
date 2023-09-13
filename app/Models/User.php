@@ -50,7 +50,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-
+ 
     public function detailuser()
     {
         return $this->hasOne(DetailUser::class, 'user_id', 'id');
@@ -64,6 +64,11 @@ class User extends Authenticatable
     public function position()
     {
         return $this->belongsTo(Position::class);
+    }
+
+    public function task()
+    {
+        return $this->hasOne(Task::class, 'user_id', 'id');
     }
 
     public function scopeOnlyStudents($query)

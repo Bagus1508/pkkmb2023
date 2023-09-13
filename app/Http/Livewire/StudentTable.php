@@ -96,8 +96,9 @@ final class StudentTable extends PowerGridComponent
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+                ->showPerPage(10)
+                ->showRecordCount()
+                ->pagination('components.pagination'),
         ];
     }
 

@@ -2,25 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\DetailUser;
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\DetailUser;
 
-class DatabaseSeeder extends Seeder
+class PanitiaSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-     *
-     * @return void
+     * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
-        $this->call(RoleSeeder::class);
-        $this->call(PositionSeeder::class);
-        $this->call(KelompokSeeder::class);
-
         $csvFile = storage_path('datauser/datapanitia.csv');
 
         if (($handle = fopen($csvFile, "r")) !== false) {
@@ -45,7 +39,7 @@ class DatabaseSeeder extends Seeder
                         'password' => Hash::make($data['password']),
                         'position_id' => $data['position_id'],
                         'role_id' => $data['role_id'],
-                        'kelompok_id' => $data['kelompok'],
+                        'kelompok_id' => null,
                     ]);
 
                     /* $kelompok = Kelompok::create([
@@ -80,20 +74,5 @@ class DatabaseSeeder extends Seeder
                 fclose($handle);
             }
         }
-
-        /* \App\Models\User::factory()->create([
-            'name' => 'Bagus Adianto (Admin)',
-            'nim' => '04321028',
-            'role_id' => Role::where('name', 'superadmin')->first('id'),
-            'position_id' => Position::where('name', 'Panitia')->first('id'),
-        ]);
-        \App\Models\User::factory(1)->create([
-            'role_id' => Role::where('name', 'superadmin')->first('id'),
-            'position_id' => Position::where('name', 'Panitia')->first('id'),
-        ]);
-        \App\Models\User::factory(10)->create([
-            'role_id' => Role::where('name', 'user')->first('id'), // user === employee
-            'position_id' => Position::select('id')->inRandomOrder()->first()->id
-        ]); */
     }
 }
