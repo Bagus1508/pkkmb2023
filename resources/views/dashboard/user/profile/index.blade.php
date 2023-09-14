@@ -85,9 +85,9 @@
                 <input type="text" name="alamat" id="alamat" class="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none px-3" placeholder="{{ auth()->user()->detailuser->alamat }}" disabled/>
             </div>
             <div class="flex justify-end gap-x-3">
-                <div class="">
+                {{-- <div class="">
                     <a type="button" href="{{ route('dashboard-user.profileedit') }}" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-6 text-center nx-2">Edit</a>
-                </div>  
+                </div>   --}}
                 <div class="">
                     <a type="button" href="{{ route('home-presences.indexuserdashboard') }}" class="text-gray-500 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-6 text-center nx-2">Kembali</a>
                 </div>  

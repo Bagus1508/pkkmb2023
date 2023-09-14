@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Presence;
+use App\Models\TambahTugas;
+use App\Models\Task;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,14 +12,14 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class PresenceTable extends PowerGridComponent
+final class ResultTaskTable extends PowerGridComponent
 {
     use ActionButton;
 
     public $rowNumber = 1;
-    public $attendanceId;
+    public $tambahtugasId;
     //Table sort field
-    public string $sortField = 'presences.created_at';
+    public string $sortField = 'task.created_at';
     public string $sortDirection = 'desc';
     protected bool $isLate = false;
 
@@ -59,11 +61,11 @@ final class PresenceTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Presence::query()
-            ->where('attendance_id', $this->attendanceId)
-            ->join('users', 'presences.user_id', '=', 'users.id')
+        return Task::query()
+            ->where('tambahtugas_id', $this->tambahtugasId)
+            ->join('users', 'task.user_id', '=', 'users.id')
             ->join('kelompoks', 'users.kelompok_id', '=', 'kelompoks.id')
-            ->select('presences.*', 'users.name as user_name', 'users.nim as user_nim', 'kelompoks.name as kelompok_name');
+            ->select('task.*', 'users.name as user_name', 'users.nim as user_nim', 'kelompoks.name as kelompok_name');
 
         
     }
@@ -89,22 +91,22 @@ final class PresenceTable extends PowerGridComponent
 
 
     /* Kehadiran Terlambat/TepatWaktu */
-    protected function setLateStatus(Presence $model)
-    {
-        if ($model->is_permission) {
-            return 'Izin';
-        }
-        
-        $waktuMasuk = Carbon::parse($model->presence_enter_time);
-        $waktuTepatWaktu = Carbon::parse($model->attendance->start_time);
-        $waktuAkhirTepatWaktu = Carbon::parse($model->attendance->batas_start_time);
+    protected function setLateStatus(Task $model)
+    {   
+        $waktuMasuk = Carbon::parse($model->submit_enter_time);
+        $waktuTepatWaktu = Carbon::parse($model->tambahtugas->start_time);
+        $waktuAkhirTepatWaktu = Carbon::parse($model->tambahtugas->batas_start_time);
+        $tanggalMasuk = Carbon::parse($model->submit_date);
+        $tanggalTepatWaktu = Carbon::parse($model->tambahtugas->start_date);
+        $tanggalAkhirTepatWaktu = Carbon::parse($model->tambahtugas->end_start_date);
     
-        if ($waktuMasuk->isBefore($waktuTepatWaktu) || $waktuMasuk->isAfter($waktuAkhirTepatWaktu)) {
+        if ($waktuMasuk->isBefore($waktuTepatWaktu) || $waktuMasuk->isAfter($waktuAkhirTepatWaktu) && $tanggalMasuk->isBefore($tanggalTepatWaktu) || $tanggalMasuk->isAfter($tanggalAkhirTepatWaktu)) {
             return 'Terlambat';
         } else {
             return 'Tepat Waktu';
         }
     }
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -122,15 +124,12 @@ final class PresenceTable extends PowerGridComponent
             ->addColumn('user_nim')
             ->addColumn('user_name')
             ->addColumn('kelompok_name')
-            ->addColumn("presence_date")
-            ->addColumn("presence_enter_time")
-            /* ->addColumn("presence_out_time", fn (Presence $model) => $model->presence_out_time ?? '<span class="badge text-bg-danger">Belum Absensi Pulang</span>') */
-            ->addColumn("is_permission", fn (Presence $model) => $model->is_permission ?
-                'Izin' : 'Hadir')
-            ->addColumn('status', fn(Presence $model) => $model->is_permission ? 'Izin' : $this->setLateStatus($model))
-            ->addColumn("permission_reason")
+            ->addColumn("submit_date")
+            ->addColumn("submit_enter_time")
+            ->addColumn('keterangan', fn(Task $model) => $this->setLateStatus($model))
+            ->addColumn('status')
             ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (Presence $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Task $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -169,34 +168,20 @@ final class PresenceTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Tanggal Hadir', 'presence_date')
+            Column::make('Tanggal Unggah', 'submit_date')
                 /* ->makeInputDatePicker()
                 ->searchable() */
                 ->sortable(),
 
-            Column::make('Jam Absen Masuk', 'presence_enter_time')
-                /* ->searchable()
-                // ->makeInputRange('presence_enter_time') // terlalu banyak menggunakan bandwidth (ukuran data yang dikirim terlalu besar)
-                ->makeInputText('presence_enter_time') */
+            Column::make('Jam Unggah', 'submit_enter_time')
                 ->sortable(),
-
-            /* Column::make('Jam Absen Pulang', 'presence_out_time')
-                ->searchable()
-                // ->makeInputRange('presence_out_time') // ini juga
-                ->makeInputText('presence_out_time')
-                ->sortable(), */
 
             Column::make('Status', 'status')
             ->makeInputText('')
             ->searchable()
             ->sortable(),
 
-            Column::make('Kehadiran', 'is_permission')
-            ->makeInputText('')->hidden()
-            ->searchable()
-            ->sortable(),
-
-            Column::make('Keterangan', 'permission_reason')
+            Column::make('Keterangan', 'keterangan')
             ->makeInputText('')
             ->searchable()
             ->sortable(),
@@ -226,10 +211,15 @@ final class PresenceTable extends PowerGridComponent
     {
        return [
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->class('bg-red-500 hover:bg-red-700 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                ->target('')
-               ->route('presence.destroy', ['presence' => 'id'])
-               ->method('delete')
+               ->route('result-task.destroy', ['task' => 'id'])
+               ->method('delete'),
+
+           Button::make('showResultTaskUser', 'Lihat')
+               ->class('bg-blue-500 hover:bg-blue-700 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->target('')
+               ->route('result-task.showResultTaskUser', ['task' => 'id'])
         ];
     }
    
