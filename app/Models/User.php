@@ -105,4 +105,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\News', 'users_id');
     }
 
+    public function pelanggaran_peserta()
+    {
+        return $this->hasMany('App\Models\Pelanggaran', 'peserta_id');
+    }
+
+    public function pelanggaran_panitia()
+    {
+        return $this->hasMany('App\Models\Pelanggaran', 'panitia_id');
+    }
 }

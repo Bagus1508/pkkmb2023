@@ -14,7 +14,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TambahTugasController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NewsController;
+<<<<<<< HEAD
 use App\Http\Controllers\ResultTaskController;
+=======
+use App\Http\Controllers\JenisKetentuanController;
+use App\Http\Controllers\KetentuanController;
+
+>>>>>>> f857bc48e69fa21e1daebcc6f120dbeb558a93ac
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -33,9 +39,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin,superadmin')->group(function () {
         Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard.indexadmin');
-        // News
         Route::group(['prefix' => 'dashboard/admin/', 'as' => 'admin.'],
         function () {
+            Route::resource('news', NewsController::class);
+            Route::resource('jenisketentuan', JenisKetentuanController::class);
+            Route::resource('ketentuan', KetentuanController::class);
             Route::resource('news', NewsController::class);
         });
         // Tambah Tugas
