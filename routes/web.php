@@ -14,9 +14,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TambahTugasController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NewsController;
+<<<<<<< HEAD
 use App\Http\Controllers\ResultTaskController;
 use App\Http\Controllers\JenisKetentuanController;
 use App\Http\Controllers\KetentuanController;
+=======
+use App\Http\Controllers\JenisKetentuanController;
+use App\Http\Controllers\KetentuanController;
+use App\Http\Controllers\PelanggaranController;
+use App\Http\Controllers\ResultTaskController;
+
+>>>>>>> e029e482c9592d128e287e6086563f4ea86112b5
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -40,7 +48,9 @@ Route::middleware('auth')->group(function () {
             Route::resource('news', NewsController::class);
             Route::resource('jenisketentuan', JenisKetentuanController::class);
             Route::resource('ketentuan', KetentuanController::class);
-            Route::resource('news', NewsController::class);
+            Route::resource('pelanggaran', PelanggaranController::class);
+            // Route::get('detail_pelanggaran/{id}', [PelanggaranController::class, 'detail_pelanggaran'])->name('detail.pelanggaran');
+            Route::get('detail_pelanggaran', [PelanggaranController::class, 'detail_pelanggaran'])->name('detail.pelanggaran');
         });
         // Tambah Tugas
         Route::get('/dashboard/admin/tugas', [TambahTugasController::class, 'index'])->name('tambahtugas.index');

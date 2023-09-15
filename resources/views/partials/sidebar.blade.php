@@ -97,7 +97,7 @@
                      <a href="/dashboard/admin/ketentuan" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/ketentuan') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Ketentuan</a>
                   </li>
                   <li>
-                     <a href="/dashboard/admin/news" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/news') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Pelanggaran</a>
+                     <a href="/dashboard/admin/pelanggaran" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/pelanggaran') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Pelanggaran</a>
                   </li>
                   <li>
                      <a href="/dashboard/admin/news" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/news') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Hasil</a>

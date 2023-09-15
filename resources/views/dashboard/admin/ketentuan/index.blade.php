@@ -57,9 +57,12 @@
                                             <td class="w-2/12 px-1 py-5">
                                                 <div class="flex items-center text-sm">
                                                     <div>
-                                                        <h2 class="font-medium text-black">
-                                                            {{ ucfirst($ketentuan->jenis_ketentuan ?? '') }}
-                                                        </h2>
+                                                        {{-- @if ($ketentuan->jenis_ketentuan_id == $ketentuan->ketentuan->jenisketentuan->id) --}}
+                                                        @if ($ketentuan->jenis_ketentuan_id)
+                                                            <h2 class="font-medium text-black">
+                                                                {{ ucfirst($ketentuan->jenisketentuan->name ?? '') }}
+                                                            </h2>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
