@@ -210,12 +210,11 @@ final class ResultTaskTable extends PowerGridComponent
     public function actions(): array
     {
        return [
-           Button::make('destroy', 'Delete')
+           /* Button::make('destroy', 'Delete')
                ->class('bg-red-500 hover:bg-red-700 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                ->target('')
                ->route('result-task.destroy', ['task' => 'id'])
-               ->method('delete'),
-
+               ->method('delete'), */
            Button::make('showResultTaskUser', 'Lihat')
                ->class('bg-blue-500 hover:bg-blue-700 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                ->target('')

@@ -34,9 +34,10 @@ class PelanggaranController extends Controller
     public function index()
     {
         $peserta = User::where('position_id', '1')->orderBy('kelompok_id', 'asc')->orderBy('name', 'asc')->get();
-        $pelanggaran = Pelanggaran::where('peserta_id', Auth::user()->id)->get();
+        $pelanggaran = Pelanggaran::whereIn('peserta_id', $peserta->pluck('id'))->get();
         
-        return view('dashboard.admin.datapelanggaran.index', compact('peserta'), ["title" => "Pelanggaran"]);
+        //dd($pelanggaran);
+        return view('dashboard.admin.datapelanggaran.index', compact('peserta', 'pelanggaran'), ["title" => "Pelanggaran"]);
     }
 
     /**
@@ -69,10 +70,13 @@ class PelanggaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        return abort(404);
-    }
+        $peserta = User::findOrFail($id);
+        $pelanggaran = $peserta->pelanggaran_peserta;
+    
+        return view('dashboard.admin.datapelanggaran.detail', compact('peserta', 'pelanggaran'), ["title" => "Detail Pelanggaran"]);
+    }    
 
     /**
      * Show the form for editing the specified resource.

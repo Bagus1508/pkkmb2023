@@ -43,7 +43,7 @@ class Pelanggaran extends Model
     // one to many
     public function user_peserta()
     {
-        return $this->belongsTo('App\Models\User', 'peserta_id', 'id');
+        return $this->belongsTo(User::class, 'peserta_id', 'id');
     }
 
     public function user_panitia()

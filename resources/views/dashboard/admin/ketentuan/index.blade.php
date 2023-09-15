@@ -60,7 +60,7 @@
                                                         {{-- @if ($ketentuan->jenis_ketentuan_id == $ketentuan->ketentuan->jenisketentuan->id) --}}
                                                         @if ($ketentuan->jenis_ketentuan_id)
                                                             <h2 class="font-medium text-black">
-                                                                {{ ucfirst($ketentuan->jenisketentuan->name ?? '') }}
+                                                                {{ ucfirst($ketentuan->jenisketentuan->title ?? '') }}
                                                             </h2>
                                                         @endif
                                                     </div>

@@ -1,5 +1,16 @@
 @extends('layouts.dashboard.app')
 
+@section('buttons')
+<div class="btn-toolbar mb-2 mb-md-0">
+    <div>
+        <button class="btn btn-sm btn-light" onclick="goBack()">
+            <span data-feather="arrow-left-circle" class="align-text-bottom"></span>
+            Kembali
+        </button>
+    </div>
+</div>
+@endsection
+
 @section('content')            
     <main class="h-full overflow-y-auto">
         <div class="container mx-auto">
@@ -17,30 +28,30 @@
 
         <div class="bg-blue-500 text-white w-full px-14 py-10 rounded-xl">
             <table>
-                <tr>
+                <tr class="text-white">
                     <td class="w-2/12">NIM</td>
                     <td class="w-3.5">:</td>
-                    <td class="">Test</td>
+                    <td class="">{{ $peserta->nim }}</td>
                 </tr>
-                <tr>
+                <tr class="text-white">
                     <td class="w-2/12">Nama</td>
                     <td class="w-3.5">:</td>
-                    <td class="">Test</td>
+                    <td class="">{{ $peserta->name }}</td>
                 </tr>
-                <tr>
+                <tr class="text-white">
                     <td class="w-2/12">Kelompok</td>
                     <td class="w-3.5">:</td>
-                    <td class="">Test</td>
+                    <td class="">{{ $peserta->kelompok->name }}</td>
                 </tr>
-                <tr>
+                <tr class="text-white">
                     <td class="w-2/12">Fakultas</td>
                     <td class="w-3.5">:</td>
-                    <td class="">Test</td>
+                    <td class="">{{ $peserta->detailuser->fakultas }}</td>
                 </tr>
-                <tr>
+                <tr class="text-white">
                     <td class="w-2/12">Program Studi</td>
                     <td class="w-3.5">:</td>
-                    <td class="">Test</td>
+                    <td class="">{{ $peserta->detailuser->prodi }}</td>
                 </tr>
             </table>
         </div>
@@ -63,7 +74,7 @@
                             <tbody class="bg-white">
                                 {{-- @if (count($pelanggarann)) --}}
 
-                                    @forelse ($pelanggarann as $key => $pelanggaran)
+                                    @forelse ($pelanggaran as $key => $pelanggaran)
                                         <tr class="text-gray-700 border-b">
                                             <td class="">
                                                 {{ $key + 1 }}
@@ -101,12 +112,11 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            
-                                            {{-- <td class="px-0">
+                                            <td class="px-0">
                                                 <form action="{{ route('admin.pelanggaran.destroy', $pelanggaran['id']) }}" method="POST" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="mt-2">
+                                                    <button type="submit" class="mt-2" onclick="return confirm('Apakah anda yakin untuk menghapus data?')" data-id="{{ $pelanggaran['id'] }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
                                                             <path d="M10 11V17" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M14 11V17" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -116,13 +126,60 @@
                                                         </svg>
                                                     </button>
                                                 </form>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @empty
 
                                         {{-- empty --}}
                                         
                                     @endforelse
+                                    <tr>
+                                        <td class="bg-blue-100">
+                                            
+                                        </td>
+                                        <td class="bg-blue-100 px-1 py-5">
+                                            <div class="flex items-center text-sm">
+                                                <div>
+                                                    <h2 class="font-medium text-black">
+                                                        
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="bg-blue-100 w-6/12 px-1 py-5">
+                                            <div class="flex text-right text-sm">
+                                                <div class="flex justify-right mx-auto">
+                                                    <h2 class="font-extrabold text-black text-right">
+                                                        Jumlah
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="bg-blue-100 px-1 py-5">
+                                            <div class="flex items-center text-sm">
+                                                <div>
+                                                    <h2 class="font-extrabold text-black">
+                                                        @php
+                                                        $totalPoin = 0;
+                                                        foreach ($peserta->pelanggaran_peserta as $detailpelanggaran) {
+                                                            $totalPoin += $detailpelanggaran->poin;
+                                                        }
+                                                        echo $totalPoin;
+                                                        @endphp
+                                                    </h2>
+                                                    {{-- @if ($ketentuan->jenis_ketentuan_id == $ketentuan->ketentuan->jenisketentuan->id) --}}
+                                                    {{-- @if ($ketentuan->jenis_ketentuan_id)
+                                                        <h2 class="font-medium text-black">
+                                                            {{ ucfirst($ketentuan->jenisketentuan->name ?? '') }}
+                                                        </h2>
+                                                    @endif --}}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="bg-blue-100 px-0">
+                                            
+                                        </td>
+                                    </tr>
 
                                 {{-- @else
                                     <div class="flex w-full pt-2 lg:pt-8">
@@ -155,3 +212,26 @@
         </section>
     </main>
 @endsection
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<script>
+    // Mendaftarkan penanganan klik untuk tombol hapus
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const pelanggaranId = this.getAttribute('data-id');
+            const confirmation = confirm('Anda yakin ingin menghapus pelanggaran ini?');
+
+            if (confirmation) {
+                // Jika pengguna mengonfirmasi, kirimkan permintaan penghapusan
+                const form = this.parentElement;
+                form.submit();
+            }
+        });
+    });
+</script>

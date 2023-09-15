@@ -58,9 +58,9 @@
                         <th scope="col" class="px-6 py-3">
                             NIM
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        {{-- <th scope="col" class="px-6 py-3">
                             Posisi
-                        </th>
+                        </th> --}}
                         <th scope="col" class="px-6 py-3">
                             Kelompok
                         </th>
@@ -79,6 +79,13 @@
                         <td class="px-6 py-4">
                             {{ $user['nim'] }}
                         </td>
+                        {{-- <td class="px-6 py-4">
+                            @if (isset($user['position']) && isset($user['position']['name']))
+                                {{ $user['position']['name'] }}
+                            @else
+                                Posisi Tidak Tersedia
+                            @endif
+                        </td>   --}}                      
                         <td class="px-6 py-4">
                             @if (isset($user['kelompok']) && isset($user['kelompok']['name']))
                                 {{ $user['kelompok']['name'] }}

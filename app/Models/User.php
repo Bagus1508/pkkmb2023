@@ -107,7 +107,7 @@ class User extends Authenticatable
 
     public function pelanggaran_peserta()
     {
-        return $this->hasMany('App\Models\Pelanggaran', 'peserta_id');
+        return $this->hasMany(Pelanggaran::class, 'peserta_id');
     }
 
     public function pelanggaran_panitia()

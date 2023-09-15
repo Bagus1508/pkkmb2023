@@ -141,7 +141,7 @@ class TaskController extends Controller
     public function uploadFile(Request $request, $tambahtugas_id)
     {
         $request->validate([
-            'file' => 'required|mimes:jpeg,png,pdf|max:1024', // Sesuaikan dengan jenis file yang diizinkan
+            'file' => 'required|mimes:jpg,jpeg,png,pdf|max:10240', // Sesuaikan dengan jenis file yang diizinkan
         ]);
 
         // Simpan file ke sistem penyimpanan
@@ -175,7 +175,7 @@ class TaskController extends Controller
     public function updateFile(Request $request, TambahTugas $tambahtugas)
     {
         $request->validate([
-            'file' => 'nullable|mimes:jpeg,png,pdf|max:1024', // Sesuaikan dengan jenis file yang diizinkan
+            'file' => 'nullable|mimes:jpg,jpeg,png,pdf|max:10240', // Sesuaikan dengan jenis file yang diizinkan
         ]);
 
         // Cari task berdasarkan tambahtugas_id dan user_id

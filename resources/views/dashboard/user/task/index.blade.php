@@ -57,6 +57,9 @@
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Keterangan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Aksi
                     </th>
                 </tr>
@@ -90,6 +93,23 @@
                              @include('partials.task-badges')
                         </div>
                     </td>
+                    <td class="px-6 py-4">
+                        @if ($item->task)
+                            @if ($item->task->status === 'Terkirim')
+                                <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Terkirim</div>
+                            @elseif ($item->task->status === 'Proses')
+                                <div class="text-center bg-yellow-100 text-yellow-800 text-xs font-medium px-1 py-0.5 rounded-full">Diproses</div>
+                            @elseif ($item->task->status === 'Revisi')
+                                <div class="text-center bg-red-100 text-red-800 text-xs font-medium px-1 py-0.5 rounded-full">Revisi</div>
+                            @elseif ($item->task->status === 'Diterima')
+                                <div class="text-center bg-green-100 text-green-800 text-xs font-medium px-1 py-0.5 rounded-full">Diterima</div>
+                            @else
+                                <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Mengumpulkan</div>
+                            @endif
+                        @else
+                            <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Mengumpulkan</div>
+                        @endif
+                    </td>                    
                     <td class="px-6 py-4">
                         <a href="{{ route('dashboard-user.taskshow', $item->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Lihat</a>
                     </td>

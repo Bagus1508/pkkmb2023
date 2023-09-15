@@ -1,5 +1,16 @@
 @extends('layouts.dashboard.app')
 
+@section('buttons')
+<div class="btn-toolbar mb-2 mb-md-0">
+    <div>
+        <button class="btn btn-sm btn-light" onclick="goBack()">
+            <span data-feather="arrow-left-circle" class="align-text-bottom"></span>
+            Kembali
+        </button>
+    </div>
+</div>
+@endsection
+
 @section('content')
 <div class="container py-5">
     <div class="p-4 bg-white rounded-lg md:p-8 border shadow-md my-4">
@@ -103,5 +114,10 @@
 
     // Panggil fungsi updateNomorUrut saat halaman selesai dimuat
     window.onload = updateNomorUrut;
+</script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
 </script>
 @endpush
