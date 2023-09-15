@@ -1493,15 +1493,6 @@ input:checked + .toggle-bg {
 .w-full {
   width: 100%;
 }
-.w-8\/12 {
-  width: 66.666667%;
-}
-.w-11\/12 {
-  width: 91.666667%;
-}
-.w-10\/12 {
-  width: 83.333333%;
-}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1528,6 +1519,9 @@ input:checked + .toggle-bg {
 }
 .max-w-screen-xl {
   max-width: 1280px;
+}
+.max-w-sm {
+  max-width: 24rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1638,8 +1632,14 @@ input:checked + .toggle-bg {
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .grid-rows-4 {
   grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+.grid-rows-3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -1689,6 +1689,9 @@ input:checked + .toggle-bg {
 .gap-8 {
   gap: 2rem;
 }
+.gap-3 {
+  gap: 0.75rem;
+}
 .gap-x-3 {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem;
@@ -1707,6 +1710,9 @@ input:checked + .toggle-bg {
 }
 .gap-y-5 {
   row-gap: 1.25rem;
+}
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;

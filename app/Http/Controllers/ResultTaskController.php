@@ -63,6 +63,7 @@ class ResultTaskController extends Controller
             ->where('submit_date', $byDate)
             ->get(['submit_date', 'user_id']);
             
+        $roleFilter = 'user'; // Ganti dengan peran yang ingin Anda tampilkan
 
         // Get participants or committee members based on position_id
         if ($task->isEmpty()) {
@@ -70,22 +71,26 @@ class ResultTaskController extends Controller
             [
                 "not_submit_date" => $byDate,
                 "users" => User::query()
+                    ->whereHas('role', function ($query) use ($roleFilter) {
+                        $query->where('name', $roleFilter);
+                    })
                     ->with('kelompok')
                     ->get()
                     ->toArray(),
             ];
         } else {
-            $notSubmitData = $this->getNotSubmitStudents($task);
+            $notSubmitData = $this->getNotSubmitStudents($task, $roleFilter);
         }
 
         return view('dashboard.admin.task.not-submit', [
             "title" => "Data Peserta Tidak Mengumpulkan",
             "tambahtugas" => $tambahTugas,
-            "notSubmitData" => $notSubmitData
+            "notSubmitData" => $notSubmitData,
+            "roleFilter" => $roleFilter,
         ]);
     }
 
-    private function getNotSubmitStudents($task)
+    private function getNotSubmitStudents($task, $roleFilter)
     {
         $uniqueSubmitDates = $task->unique("submit_date")->pluck('submit_date');
         $uniqueSubmitDatesAndCompactTheUserIds = $uniqueSubmitDates->map(function ($date) use ($task) {
@@ -100,6 +105,9 @@ class ResultTaskController extends Controller
                 [
                     "not_submit_date" => $tasks['submit_date'],
                     "users" => User::query()
+                        ->whereHas('role', function ($query) use ($roleFilter) {
+                            $query->where('name', $roleFilter);
+                        })
                         ->with('kelompok')
                         ->whereNotIn('id', $tasks['user_ids'])
                         ->get()

@@ -134,7 +134,8 @@ final class AdminTable extends PowerGridComponent
         return User::query()
             ->join('roles', 'users.role_id', '=', 'roles.id')
             ->join('positions', 'users.position_id', '=', 'positions.id')
-            ->select('users.*', 'roles.name as role', 'positions.name as position')
+            ->join('kelompoks', 'users.kelompok_id', '=', 'kelompoks.id')
+            ->select('users.*', 'roles.name as role', 'positions.name as position', 'kelompoks.name as kelompok_name')
             ->when(Auth::user(), function ($query) {
                 return $this->filteradmin($query);
             });
@@ -172,6 +173,7 @@ final class AdminTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('name')
             ->addColumn('nim')
+            ->addColumn('kelompok_name')
             ->addColumn('role', function (User $model) {
                 return ucfirst($model->role);
             })
@@ -228,6 +230,11 @@ final class AdminTable extends PowerGridComponent
             Column::make('NIM', 'nim', 'users.nim')
                 ->searchable()
                 ->makeInputText()
+                ->sortable(),
+
+            Column::make('Kelompok', 'kelompok_name')
+                ->makeInputText('kelompoks.name')
+                ->searchable()
                 ->sortable(),
 
             Column::make('Posisi', 'position', 'positions.name')
