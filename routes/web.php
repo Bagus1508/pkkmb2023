@@ -14,13 +14,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TambahTugasController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NewsController;
-<<<<<<< HEAD
 use App\Http\Controllers\ResultTaskController;
-=======
 use App\Http\Controllers\JenisKetentuanController;
 use App\Http\Controllers\KetentuanController;
-
->>>>>>> f857bc48e69fa21e1daebcc6f120dbeb558a93ac
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
