@@ -8,6 +8,7 @@ use App\Models\Task;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -21,6 +22,18 @@ class TaskController extends Controller
     }
 
     public function taskedit($id)
+    {
+        $task = Task::findOrFail($id);
+        $tambahtugas = TambahTugas::findOrFail($task->tambahtugas_id);
+    
+        return view('dashboard.user.task.edit', [
+            "title" => "Edit Tugas Peserta",
+            "task" => $task,
+            "tambahtugas" => $tambahtugas,
+        ]);
+    }
+
+    public function fileedit($id)
     {
         $task = Task::findOrFail($id);
         $tambahtugas = TambahTugas::findOrFail($task->tambahtugas_id);
@@ -157,6 +170,55 @@ class TaskController extends Controller
         $file->save();
 
         return redirect()->back()->with('success', 'File berhasil diunggah');
+    }
+
+    public function updateFile(Request $request, TambahTugas $tambahtugas)
+    {
+        $request->validate([
+            'file' => 'nullable|mimes:jpeg,png,pdf|max:1024', // Sesuaikan dengan jenis file yang diizinkan
+        ]);
+
+        // Cari task berdasarkan tambahtugas_id dan user_id
+        $task = Task::where('tambahtugas_id', $tambahtugas->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->first();
+
+        if (!$task) {
+            return response()->json([
+                "success" => false,
+                "message" => "Tidak dapat menemukan tugas yang sesuai."
+            ], 404);
+        }
+
+        // Jika pengguna mengunggah file baru, proses penggantian file
+        if ($request->hasFile('file')) {
+            // Hapus file lama jika ada
+            $oldFile = $task->files->first();
+            if ($oldFile) {
+                Storage::delete($oldFile->file_path);
+                $oldFile->delete();
+            }
+
+            // Simpan file baru ke sistem penyimpanan
+            $uploadedFile = $request->file('file');
+            $filePath = $uploadedFile->store('upload', 'public');
+
+            // Simpan informasi file baru ke database
+            $file = new File();
+            $file->task_id = $task->id;
+            $file->file_name = $uploadedFile->getClientOriginalName();
+            $file->file_path = $filePath;
+            $file->file_extension = $uploadedFile->getClientOriginalExtension();
+            $file->save();
+        }
+
+        // Update teks tugas jika ada perubahan
+        $task->text = $request->input('text');
+        $task->save();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('dashboard-user.taskshow', ['tambahtugas' => $tambahtugas->id])
+            ->with('success', 'Tugas berhasil diupdate');
     }
 
 }

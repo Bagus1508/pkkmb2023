@@ -1072,6 +1072,9 @@ input:checked + .toggle-bg {
 .float-right {
   float: right;
 }
+.float-right {
+  float: right;
+}
 .m-0 {
   margin: 0px;
 }
@@ -1502,6 +1505,15 @@ input:checked + .toggle-bg {
 }
 .w-0\.5 {
   width: 0.125rem;
+}
+.w-1\/12 {
+  width: 8.333333%;
+}
+.w-2\/12 {
+  width: 16.666667%;
+}
+.w-6\/12 {
+  width: 50%;
 }
 .w-min {
   width: -moz-min-content;
@@ -2738,6 +2750,10 @@ input:checked + .toggle-bg {
   --tw-text-opacity: 1;
   color: rgb(194 120 3 / var(--tw-text-opacity));
 }
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
@@ -3098,6 +3114,11 @@ input:checked + .toggle-bg {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-red-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(200 30 30 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -3115,6 +3136,11 @@ input:checked + .toggle-bg {
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
+}
+
+.hover\:text-blue-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(26 86 219 / var(--tw-text-opacity));
 }
 
 .hover\:text-current:hover {
@@ -3330,6 +3356,10 @@ input:checked + .toggle-bg {
 .focus\:ring-red-600:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(224 36 36 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
 }
 
 .focus\:ring-offset-2:focus {

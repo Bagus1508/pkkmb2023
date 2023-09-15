@@ -36,19 +36,24 @@
         <div class="border px-4 py-4 mb-3 rounded-lg shadow-lg">
             <h5 class="mb-3 font-bold">Jawaban :</h5>
             @if ($tambahtugas->input_type == 'Text')
-                <a rel="stylesheet" href="{{ $histo->text }}">{{ $histo->text }}</a>
+            <div class="flex">
+                <a rel="stylesheet" href="{{ $histo->text }}" class="text-blue-500 hover:text-blue-700 hover:underline">{{ $histo->text }}</a>
                 <a type="button" href="{{ route('dashboard-user.taskedit', ['id' => $histo->id]) }}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Edit</a>
+            </div>
             @else
-                <h3 class="font-semibold">File Tugas : <span class="">"{{ $histo->tambahtugas->title }}"</span></h3>
-                @if (!empty($histo) && !empty($histo->files))
-                <!-- Loop through files and display file names -->
-                @foreach ($histo->files as $file)
-                    <a href="{{ asset('storage/upload/task/' . $file->file_name) }}">{{ $file->file_name }}</a>
-                @endforeach
-                @else
-                    <p>Tidak ada file terkait tugas ini.</p>
-                @endif
-                <a type="button" href="{{ route('dashboard-user.taskedit', ['id' => $histo->id]) }}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Edit</a>
+                <h3 class=""><span class="font-semibold">Tugas : </span>"{{ $histo->tambahtugas->title }}"</h3>
+                <div class="flex-row">
+                    @if (!empty($histo) && !empty($histo->files))
+                    <!-- Loop through files and display file names -->
+                    @foreach ($histo->files as $file)
+                        <a href="{{ url(Storage::url($file->file_path)) }}" target="_blank" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Lihat</a>
+                        <a href="{{ url(Storage::url($file->file_name)) }}" target="_blank" download class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Download</a>
+                    @endforeach
+                    @else
+                        <p>Tidak ada file terkait tugas ini.</p>
+                    @endif
+                    <a type="button" href="{{ route('dashboard-user.fileedit', ['id' => $histo->id]) }}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Edit</a>
+                </div>
             @endif
         </div>
     @else
@@ -135,7 +140,7 @@
                                         $tanggalMasuk = \Carbon\Carbon::parse($histo->submit_date)
                                         @endphp
                                         
-                                        @if ($waktuMasuk->between($waktuTepatWaktu, $waktuAkhirTepatWaktu) && $tanggalMasuk->between($tanggalTepatWaktu, $tanggalAkhirTepatWaktu))
+                                        @if ($waktuMasuk->between($waktuTepatWaktu, $waktuAkhirTepatWaktu))
                                             <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Tepat Waktu</span>
                                         @else
                                             <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Terlambat</span> 

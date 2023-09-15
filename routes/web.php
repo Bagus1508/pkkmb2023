@@ -14,10 +14,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TambahTugasController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NewsController;
+<<<<<<< HEAD
+use App\Http\Controllers\ResultTaskController;
+=======
 use App\Http\Controllers\JenisKetentuanController;
 use App\Http\Controllers\KetentuanController;
 use App\Http\Controllers\PelanggaranController;
 
+>>>>>>> f857bc48e69fa21e1daebcc6f120dbeb558a93ac
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -45,6 +49,18 @@ Route::middleware('auth')->group(function () {
             // Route::get('detail_pelanggaran/{id}', [PelanggaranController::class, 'detail_pelanggaran'])->name('detail.pelanggaran');
             Route::get('detail_pelanggaran', [PelanggaranController::class, 'detail_pelanggaran'])->name('detail.pelanggaran');
         });
+        // Tambah Tugas
+        Route::get('/dashboard/admin/tugas', [TambahTugasController::class, 'index'])->name('tambahtugas.index');
+        Route::get('/dashboard/admin/tugas/tambah-data', [TambahTugasController::class, 'create'])->name('tambahtugas.create');
+        Route::get('/dashboard/admin/tugas/edit', [TambahTugasController::class, 'edit'])->name('tambahtugas.edit');
+        Route::delete('/dashboard/admin/tugas/{tambahtugas}', [TambahTugasController::class, 'destroy'])->name('tambahtugas.destroy');
+        // Data Pengumpulan Tugas
+        Route::get('/dashboard/admin/tugas/pengumpulan', [ResultTaskController::class, 'index'])->name('result-task.index');
+        Route::get('/dashboard/admin/tugas/pengumpulan/{tambahtugas}', [ResultTaskController::class, 'show'])->name('result-task.show');
+        Route::get('/dashboard/admin/tugas/pengumpulan/hasil/{task}', [ResultTaskController::class, 'showResultTaskUser'])->name('result-task.showResultTaskUser');
+        Route::get('/dashboard/admin/tugas/pengumpulan/tidak-mengumpulkan/{tambahtugas}', [ResultTaskController::class, 'notPresent'])->name('result-task.notPresent');
+        Route::put('/dashboard/admin/tugas/pengumpulan/status/{task}', [ResultTaskController::class, 'updateStatus'])->name('result-task.updateStatus');
+        Route::delete('/dashboard/admin/tugas/pengumpulan/{task}', [ResultTaskController::class, 'destroy'])->name('result-task.destroy');
     });
     
     Route::middleware('role:superadmin')->group(function (){
@@ -63,11 +79,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/kehadiran/tambah-data', [AttendanceController::class, 'create'])->name('attendances.create');
         Route::get('/dashboard/admin/kehadiran/edit', [AttendanceController::class, 'edit'])->name('attendances.edit');
         Route::delete('/dashboard/admin/kehadiran/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
-        // Tambah Tugas
-        Route::get('/dashboard/admin/tugas', [TambahTugasController::class, 'index'])->name('tambahtugas.index');
-        Route::get('/dashboard/admin/tugas/tambah-data', [TambahTugasController::class, 'create'])->name('tambahtugas.create');
-        Route::get('/dashboard/admin/tugas/edit', [TambahTugasController::class, 'edit'])->name('tambahtugas.edit');
-        Route::delete('/dashboard/admin/tugas/{tambahtugas}', [TambahTugasController::class, 'destroy'])->name('tambahtugas.destroy');
         // not present data
         Route::get('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent'])->name('presences.not-present');
         Route::post('/dashboard/admin/presensi/{attendance}/tidak-presensi', [PresenceController::class, 'notPresent']);
@@ -110,14 +121,16 @@ Route::middleware('auth')->group(function () {
         //tugas
         Route::get('/dashboard/user/tugas', [TaskController::class, 'taskindex'])->name('taskindex');
         Route::get('/dashboard/user/tugas/edit-text/{id}', [TaskController::class, 'taskedit'])->name('taskedit');
+        Route::get('/dashboard/user/tugas/edit-file/{id}', [TaskController::class, 'fileedit'])->name('fileedit');
         Route::get('/dashboard/user/tugas/{tambahtugas}', [TaskController::class, 'taskshow'])->name('taskshow');
         Route::get('/dashboard/user/tugas/download/{folder}/{filename}', [FileController::class, 'download'])->name('download');
         Route::post('/dashboard/user/tugas/file/{tambahtugas}', [TaskController::class, 'uploadFile'])->name('uploadFile');
         Route::post('/dashboard/user/tugas/{tambahtugas}/unggah', [TaskController::class, 'sendTask'])->name('sendTask');
         Route::post('/dashboard/user/tugas/edit-text/{tambahtugas}', [TaskController::class, 'updateTask'])->name('updateTask');
+        Route::post('/dashboard/user/tugas/edit-file/{tambahtugas}', [TaskController::class, 'updateFile'])->name('updateFile');
         //profile
         Route::get('/dashboard/user/profil', [ProfileController::class, 'profileindex'])->name('profileindex');
-        Route::get('/dashboard/user/profil/edit', [ProfileController::class, 'profileedit'])->name('profileedit');
+        //Route::get('/dashboard/user/profil/edit', [ProfileController::class, 'profileedit'])->name('profileedit');
         Route::patch('/dashboard/user/profil/edit/{user}', [ProfileController::class, 'profileupdate'])->name('profileupdate');
     });
 

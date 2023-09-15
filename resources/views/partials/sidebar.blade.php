@@ -32,7 +32,7 @@
           </li>
           <li>
              <a href="{{ url('/dashboard/user/tugas') }}" class="flex items-center p-2 text-gray-500 rounded-lg hover:bg-blue-500 group hover:text-white {{ request()->is('dashboard/user/tugas') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">
-                <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-white {{ request()->is('dashboard/tugas') ? 'bg-blue-500 text-white' : 'text-gray-500' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-white {{ request()->is('dashboard/user/tugas') ? 'bg-blue-500 text-white' : 'text-gray-500' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 17V2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M5 15V1m8 18v-4"/>
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">Tugas</span>
@@ -74,7 +74,10 @@
                   </li>
                   @endif
                   <li>
-                     <a href="/dashboard/admin/tugas" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/tugas') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Tugas Peserta</a>
+                     <a href="/dashboard/admin/tugas" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/tugas') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Tugas</a>
+                  </li>
+                  <li>
+                     <a href="/dashboard/admin/tugas/pengumpulan" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/tugas/pengumpulan') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Pengumpulan</a>
                   </li>
                   <li>
                      <a href="/dashboard/admin/kelompok" class="flex items-center w-full p-2 text-gray-500 hover:text-white transition duration-75 rounded-lg pl-11 group hover:bg-blue-500 {{ request()->is('dashboard/admin/kelompok') ? 'bg-blue-500 text-white' : 'text-gray-500' }}">Data Kelompok</a>

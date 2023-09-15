@@ -14,6 +14,7 @@ final class PresenceTable extends PowerGridComponent
 {
     use ActionButton;
 
+    public $rowNumber = 1;
     public $attendanceId;
     //Table sort field
     public string $sortField = 'presences.created_at';
@@ -37,8 +38,9 @@ final class PresenceTable extends PowerGridComponent
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+                ->showPerPage(10)
+                ->showRecordCount()
+                ->pagination('components.pagination'),
         ];
     }
 
@@ -60,7 +62,10 @@ final class PresenceTable extends PowerGridComponent
         return Presence::query()
             ->where('attendance_id', $this->attendanceId)
             ->join('users', 'presences.user_id', '=', 'users.id')
-            ->select('presences.*', 'users.name as user_name', 'users.nim as user_nim');
+            ->join('kelompoks', 'users.kelompok_id', '=', 'kelompoks.id')
+            ->select('presences.*', 'users.name as user_name', 'users.nim as user_nim', 'kelompoks.name as kelompok_name');
+
+        
     }
     
 
@@ -116,6 +121,7 @@ final class PresenceTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('user_nim')
             ->addColumn('user_name')
+            ->addColumn('kelompok_name')
             ->addColumn("presence_date")
             ->addColumn("presence_enter_time")
             /* ->addColumn("presence_out_time", fn (Presence $model) => $model->presence_out_time ?? '<span class="badge text-bg-danger">Belum Absensi Pulang</span>') */
@@ -155,6 +161,11 @@ final class PresenceTable extends PowerGridComponent
 
             Column::make('Nama', 'user_name')
                 ->makeInputText('users.name')
+                ->searchable()
+                ->sortable(),
+
+            Column::make('Kelompok', 'kelompok_name')
+                ->makeInputText('kelompoks.name')
                 ->searchable()
                 ->sortable(),
 
