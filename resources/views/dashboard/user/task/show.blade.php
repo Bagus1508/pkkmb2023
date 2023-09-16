@@ -47,7 +47,7 @@
                     <!-- Loop through files and display file names -->
                     @foreach ($histo->files as $file)
                         <a href="{{ url(Storage::url($file->file_path)) }}" target="_blank" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Lihat</a>
-                        <a href="{{ url(Storage::url($file->file_name)) }}" target="_blank" download class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Download</a>
+                        <a href="{{ url(Storage::url($file->file_path)) }}" download="{{ $file->file_name }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 items-end mx-auto justify-end">Download</a>
                     @endforeach
                     @else
                         <p>Tidak ada file terkait tugas ini.</p>

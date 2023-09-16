@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\HasilController;
 use App\Http\Controllers\HomePresenceController;
 use App\Http\Controllers\KelompokController;
 use App\Http\Controllers\PositionController;
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('pelanggaran', PelanggaranController::class);
             // Route::get('detail_pelanggaran/{id}', [PelanggaranController::class, 'detail_pelanggaran'])->name('detail.pelanggaran');
             Route::get('/detail_pelanggaran/{id}', [PelanggaranController::class, 'show'])->name('detail.pelanggaran');
-
+            Route::resource('hasil', HasilController::class);
         });
         // Tambah Tugas
         Route::get('/dashboard/admin/tugas', [TambahTugasController::class, 'index'])->name('tambahtugas.index');
