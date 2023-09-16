@@ -14,12 +14,15 @@ class TaskController extends Controller
 {
     public function taskindex() {
         $tambahtugas = TambahTugas::all();
+        $tasks = Task::all();
 
         return view('dashboard.user.task.index', [
             "title" => "Tugas Peserta",
             "tambahtugas" => $tambahtugas,
+            "tasks" => $tasks,
         ]);
     }
+
 
     public function taskedit($id)
     {

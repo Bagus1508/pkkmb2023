@@ -18,8 +18,8 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-6 mb-3 mb-md-0">
-                <h5 class="font-bold text-lg">Judul : {{ $tambahtugas->title }}</h5>
-                <h6 class="text-sm">Deskripsi : {{ $tambahtugas->description }}</h6>
+                <h5 class="font-bold text-lg">Judul : {{ $tambahTugas->title }}</h5>
+                <h6 class="text-sm">Deskripsi : {{ $tambahTugas->description }}</h6>
                 <div class="d-flex align-items-center gap-2">
                     <span href="" class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Tidak Mengumpulkan</span>
                 </div>
@@ -31,17 +31,19 @@
 @if (!empty($notSubmitDate) && count($notSubmitDate) === 0)
     <small class="text-danger fw-bold">Tidak ada data yang bisa ditampilkan</small>
 @endif
-
 <div>
     @foreach ($notSubmitData as $data)
     @php
-        $notSubmitDate = \Carbon\Carbon::parse($data['not_submit_date']);
-        $sessionDate = \Carbon\Carbon::parse($tambahtugas->date);
+        $notSubmitDate = is_array($data['not_submit_date']) ? $data['not_submit_date'][0] : $data['not_submit_date'];
+        $sessionDate = is_array($tambahTugas->start_date) ? $tambahTugas->start_date[0] : $tambahTugas->start_date;
+        
+        $notSubmitDate = \Carbon\Carbon::parse($notSubmitDate);
+        $sessionDate = \Carbon\Carbon::parse($sessionDate);
     @endphp
 
         <div class="p-3 rounded bg-white border border-gray-400 mb-4">
-            <div>Hari : <span class="font-bold">{{ \Carbon\Carbon::parse($tambahtugas->date)->isoFormat('dddd') }}</span></div>
-            <div>Tanggal : <span class="font-bold">{{ \Carbon\Carbon::parse($tambahtugas->date)->isoFormat('D MMMM Y') }}</span></div>
+            <div>Hari : <span class="font-bold">{{ \Carbon\Carbon::parse($tambahTugas->start_date)->isoFormat('dddd') }} - {{ \Carbon\Carbon::parse($tambahTugas->end_date)->isoFormat('dddd') }}</span></div>
+            <div>Tanggal : <span class="font-bold">{{ \Carbon\Carbon::parse($tambahTugas->start_date)->isoFormat('D MMMM Y') }} - {{ \Carbon\Carbon::parse($tambahTugas->end_date)->isoFormat('D MMMM Y') }}</span></div>
             <div>Jumlah : <span class="font-bold">{{ count($data['users']) }}</span></div>
         </div>
 
@@ -66,7 +68,6 @@
                         </th>
                     </tr>
                 </thead>
-                @if ($notSubmitDate->isSameDay($sessionDate))
                 <tbody>
                 @foreach ($data['users'] as $user)    
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -96,10 +97,9 @@
                     </tr>
                 @endforeach
                 </tbody>
-                @endif
             </table>
         </div>
-@endforeach
+    @endforeach
 </div>
 
 @endsection

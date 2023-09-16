@@ -32,7 +32,7 @@
                 @endif
             </div>
             <div>
-                <a href="{{ route('result-task.notPresent', $tambahtugas->id) }}" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-lg font-semibold">
+                <a href="{{ route('result-task.notSubmit', $tambahtugas->id) }}" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-lg font-semibold">
                     Belum Mengumpulkan
                 </a>
             </div>

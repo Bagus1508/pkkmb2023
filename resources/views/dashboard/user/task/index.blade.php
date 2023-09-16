@@ -94,25 +94,31 @@
                         </div>
                     </td>
                     <td class="px-6 py-4">
-                    @php
-                    $user = auth()->user(); // Mengambil pengguna yang sedang masuk
-                    @endphp
-                        @if ($user->task)
-                            @if ($user->task->status === 'Terkirim')
+                        {{-- Cari tugas yang sesuai dengan tambahtugas_id saat ini --}}
+                        @php
+                            $task = \App\Models\Task::where('tambahtugas_id', $item->id)
+                                ->where('user_id', auth()->user()->id)
+                                ->first();
+                        @endphp
+                
+                        {{-- Periksa apakah tugas ditemukan --}}
+                        @if ($task)
+                            @if ($task->status === 'Terkirim')
                                 <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Terkirim</div>
-                            @elseif ($user->task->status === 'Proses')
+                            @elseif ($task->status === 'Proses')
                                 <div class="text-center bg-yellow-100 text-yellow-800 text-xs font-medium px-1 py-0.5 rounded-full">Diproses</div>
-                            @elseif ($user->task->status === 'Revisi')
+                            @elseif ($task->status === 'Revisi')
                                 <div class="text-center bg-red-100 text-red-800 text-xs font-medium px-1 py-0.5 rounded-full">Revisi</div>
-                            @elseif ($user->task->status === 'Diterima')
+                            @elseif ($task->status === 'Diterima')
                                 <div class="text-center bg-green-100 text-green-800 text-xs font-medium px-1 py-0.5 rounded-full">Diterima</div>
                             @else
                                 <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Mengumpulkan</div>
                             @endif
                         @else
+                            {{-- Tugas tidak ditemukan, mungkin belum mengumpulkan --}}
                             <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Mengumpulkan</div>
                         @endif
-                    </td>                    
+                    </td>                             
                     <td class="px-6 py-4">
                         <a href="{{ route('dashboard-user.taskshow', $item->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Lihat</a>
                     </td>

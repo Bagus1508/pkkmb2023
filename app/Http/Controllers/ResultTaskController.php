@@ -16,7 +16,7 @@ class ResultTaskController extends Controller
 
         return view('dashboard.admin.task.index', [
             "title" => "Daftar Tugas Dengan Pengumpulan",
-            "tambahtugas" => $tambahtugas
+            "tambahtugas" => $tambahtugas,
         ]);
     }
 
@@ -52,19 +52,29 @@ class ResultTaskController extends Controller
         return redirect()->back()->with('success', 'Status berhasil diperbarui');
     }
 
-    public function notSubmit(TambahTugas $tambahTugas)
+    public function notSubmit(TambahTugas $tambahtugas)
     {
-        $byDate = $tambahTugas->date;
-        if (request('display-by-date'))
-            $byDate = request('display-by-date');
-
+        $byDate = [
+            \Carbon\Carbon::createFromFormat('Y-m-d', $tambahtugas->start_date)->toDateString(),
+            \Carbon\Carbon::createFromFormat('Y-m-d', $tambahtugas->end_date)->toDateString(),
+        ];
+        
+        $requestByDate = request('display-by-date');
+        
+        if ($requestByDate && is_array($requestByDate)) {
+            foreach ($requestByDate as $index => $date) {
+                $requestByDate[$index] = \Carbon\Carbon::createFromFormat('Y-m-d', $date)->toDateString();
+            }
+            $byDate = $requestByDate;
+        }
+    
         $task = Task::query()
-            ->where('tambahtugas_id', $tambahTugas->id)
-            ->where('submit_date', $byDate)
+            ->where('tambahtugas_id', $tambahtugas->id)
+            ->whereBetween('submit_date', $byDate)
             ->get(['submit_date', 'user_id']);
             
         $roleFilter = 'user'; // Ganti dengan peran yang ingin Anda tampilkan
-
+    
         // Get participants or committee members based on position_id
         if ($task->isEmpty()) {
             $notSubmitData[] = 
@@ -81,14 +91,16 @@ class ResultTaskController extends Controller
         } else {
             $notSubmitData = $this->getNotSubmitStudents($task, $roleFilter);
         }
-
+    
         return view('dashboard.admin.task.not-submit', [
             "title" => "Data Peserta Tidak Mengumpulkan",
-            "tambahtugas" => $tambahTugas,
+            "tambahTugas" => $tambahtugas,
             "notSubmitData" => $notSubmitData,
             "roleFilter" => $roleFilter,
         ]);
     }
+
+    
 
     private function getNotSubmitStudents($task, $roleFilter)
     {
@@ -96,7 +108,7 @@ class ResultTaskController extends Controller
         $uniqueSubmitDatesAndCompactTheUserIds = $uniqueSubmitDates->map(function ($date) use ($task) {
             return [
                 "submit_date" => $date,
-                "user_ids" => $task->where('submit_date', $date)->pluck('user_id')->toArray()
+                "user_id" => $task->where('submit_date', $date)->pluck('user_id')->toArray()
             ];
         });
         $notSubmitData = [];
@@ -109,7 +121,7 @@ class ResultTaskController extends Controller
                             $query->where('name', $roleFilter);
                         })
                         ->with('kelompok')
-                        ->whereNotIn('id', $tasks['user_ids'])
+                        ->whereNotIn('id', $tasks['user_id'])
                         ->get()
                         ->toArray()
                 ];
