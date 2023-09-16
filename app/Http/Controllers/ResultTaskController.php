@@ -52,7 +52,7 @@ class ResultTaskController extends Controller
         return redirect()->back()->with('success', 'Status berhasil diperbarui');
     }
 
-    public function notPresent(TambahTugas $tambahTugas)
+    public function notSubmit(TambahTugas $tambahTugas)
     {
         $byDate = $tambahTugas->date;
         if (request('display-by-date'))
@@ -99,9 +99,9 @@ class ResultTaskController extends Controller
                 "user_ids" => $task->where('submit_date', $date)->pluck('user_id')->toArray()
             ];
         });
-        $notPresentData = [];
+        $notSubmitData = [];
         foreach ($uniqueSubmitDatesAndCompactTheUserIds as $tasks) {
-            $notPresentData[] =
+            $notSubmitData[] =
                 [
                     "not_submit_date" => $tasks['submit_date'],
                     "users" => User::query()
@@ -114,7 +114,7 @@ class ResultTaskController extends Controller
                         ->toArray()
                 ];
         }
-        return $notPresentData;
+        return $notSubmitData;
     }
 
     public function destroy(Task $task)

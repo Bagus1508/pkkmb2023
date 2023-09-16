@@ -94,14 +94,17 @@
                         </div>
                     </td>
                     <td class="px-6 py-4">
-                        @if ($item->task)
-                            @if ($item->task->status === 'Terkirim')
+                    @php
+                    $user = auth()->user(); // Mengambil pengguna yang sedang masuk
+                    @endphp
+                        @if ($user->task)
+                            @if ($user->task->status === 'Terkirim')
                                 <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Terkirim</div>
-                            @elseif ($item->task->status === 'Proses')
+                            @elseif ($user->task->status === 'Proses')
                                 <div class="text-center bg-yellow-100 text-yellow-800 text-xs font-medium px-1 py-0.5 rounded-full">Diproses</div>
-                            @elseif ($item->task->status === 'Revisi')
+                            @elseif ($user->task->status === 'Revisi')
                                 <div class="text-center bg-red-100 text-red-800 text-xs font-medium px-1 py-0.5 rounded-full">Revisi</div>
-                            @elseif ($item->task->status === 'Diterima')
+                            @elseif ($user->task->status === 'Diterima')
                                 <div class="text-center bg-green-100 text-green-800 text-xs font-medium px-1 py-0.5 rounded-full">Diterima</div>
                             @else
                                 <div class="text-center bg-blue-100 text-blue-800 text-xs font-medium px-1 py-0.5 rounded-full">Belum Mengumpulkan</div>

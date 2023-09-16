@@ -45,7 +45,6 @@ Route::middleware('auth')->group(function () {
             Route::resource('pelanggaran', PelanggaranController::class);
             // Route::get('detail_pelanggaran/{id}', [PelanggaranController::class, 'detail_pelanggaran'])->name('detail.pelanggaran');
             Route::get('/detail_pelanggaran/{id}', [PelanggaranController::class, 'show'])->name('detail.pelanggaran');
-            Route::resource('hasil', HasilController::class);
         });
         // Tambah Tugas
         Route::get('/dashboard/admin/tugas', [TambahTugasController::class, 'index'])->name('tambahtugas.index');
@@ -56,7 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/tugas/pengumpulan', [ResultTaskController::class, 'index'])->name('result-task.index');
         Route::get('/dashboard/admin/tugas/pengumpulan/{tambahtugas}', [ResultTaskController::class, 'show'])->name('result-task.show');
         Route::get('/dashboard/admin/tugas/pengumpulan/hasil/{task}', [ResultTaskController::class, 'showResultTaskUser'])->name('result-task.showResultTaskUser');
-        Route::get('/dashboard/admin/tugas/pengumpulan/tidak-mengumpulkan/{tambahtugas}', [ResultTaskController::class, 'notPresent'])->name('result-task.notPresent');
+        Route::get('/dashboard/admin/tugas/pengumpulan/tidak-mengumpulkan/{tambahtugas}', [ResultTaskController::class, 'notSubmit'])->name('result-task.notSubmit');
         Route::put('/dashboard/admin/tugas/pengumpulan/status/{task}', [ResultTaskController::class, 'updateStatus'])->name('result-task.updateStatus');
         Route::delete('/dashboard/admin/tugas/pengumpulan/{task}', [ResultTaskController::class, 'destroy'])->name('result-task.destroy');
     });
@@ -100,6 +99,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/peserta/tambah-data', [StudentController::class, 'create'])->name('students.create');
         Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
         Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
+        //hasil
+        Route::resource('hasil', HasilController::class);
     });
 
     //PRESENCES USER (USER, ADMIN, SUPERADMIN)
