@@ -36,7 +36,7 @@ class TambahTugas extends Model
                 $now = now();
                 $nowDate = now();
                 $startTime = Carbon::parse($this->start_date. '' .$this->start_time);
-                $batasStartTime = Carbon::parse($this->start_date. '' .$this->batas_start_time);
+                $batasStartTime = Carbon::parse($this->end_date. '' .$this->batas_start_time);
                 $startDate = Carbon::parse($this->start_date);
                 $endDate = Carbon::parse($this->end_date);
 
