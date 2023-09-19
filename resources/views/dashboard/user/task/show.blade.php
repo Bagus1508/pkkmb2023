@@ -140,7 +140,7 @@
                                         $tanggalMasuk = \Carbon\Carbon::parse($histo->submit_date)
                                         @endphp
                                         
-                                        @if ($waktuMasuk->between($waktuTepatWaktu, $waktuAkhirTepatWaktu))
+                                        @if ($waktuMasuk->between($waktuTepatWaktu, $waktuAkhirTepatWaktu) || $tanggalMasuk->between($tanggalTepatWaktu, $tanggalAkhirTepatWaktu))
                                             <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Tepat Waktu</span>
                                         @else
                                             <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Terlambat</span> 
