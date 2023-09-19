@@ -100,7 +100,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/admin/peserta/edit', [StudentController::class, 'edit'])->name('students.edit');
         Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
         //hasil
-        Route::resource('hasil', HasilController::class);
+        Route::resource('/dashboard/admin/hasil', HasilController::class);
     });
 
     //PRESENCES USER (USER, ADMIN, SUPERADMIN)
