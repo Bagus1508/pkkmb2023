@@ -48,6 +48,7 @@ class TambahTugas extends Model
                     "now" => $now->format("H:i:s"),
                     "nowDate" => $nowDate,
                     "is_start" => ($startTime <= $now && $batasStartTime >= $now) || ($startDate <= $nowDate && $endDate >= $nowDate),
+                    "is_open" => ($startTime <= $now) || ($startDate <= $nowDate),
                 ];
             },
         );
