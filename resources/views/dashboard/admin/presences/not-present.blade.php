@@ -103,9 +103,9 @@
                             </form>
 
                             {{-- Permission Modal Button --}}
-                            <button data-modal-target="permissionFormModal" data-modal-toggle="permissionFormModal"  class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded hover:underline" type="button" >Izin</button>
+                            <button data-modal-target="permissionFormModal{{ $user['id'] }}" data-modal-toggle="permissionFormModal{{ $user['id'] }}"  class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded hover:underline" type="button" >Izin</button>
                             <!-- Main modal -->
-                            <div id="permissionFormModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div id="permissionFormModal{{ $user['id'] }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                 <div class="relative w-full max-w-2xl max-h-full">
                                     <!-- Modal content -->
                                     <div class="relative bg-white rounded-lg shadow">
@@ -114,7 +114,7 @@
                                             <h3 class="text-xl font-semibold text-gray-900">
                                                 Formulir Alasan Izin
                                             </h3>
-                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="permissionFormModal">
+                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="permissionFormModal{{ $user['id'] }}">
                                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                                                 </svg>
@@ -128,14 +128,14 @@
                                             <input type="hidden" name="presence_date" value="{{ $data['not_presence_date'] }}">
                                             <div class="p-6 space-y-6">
                                                 <div>
-                                                    <label for="permission_reason" class="block mb-2 text-sm font-medium text-gray-900">Alasan Izin</label>
+                                                    <label for="permission_reason" class="block mb-2 text-sm font-medium text-gray-900">Alasan Izin Atas Nama {{ $user['name'] }}</label>
                                                     <input type="text" name="permission_reason" id="permission_reason" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Alasan Izin" required>
                                                 </div>
                                             </div>
                                             <!-- Modal footer -->
                                             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                <button data-modal-hide="permissionFormModal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
-                                                <button data-modal-hide="permissionFormModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
+                                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+                                                <button data-modal-hide="permissionFormModal{{ $user['id'] }}" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
                                             </div>
                                         </form>
                                     </div>

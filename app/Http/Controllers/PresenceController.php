@@ -154,7 +154,7 @@ class PresenceController extends Controller
     
         //dd('Permission saved'); // Debugging
     
-        return redirect()->back()->with('success', 'Izin berhasil diberikan oleh admin.');
+        return redirect()->back()->with('success', "Berhasil menyimpan data izin atas nama \"$user->name\".");
     }
     
     
