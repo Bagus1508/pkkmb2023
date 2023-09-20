@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->belongsTo(Kelompok::class);
     }
 
+    public function presensi()
+    {
+        return $this->hasMany(Presence::class);
+    }
+
     public function position()
     {
         return $this->belongsTo(Position::class);

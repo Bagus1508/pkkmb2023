@@ -26,9 +26,10 @@
                                         <th class="py-4" scope="">Nim</th>
                                         <th class="py-4" scope="">Nama Peserta</th>
                                         <th class="py-4" scope="">Kelompok</th>
-                                        <th class="py-4" scope="">Jumlah Tugas Dikumpulkan</th>
-                                        <th class="py-4" scope="">Jumlah Poin Pelanggaran</th>
-                                        <th class="py-4" scope="">Jumlah Presensi</th>
+                                        <th class="py-4" scope="">Presensi</th>
+                                        <th class="py-4" scope="">Izin</th>
+                                        <th class="py-4" scope="">Tugas</th>
+                                        <th class="py-4" scope="">Pelanggaran</th>
                                         <th class="py-4" scope="">Keputusan</th>
                                     </tr>
                                 </thead>
@@ -69,13 +70,7 @@
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
-                                                            @php
-                                                                $totalPoin = 0;
-                                                                foreach ($item->pelanggaran_peserta as $pelanggaran) {
-                                                                    $totalPoin += $pelanggaran->poin;
-                                                                }
-                                                                echo $totalPoin;
-                                                            @endphp
+                                                            {{ optional($item->presensi->where('is_permission', 0))->count() ?? 0 }}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -84,13 +79,16 @@
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
-                                                            @php
-                                                                $totalPoin = 0;
-                                                                foreach ($item->pelanggaran_peserta as $pelanggaran) {
-                                                                    $totalPoin += $pelanggaran->poin;
-                                                                }
-                                                                echo $totalPoin;
-                                                            @endphp
+                                                            {{ optional($item->presensi->where('is_permission', 1))->count() ?? 0 }}
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </td>                                                                                                                                                                                                                 
+                                            <td class="px-1 py-5">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <h2 class="font-medium text-black">
+                                                            {{ optional($item->tugas)->count() ?? 0 }}
                                                         </h2>
                                                     </div>
                                                 </div>

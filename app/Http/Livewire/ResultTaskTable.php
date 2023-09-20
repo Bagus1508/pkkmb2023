@@ -93,17 +93,17 @@ final class ResultTaskTable extends PowerGridComponent
     /* Kehadiran Terlambat/TepatWaktu */
     protected function setLateStatus(Task $model)
     {   
-        $waktuMasuk = Carbon::parse($model->submit_enter_time);
-        $waktuTepatWaktu = Carbon::parse($model->tambahtugas->start_time);
-        $waktuAkhirTepatWaktu = Carbon::parse($model->tambahtugas->batas_start_time);
-        $tanggalMasuk = Carbon::parse($model->submit_date);
-        $tanggalTepatWaktu = Carbon::parse($model->tambahtugas->start_date);
-        $tanggalAkhirTepatWaktu = Carbon::parse($model->tambahtugas->end_start_date);
+        $waktuMasuk = \Carbon\Carbon::parse($model->submit_enter_time);
+        $waktuTepatWaktu = \Carbon\Carbon::parse($model->tambahtugas->start_time);
+        $waktuAkhirTepatWaktu = \Carbon\Carbon::parse($model->tambahtugas->batas_start_time); 
+        $tanggalTepatWaktu = \Carbon\Carbon::parse($model->tambahtugas->start_date); 
+        $tanggalAkhirTepatWaktu = \Carbon\Carbon::parse($model->tambahtugas->end_date); 
+        $tanggalMasuk = \Carbon\Carbon::parse($model->submit_date);
     
-        if ($waktuMasuk->isBefore($waktuTepatWaktu) || $waktuMasuk->isAfter($waktuAkhirTepatWaktu) && $tanggalMasuk->isBefore($tanggalTepatWaktu) || $tanggalMasuk->isAfter($tanggalAkhirTepatWaktu)) {
-            return 'Terlambat';
-        } else {
+        if ($waktuMasuk->isBefore($waktuAkhirTepatWaktu) && $tanggalMasuk->between($tanggalTepatWaktu, $tanggalAkhirTepatWaktu)) {
             return 'Tepat Waktu';
+        } else {
+            return 'Terlambat';
         }
     }
     
