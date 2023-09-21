@@ -101,6 +101,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/dashboard/admin/peserta/{users}', [StudentController::class, 'destroy'])->name('students.destroy');
         //hasil
         Route::resource('/dashboard/admin/hasil', HasilController::class);
+        Route::post('/dashboard/admin/hasil/export-excel', [HasilController::class, 'exportExcel'])->name('hasil.export-excel');
     });
 
     //PRESENCES USER (USER, ADMIN, SUPERADMIN)

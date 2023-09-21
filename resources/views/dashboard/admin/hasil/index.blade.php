@@ -14,6 +14,16 @@
                 </div>
             </div>
         </div>
+        <div>
+            <form action="{{ route('hasil.export-excel') }}" method="POST" target="__blank">
+                @csrf
+                <div>
+                    <button type="submit">
+                        Export Excel
+                    </button>
+                </div>
+            </form>
+        </div>
         @if ($peserta)
             <section class="container px-6 mx-auto mt-5">
                 <div class="grid gap-5 lg:grid-cols-12">
@@ -48,7 +58,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="w-6/12 px-1 py-5">
+                                            <td class="w-1/3 px-1 py-5">
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
@@ -70,7 +80,7 @@
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
-                                                            {{ optional($item->presensi->where('is_permission', 0))->count() ?? 0 }}
+                                                            {{ optional($item->submitPresensi->where('is_permission', 0))->count() ?? 0 }}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -79,7 +89,7 @@
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
-                                                            {{ optional($item->presensi->where('is_permission', 1))->count() ?? 0 }}
+                                                            {{ optional($item->submitPresensi->where('is_permission', 1))->count() ?? 0 }}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -88,7 +98,7 @@
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
-                                                            {{ optional($item->tugas)->count() ?? 0 }}
+                                                            {{ optional($item->submitTugas)->count() ?? 0 }}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -111,12 +121,37 @@
                                             <td class="px-1 py-5">
                                                 <div class="flex items-center text-sm">
                                                     <div>
+                                                        @php
+                                                            $presensiMasuk = optional($item->submitPresensi)->count() ?? 0;
+                                                            //$totalIzin = optional($item->submitPresensi)->where('is_permission', 1)->count() ?? 0;
+                                                            $tugasDikerjakan = optional($item->submitTugas)->count() ?? 0;
+                                                            $totalPelanggaran = $item->pelanggaran_peserta->sum('poin');
+                                                            
+                                                            //total
+                                                            $totalPresensi = ($presensiMasuk / $presencesCount) * 100;
+                                                            $totalTugas = ($tugasDikerjakan / $taskCount) * 100;
+                                                            $ketaatan = 100 - $totalPelanggaran;
+                                                            $totalSkor = ($totalPresensi + $totalTugas + $ketaatan) / 3;
+                                            
+                                                            $keputusan = '';
+                                            
+                                                            if ($totalSkor <= 40) {
+                                                                $keputusan = 'Tidak Lulus';
+                                                            } elseif ($totalSkor >= 80) {
+                                                                $keputusan = 'Lulus';
+                                                            } else {
+                                                                $keputusan = 'Lulus Bersyarat';
+                                                            }
+                                                        @endphp
                                                         <h2 class="font-medium text-black">
-                                                            Lulus
+                                                            {{ $keputusan }}
                                                         </h2>
+                                                            Presensi {{ $totalPresensi }}%
+                                                            Tugas {{ $totalTugas }}%
+                                                            Ketaatan {{ $ketaatan }}%
                                                     </div>
                                                 </div>
-                                            </td>                                                                                                                                                                                                                 
+                                            </td>                                                                                                                                                                                                                                                           
                                         </tr>
                                     @endforeach
                                 </tbody>                                
