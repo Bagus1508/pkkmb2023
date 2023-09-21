@@ -40,7 +40,7 @@ class HasilDataExport implements FromCollection, WithHeadings
             //hasil akhir/keputusan
             $presensiMasuk = optional($item->submitPresensi)->count() ?? 0;
             //$totalIzin = optional($item->submitPresensi)->where('is_permission', 1)->count() ?? 0;
-            $tugasDikerjakan = optional($item->submitTugas)->count() ?? 0;
+            $tugasDikerjakan = optional($item->submitTugas->where('status', 'Diterima'))->count() ?? 0;
             $totalPelanggaran = $item->pelanggaran_peserta->sum('poin');
             
             //total
@@ -67,7 +67,7 @@ class HasilDataExport implements FromCollection, WithHeadings
                 $item->kelompok_id ?? '',
                 optional($item->submitPresensi->where('is_permission', 0))->count() ?? 0,
                 optional($item->submitPresensi->where('is_permission', 1))->count() ?? 0,
-                optional($item->submitTugas)->count() ?? 0,
+                optional($item->submitTugas->where('status', 'Diterima'))->count() ?? 0,
                 $totalPoinPelanggaran,
                 $keputusan,
                 

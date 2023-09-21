@@ -9,7 +9,16 @@
                         Data Kelulusan Peserta
                     </h2>
                     <p class="text-sm text-gray-400">
+                        Keterangan :
+                    </p>
+                    <p class="text-sm text-gray-400">
                         Total {{ count($peserta) }} Peserta
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        Total Tugas = {{ $taskCount }}
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        Total Presensi = {{ $presencesCount }}
                     </p>
                 </div>
             </div>
@@ -98,7 +107,7 @@
                                                 <div class="flex items-center text-sm">
                                                     <div>
                                                         <h2 class="font-medium text-black">
-                                                            {{ optional($item->submitTugas)->count() ?? 0 }}
+                                                            {{ optional($item->submitTugas->where('status', 'Diterima'))->count() ?? 0 }}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -124,7 +133,7 @@
                                                         @php
                                                             $presensiMasuk = optional($item->submitPresensi)->count() ?? 0;
                                                             //$totalIzin = optional($item->submitPresensi)->where('is_permission', 1)->count() ?? 0;
-                                                            $tugasDikerjakan = optional($item->submitTugas)->count() ?? 0;
+                                                            $tugasDikerjakan = optional($item->submitTugas->where('status', 'Diterima'))->count() ?? 0;
                                                             $totalPelanggaran = $item->pelanggaran_peserta->sum('poin');
                                                             
                                                             //total
