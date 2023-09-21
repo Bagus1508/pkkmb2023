@@ -124,4 +124,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Pelanggaran', 'panitia_id');
     }
+
+
+    //perhitungan hasil
 }
